@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Quick Bird - Product Details</title>
+    <title id="page-title">Quick Bird - Article Details</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { background-color: #f8f9fa; font-family: 'Segoe UI', Arial, sans-serif; }
@@ -14,8 +13,7 @@
         .navbar-custom .navbar-brand { color: #fff; font-weight: 700; font-size: 1.5rem; }
         .navbar-custom .nav-link { color: #dcdde1 !important; font-weight: 500; margin-right: 10px; }
         .navbar-custom .nav-link:hover { color: #fbc531 !important; }
-        .post-header-img { width: 100%; max-height: 450px; object-fit: cover; border-radius: 12px; }
-        .btn-visit { background-color: #27ae60; color: #fff; font-weight: 600; padding: 14px 28px; border-radius: 8px; text-decoration: none; display: inline-block; font-size: 1.1rem; }
+        .btn-visit { background-color: #27ae60; color: #fff; font-weight: 600; padding: 12px 24px; border-radius: 8px; text-decoration: none; display: inline-block; }
         .btn-visit:hover { background-color: #219150; color: #fff; }
         footer { background-color: #1a252f; color: #a4b0be; padding: 40px 0 20px; }
         footer a { color: #a4b0be; text-decoration: none; }
@@ -24,7 +22,7 @@
 </head>
 <body>
 
-    <!-- Header / Navbar -->
+    <!-- Header / Nav (ஒரு முறை மட்டும் அமைத்தால் போதும்) -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">
@@ -43,82 +41,49 @@
         </div>
     </nav>
 
-    <!-- Main Content Container -->
+    <!-- Main Content Slot (இங்கே தான் உங்கள் கட்டுரை வந்து அமரும்) -->
     <main class="container my-5">
         <div class="row justify-content-center">
             <div class="col-lg-9">
-                <!-- Dynamic Category Tag -->
-                <span class="badge bg-warning text-dark mb-2" id="post-category">Category</span>
-                
-                <!-- Dynamic Article Heading -->
-                <h1 class="fw-bold mb-3" id="post-title">Loading Article Title...</h1>
-                
-                <p class="text-muted small mb-4">
-                    <i class="fa fa-calendar me-1"></i> Updated Recently | <i class="fa fa-user me-1"></i> Quick Bird Editorial Team
-                </p>
-
-                <!-- Dynamic Featured Image -->
-                <img id="post-image" src="https://via.placeholder.com/900x450?text=Loading+Image" class="post-header-img mb-4" alt="Product Image">
-
-                <!-- Article Body Content -->
-                <div class="article-content bg-white p-4 p-md-5 rounded shadow-sm mb-4" style="line-height: 1.8;">
-                    <!-- Dynamic Description Text -->
-                    <div id="post-desc" class="mb-4">
-                        <p class="lead fw-normal">Loading article details...</p>
-                    </div>
-
-                    <!-- Target Website Call-To-Action (Affiliate Link Box) -->
-                    <div class="text-center my-5 p-4 bg-light rounded border border-warning">
-                        <h5 class="fw-bold mb-3">To view pricing, user reviews, and order directly from the verified seller:</h5>
-                        <!-- Dynamic Target Link -->
-                        <a id="post-link" href="#" target="_blank" rel="nofollow sponsored" class="btn-visit shadow-sm">
-                            <i class="fa-solid fa-arrow-up-right-from-square me-2"></i> Visit Official Store Page
-                        </a>
-                    </div>
+                <div id="content-slot" class="bg-white p-4 p-md-5 rounded shadow-sm">
+                    <p class="text-center text-muted">Loading article details...</p>
                 </div>
-
-                <!-- Social Share Bar -->
-                <div class="d-flex align-items-center justify-content-between bg-white p-3 rounded shadow-sm">
-                    <span class="fw-bold text-muted">Share this post:</span>
-                    <div>
-                        <a href="#" class="btn btn-sm btn-outline-primary me-1"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="btn btn-sm btn-outline-info me-1"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="btn btn-sm btn-outline-success"><i class="fab fa-whatsapp"></i></a>
-                    </div>
-                </div>
-
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer (ஒரு முறை மட்டும் அமைத்தால் போதும்) -->
     <footer>
         <div class="container text-center small">
             <p class="mb-0">&copy; 2026 Quick Bird. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Script for Dynamic Content Loading -->
+    <!-- கட்டுரையைத் தானாக உள்ளே இழுத்து வைக்கும் Script -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const params = new URLSearchParams(window.location.search);
-            
-            const title = params.get('title') || 'Featured Product Deal';
-            const category = params.get('cat') || 'General';
-            const image = params.get('img') || 'https://via.placeholder.com/900x450?text=Featured+Product';
-            const desc = params.get('desc') || 'Discover the best offers and detailed reviews on this exclusive featured product.';
-            const targetUrl = params.get('url') || 'https://example.com';
+            const articleId = params.get('id') || 'post1';
 
-            // Populate page elements
-            document.getElementById('post-title').innerText = title;
-            document.getElementById('page-title').innerText = title + ' - Quick Bird';
-            document.getElementById('post-category').innerText = category;
-            document.getElementById('post-image').src = image;
-            document.getElementById('post-desc').innerHTML = `<p class="lead fw-normal">${desc}</p>`;
-            document.getElementById('post-link').href = targetUrl;
+            // post1.html, post2.html போன்ற கோப்புகளை உள்ளே ஏற்றுகிறது
+            fetch(`${articleId}.html`)
+                .then(response => {
+                    if (!response.ok) throw new Error('Article not found');
+                    return response.text();
+                })
+                .then(data => {
+                    document.getElementById('content-slot').innerHTML = data;
+                })
+                .catch(error => {
+                    document.getElementById('content-slot').innerHTML = `
+                        <div class="text-center py-5">
+                            <h3 class="text-danger">Article Not Found</h3>
+                            <p class="text-muted">The article you are looking for does not exist or has been moved.</p>
+                            <a href="index.html" class="btn btn-primary mt-3">Back to Home</a>
+                        </div>`;
+                });
         });
     </script>
 </body>
