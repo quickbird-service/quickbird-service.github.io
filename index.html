@@ -1,139 +1,262 @@
 <!DOCTYPE html>
-<html lang="ta">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Bird - Product Catalog</title>
+    <title>Quick Bird - Articles & Updates</title>
+    <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body { background-color: #f4f6f9; font-family: 'Segoe UI', Arial, sans-serif; }
-        .top-header { background-color: #131921; color: #fff; padding: 12px 0; }
-        .navbar-main { background-color: #232f3e; }
-        .navbar-main .nav-link { color: #fff !important; font-weight: 500; margin-right: 15px; }
-        .product-card { background: #fff; border: 1px solid #e1e4e8; border-radius: 8px; transition: transform 0.2s; height: 100%; display: flex; flex-direction: column; }
-        .product-card:hover { transform: translateY(-4px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); }
-        .product-img { height: 200px; object-fit: contain; padding: 15px; width: 100%; }
-        .product-body { padding: 15px; display: flex; flex-direction: column; flex-grow: 1; }
-        .product-title { font-size: 15px; font-weight: 600; color: #333; text-decoration: none; height: 42px; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
-        .price-tag { font-size: 18px; font-weight: bold; color: #B12704; }
-        .old-price { font-size: 14px; text-decoration: line-through; color: #767676; margin-left: 5px; }
-        .affiliate-btn { background-color: #ffd814; border: 1px solid #fcd200; color: #0f1111; font-weight: 600; border-radius: 20px; padding: 8px 16px; text-align: center; text-decoration: none; display: block; margin-top: auto; }
-        .affiliate-btn:hover { background-color: #f7ca00; }
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', Arial, sans-serif; }
+        
+        /* Navigation Styles */
+        .navbar-custom { background-color: #1a252f; padding: 12px 0; }
+        .navbar-custom .navbar-brand { color: #fff; font-weight: 700; font-size: 1.5rem; }
+        .navbar-custom .nav-link { color: #dcdde1 !important; font-weight: 500; margin-right: 10px; }
+        .navbar-custom .nav-link:hover { color: #fbc531 !important; }
+        
+        /* Dropdown Sub-categories Hover Behavior */
+        .dropdown-menu-dark { background-color: #2c3e50; border: none; }
+        .dropdown-item { color: #dcdde1; padding: 8px 20px; }
+        .dropdown-item:hover { background-color: #34495e; color: #fbc531; }
+        
+        /* Blog Post Card Styles */
+        .post-card { 
+            border: none; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #ffffff;
+            cursor: pointer;
+        }
+        .post-card:hover { 
+            transform: translateY(-6px); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12); 
+        }
+        .post-img-wrapper {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+        .post-img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            transition: transform 0.5s ease;
+        }
+        .post-card:hover .post-img {
+            transform: scale(1.05);
+        }
+        .category-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(26, 37, 47, 0.85);
+            color: #fbc531;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .post-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #2c3e50;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .post-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .post-title a:hover {
+            color: #0097e6;
+        }
+        
+        /* Search Bar */
+        .search-box {
+            max-width: 250px;
+        }
+        
+        /* Footer */
+        footer { background-color: #1a252f; color: #a4b0be; padding: 40px 0 20px; }
+        footer a { color: #a4b0be; text-decoration: none; }
+        footer a:hover { color: #fbc531; }
     </style>
 </head>
 <body>
 
-    <!-- Top Header & Search Bar -->
-    <header class="top-header">
+    <!-- Main Navigation Bar with Search and Categories -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top shadow-sm">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-3 col-6">
-                    <a class="navbar-brand text-white fw-bold fs-4" href="index.html">
-                        <img src="images/logo.png" alt="Quick Bird" style="height: 35px;" onerror="this.style.display='none'"> Quick Bird
-                    </a>
-                </div>
-                <div class="col-md-7 col-12 mt-2 mt-md-0">
-                    <div class="input-group">
-                        <input type="text" id="searchInput" class="form-control" placeholder="Search products...">
-                        <button class="btn btn-warning" type="button"><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+            <!-- Brand Logo / Name -->
+            <a class="navbar-brand" href="index.html">
+                <i class="fa-solid fa-feather-pointed text-warning me-2"></i>Quick Bird
+            </a>
 
-    <!-- Categories Navigation Menu -->
-    <nav class="navbar navbar-expand-lg navbar-dark navbar-main">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#categoryMenu">
-                <span class="navbar-toggler-icon"></span> Categories
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="categoryMenu">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+
+            <!-- Menu Links -->
+            <div class="collapse navbar-collapse" id="topNavbar">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html"><i class="fa fa-home me-1"></i> Home</a>
+                    </li>
+
+                    <!-- Dynamic Categories Dropdown (Page மாறாமல் காட்ட) -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Electronics</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Mobiles</a></li>
-                            <li><a class="dropdown-item" href="#">Accessories</a></li>
-                            <li><a class="dropdown-item" href="#">Audio</a></li>
+                        <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="categoriesDropdown">
+                            <!-- Category 1 & Subcategories -->
+                            <li class="dropdown-header text-warning fw-bold">Technology</li>
+                            <li><a class="dropdown-item ps-4" href="#">— Mobile & Gadgets</a></li>
+                            <li><a class="dropdown-item ps-4" href="#">— Laptops & Computers</a></li>
+                            <li><hr class="dropdown-divider"></li>
+
+                            <!-- Category 2 & Subcategories -->
+                            <li class="dropdown-header text-warning fw-bold">Fashion & Lifestyle</li>
+                            <li><a class="dropdown-item ps-4" href="#">— Men's Wear</a></li>
+                            <li><a class="dropdown-item ps-4" href="#">— Women's Collection</a></li>
+                            <li><hr class="dropdown-divider"></li>
+
+                            <!-- Category 3 & Subcategories -->
+                            <li class="dropdown-header text-warning fw-bold">Home & Living</li>
+                            <li><a class="dropdown-item ps-4" href="#">— Appliances</a></li>
+                            <li><a class="dropdown-item ps-4" href="#">— Decor & Tools</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Fashion</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Men's Clothing</a></li>
-                            <li><a class="dropdown-item" href="#">Women's Clothing</a></li>
-                        </ul>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About Us</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                    </li>
                 </ul>
+
+                <!-- Search Bar inside Navbar -->
+                <form class="d-flex search-box" role="search" onsubmit="return false;">
+                    <div class="input-group">
+                        <input class="form-control form-control-sm border-0" type="search" placeholder="Search posts..." aria-label="Search">
+                        <button class="btn btn-warning btn-sm" type="submit">
+                            <i class="fa fa-search text-dark"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content: Product Grid -->
-    <div class="container my-4">
-        <h4 class="mb-3 fw-bold">Trending Deals</h4>
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4" id="productGrid">
+    <!-- Main Content Grid -->
+    <main class="container my-5">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h4 class="fw-bold border-start border-4 border-warning ps-3 text-dark">Latest Posts</h4>
+            </div>
+        </div>
 
-            <!-- Product Card 1 -->
-            <div class="col product-item">
-                <div class="product-card">
-                    <img src="images/product1.jpg" class="product-img" alt="Product Image" onerror="this.src='https://via.placeholder.com/300x300?text=Product+Image'">
-                    <div class="product-body">
-                        <a href="YOUR_AFFILIATE_URL_1" target="_blank" class="product-title">Wireless Bluetooth Headphones with Noise Cancellation</a>
-                        <div class="my-2">
-                            <span class="price-tag">$29.99</span>
-                            <span class="old-price">$49.99</span>
-                        </div>
-                        <a href="YOUR_AFFILIATE_URL_1" target="_blank" class="affiliate-btn"><i class="fa fa-shopping-cart me-1"></i> Check Price</a>
+        <div class="row g-4">
+            
+            <!-- Post Card 1 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card post-card h-100">
+                    <div class="post-img-wrapper">
+                        <span class="category-badge">Technology</span>
+                        <a href="post1.html">
+                            <img src="https://via.placeholder.com/600x400?text=Main+Post+Image+1" class="post-img" alt="Post Title Image">
+                        </a>
+                    </div>
+                    <div class="card-body p-3">
+                        <h2 class="post-title">
+                            <a href="post1.html">Top 10 Essential Gadgets You Must Check Out This Year</a>
+                        </h2>
                     </div>
                 </div>
             </div>
 
-            <!-- Product Card 2 -->
-            <div class="col product-item">
-                <div class="product-card">
-                    <img src="images/product2.jpg" class="product-img" alt="Product Image" onerror="this.src='https://via.placeholder.com/300x300?text=Product+Image'">
-                    <div class="product-body">
-                        <a href="YOUR_AFFILIATE_URL_2" target="_blank" class="product-title">Smart Fitness Watch with Heart Rate Monitor</a>
-                        <div class="my-2">
-                            <span class="price-tag">$39.99</span>
-                            <span class="old-price">$79.99</span>
-                        </div>
-                        <a href="YOUR_AFFILIATE_URL_2" target="_blank" class="affiliate-btn"><i class="fa fa-shopping-cart me-1"></i> Check Price</a>
+            <!-- Post Card 2 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card post-card h-100">
+                    <div class="post-img-wrapper">
+                        <span class="category-badge">Fashion</span>
+                        <a href="post2.html">
+                            <img src="https://via.placeholder.com/600x400?text=Main+Post+Image+2" class="post-img" alt="Post Title Image">
+                        </a>
+                    </div>
+                    <div class="card-body p-3">
+                        <h2 class="post-title">
+                            <a href="post2.html">Best Comfort Wear Styles for Daily Working Routines</a>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post Card 3 -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card post-card h-100">
+                    <div class="post-img-wrapper">
+                        <span class="category-badge">Home & Living</span>
+                        <a href="post3.html">
+                            <img src="https://via.placeholder.com/600x400?text=Main+Post+Image+3" class="post-img" alt="Post Title Image">
+                        </a>
+                    </div>
+                    <div class="card-body p-3">
+                        <h2 class="post-title">
+                            <a href="post3.html">Modern Home Decor Ideas using Compact Budget Tools</a>
+                        </h2>
                     </div>
                 </div>
             </div>
 
         </div>
-    </div>
+    </main>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4 mt-5">
-        <div class="container text-center">
-            <p class="mb-1">&copy; 2026 Quick Bird. All Rights Reserved.</p>
-            <small>
-                <a href="about.html" class="text-white-50 me-2">About Us</a> | 
-                <a href="privacy.html" class="text-white-50 mx-2">Privacy Policy</a> | 
-                <a href="contact.html" class="text-white-50 ms-2">Contact</a>
-            </small>
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h5 class="text-white mb-3"><i class="fa-solid fa-feather-pointed text-warning me-2"></i>Quick Bird</h5>
+                    <p class="small">Explore deep-dive guides, trending topics, and curated updates. Click on any article to read full details and source links.</p>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white mb-3">Quick Navigation</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="index.html">Home</a></li>
+                        <li class="mb-2"><a href="about.html">About Us</a></li>
+                        <li class="mb-2"><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h5 class="text-white mb-3">Legal</h5>
+                    <ul class="list-unstyled small">
+                        <li class="mb-2"><a href="privacy.html">Privacy Policy</a></li>
+                        <li class="mb-2"><a href="terms.html">Terms & Conditions</a></li>
+                        <li class="mb-2"><a href="disclaimer.html">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary">
+            <div class="text-center small">
+                <p class="mb-0">&copy; 2026 Quick Bird. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        document.getElementById('searchInput').addEventListener('keyup', function() {
-            let filter = this.value.toLowerCase();
-            let items = document.querySelectorAll('.product-item');
-            items.forEach(function(item) {
-                let title = item.querySelector('.product-title').innerText.toLowerCase();
-                item.style.display = title.includes(filter) ? '' : 'none';
-            });
-        });
-    </script>
 </body>
 </html>
