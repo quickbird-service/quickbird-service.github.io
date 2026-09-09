@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 1. Post Title for Browser Tab -->
-    <title>Top 10 Essential Tech Gadgets You Must Check Out in 2026 - Quick Bird</title>
+    <title id="page-title">Quick Bird - Product Details</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- FontAwesome Icons -->
@@ -25,7 +24,7 @@
 </head>
 <body>
 
-    <!-- Main Navigation Bar -->
+    <!-- Header / Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">
@@ -44,41 +43,41 @@
         </div>
     </nav>
 
-    <!-- Article Main Content Container -->
+    <!-- Main Content Container -->
     <main class="container my-5">
         <div class="row justify-content-center">
             <div class="col-lg-9">
-                <!-- Category Tag -->
-                <span class="badge bg-warning text-dark mb-2">Technology</span>
+                <!-- Dynamic Category Tag -->
+                <span class="badge bg-warning text-dark mb-2" id="post-category">Category</span>
                 
-                <!-- Main Article Heading -->
-                <h1 class="fw-bold mb-3">Top 10 Essential Tech Gadgets You Must Check Out in 2026</h1>
+                <!-- Dynamic Article Heading -->
+                <h1 class="fw-bold mb-3" id="post-title">Loading Article Title...</h1>
                 
                 <p class="text-muted small mb-4">
-                    <i class="fa fa-calendar me-1"></i> Updated Today | <i class="fa fa-user me-1"></i> Quick Bird Editorial Team
+                    <i class="fa fa-calendar me-1"></i> Updated Recently | <i class="fa fa-user me-1"></i> Quick Bird Editorial Team
                 </p>
 
-                <!-- Featured Image -->
-                <img src="https://via.placeholder.com/900x450?text=Featured+Gadget+Image" class="post-header-img mb-4" alt="Featured Tech Gadgets">
+                <!-- Dynamic Featured Image -->
+                <img id="post-image" src="https://via.placeholder.com/900x450?text=Loading+Image" class="post-header-img mb-4" alt="Product Image">
 
                 <!-- Article Body Content -->
                 <div class="article-content bg-white p-4 p-md-5 rounded shadow-sm mb-4" style="line-height: 1.8;">
-                    <p class="lead fw-normal">In this article, we take an in-depth look at 10 of the most innovative and essential tech gadgets designed to improve your daily workspace and personal productivity this year.</p>
-                    
-                    <p>Modern technology continues to evolve rapidly, offering smart solutions for everyday challenges. From high-performance wireless audio devices to compact home automation tools, finding the right gear can significantly boost your output and entertainment experience.</p>
+                    <!-- Dynamic Description Text -->
+                    <div id="post-desc" class="mb-4">
+                        <p class="lead fw-normal">Loading article details...</p>
+                    </div>
 
-                    <p>We have carefully reviewed and curated this selection to ensure high build quality, reliability, and top user ratings across verified retail platforms.</p>
-
-                    <!-- Target Website Call-To-Action (Affiliate / External Link Box) -->
+                    <!-- Target Website Call-To-Action (Affiliate Link Box) -->
                     <div class="text-center my-5 p-4 bg-light rounded border border-warning">
                         <h5 class="fw-bold mb-3">To view pricing, user reviews, and order directly from the verified seller:</h5>
-                        <a href="https://your-target-website-link.com" target="_blank" rel="nofollow sponsored" class="btn-visit shadow-sm">
+                        <!-- Dynamic Target Link -->
+                        <a id="post-link" href="#" target="_blank" rel="nofollow sponsored" class="btn-visit shadow-sm">
                             <i class="fa-solid fa-arrow-up-right-from-square me-2"></i> Visit Official Store Page
                         </a>
                     </div>
                 </div>
 
-                <!-- Social Sharing Links -->
+                <!-- Social Share Bar -->
                 <div class="d-flex align-items-center justify-content-between bg-white p-3 rounded shadow-sm">
                     <span class="fw-bold text-muted">Share this post:</span>
                     <div>
@@ -101,5 +100,26 @@
 
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Script for Dynamic Content Loading -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const params = new URLSearchParams(window.location.search);
+            
+            const title = params.get('title') || 'Featured Product Deal';
+            const category = params.get('cat') || 'General';
+            const image = params.get('img') || 'https://via.placeholder.com/900x450?text=Featured+Product';
+            const desc = params.get('desc') || 'Discover the best offers and detailed reviews on this exclusive featured product.';
+            const targetUrl = params.get('url') || 'https://example.com';
+
+            // Populate page elements
+            document.getElementById('post-title').innerText = title;
+            document.getElementById('page-title').innerText = title + ' - Quick Bird';
+            document.getElementById('post-category').innerText = category;
+            document.getElementById('post-image').src = image;
+            document.getElementById('post-desc').innerHTML = `<p class="lead fw-normal">${desc}</p>`;
+            document.getElementById('post-link').href = targetUrl;
+        });
+    </script>
 </body>
 </html>
