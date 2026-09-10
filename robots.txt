@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://quickbird-service.github.io/sitemap.xml
