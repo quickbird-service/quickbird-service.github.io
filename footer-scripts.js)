@@ -1,0 +1,22 @@
+// Quick Bird - Centralized Footer & Global Scripts
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // 1. Google Analytics Script Injection (உங்களது உண்மையான GA_ID ஐ இங்கே மாற்றவும்)
+    var gaScript = document.createElement('script');
+    gaScript.async = true;
+    gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"; 
+    document.head.appendChild(gaScript);
+
+    var gaInline = document.createElement('script');
+    gaInline.text = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    `;
+    document.head.appendChild(gaInline);
+
+    // 2. எதிர்காலத்தில் வேறு ஸ்கிரிப்ட்களை இணைக்க வேண்டும் என்றால் இங்கே தொடரலாம்:
+    // console.log("Global scripts loaded successfully!");
+
+});
