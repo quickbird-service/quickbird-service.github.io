@@ -42,17 +42,28 @@
             transform: translateY(-6px); 
             box-shadow: 0 10px 25px rgba(0,0,0,0.12); 
         }
+
+
+        
         .post-img-wrapper {
-            height: 220px;
-            overflow: hidden;
-            position: relative;
-        }
-        .post-img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            transition: transform 0.5s ease;
-        }
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+    background-color: #fff; /* பின்னணி வெள்ளையாக இருக்க */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.post-img { 
+    max-width: 100%; 
+    max-height: 100%; 
+    object-fit: contain; /* படம் முழுமையாகத் தெரிய இது உதவும் */
+    transition: transform 0.5s ease;
+}
+
+
+
+        
         .post-card:hover .post-img {
             transform: scale(1.05);
         }
