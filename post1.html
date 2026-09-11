@@ -107,6 +107,11 @@ Robot Vacuum Cleaner ABIR X9 ,Laser System,Dual UV Cleaning,Auto Carpet Boost Te
 
 <!-- தானாகத் தேதியை மாற்றும் சிறு ஸ்கிரிப்ட் -->
 <script>
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    document.getElementById('post-date').innerText = new Date().toLocaleDateString('en-US', options);
+    document.addEventListener("DOMContentLoaded", function() {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const dateEl = document.getElementById('post-date');
+        if (dateEl) {
+            dateEl.innerText = new Date().toLocaleDateString('en-US', options);
+        }
+    });
 </script>
