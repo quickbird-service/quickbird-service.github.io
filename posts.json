@@ -1,9 +1,9 @@
 [
   {
     "id": "post1",
-    "title": "Top 10 Essential Gadgets You Must Check Out This Year",
-    "category": "Technology",
-    "image": "https://via.placeholder.com/600x400?text=Post+1",
+    "title": "Robot Vacuum Cleaner ABIR X9",
+    "category": "Electronics",
+    "image": "image/rvcmain.png",
     "link": "post.html?id=post1"
   }
 ]
