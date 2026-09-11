@@ -18,14 +18,9 @@
     adsScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx";
     adsScript.setAttribute("crossorigin", "anonymous");
     document.head.appendChild(adsScript);
-
-
 */
     
 })();
-
-
-
 
 
 
@@ -40,17 +35,28 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.json())
         .then(posts => {
             container.innerHTML = "";
+            
+            // தானாக இன்றைய தேதியைக் கொண்டு வர
+            const currentDate = new Date().toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+
             posts.forEach(post => {
                 const postHTML = `
                     <div class="col-12 col-md-6 col-lg-4">
                         <div class="card post-card h-100">
-                            <div class="post-img-wrapper">
+                            <div class="post-img-wrapper" style="background-color: #fff; display: flex; align-items: center; justify-content: center;">
                                 <span class="category-badge">${post.category}</span>
-                                <a href="${post.link}">
-                                    <img src="${post.image}" class="post-img" alt="${post.title}">
+                                <a href="${post.link}" class="w-100 h-100 d-flex align-items: center. justify-content: center;">
+                                    <img src="${post.image}" class="post-img" alt="${post.title}" style="object-fit: contain; max-height: 100%; max-width: 100%;">
                                 </a>
                             </div>
-                            <div class="card-body p-3">
+                            <div class="card-body p-3 d-flex flex-column">
+                                <div class="text-muted small mb-2">
+                                    <i class="fa fa-calendar-alt me-1"></i> ${currentDate}
+                                </div>
                                 <h2 class="post-title">
                                     <a href="${post.link}">${post.title}</a>
                                 </h2>
@@ -63,4 +69,3 @@ document.addEventListener("DOMContentLoaded", function() {
         })
         .catch(error => console.error("Error loading posts:", error));
 });
-
