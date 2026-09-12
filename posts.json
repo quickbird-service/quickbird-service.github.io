@@ -6,10 +6,7 @@
     "image": "image/rvcmain.png",
     "link": "post.html?id=post1"
   }
-]
 
-
-[
   {
     "id": "post2",
     "title": "WALUX Professional AC Hair Clipper",
@@ -18,3 +15,5 @@
     "link": "post.html?id=post2"
   }
 ]
+
+
