@@ -1,15 +1,17 @@
 // Quick Bird - Centralized Global Scripts (Analytics & AdSense)
 (function() {
     
-    // 1. Google Analytics Script (உங்கள் G-XXXXXXXXXX ஐடியை மாற்றவும்)
-    var gaScript = document.createElement('script');
-    gaScript.async = true;
-    gaScript.src = "https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX";
-    document.head.appendChild(gaScript);
 
-    var gaInline = document.createElement('script');
-    gaInline.text = "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-XXXXXXXXXX');";
-    document.head.appendChild(gaInline);
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JEQ5HH2WB9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JEQ5HH2WB9');
+</script>
+    
 
 
     // 2. Google AdSense Script (உங்கள் ca-pub-xxxxxxxxxxxxxxxx ஐடியை மாற்றவும்)
