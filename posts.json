@@ -13,6 +13,14 @@
     "category": "Electronics",
     "image": "image/rtrimmain.jpg",
     "link": "post.html?id=post2"
+  },
+
+  {
+    "id": "post3",
+    "title": "New iPhone 14 Pro Max Dual eSIM / 1SIM+ 1eSIM",
+    "category": "Mobiles",
+    "image": "image/14pmmain.png",
+    "link": "post.html?id=post3"
   }
 ]
 
