@@ -2,17 +2,6 @@
 (function() {
     
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JEQ5HH2WB9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-JEQ5HH2WB9');
-</script>
-
-
 
 
     // 2. Google AdSense Script (உங்கள் ca-pub-xxxxxxxxxxxxxxxx ஐடியை மாற்றவும்)
