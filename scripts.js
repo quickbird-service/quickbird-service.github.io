@@ -11,8 +11,7 @@
 
   gtag('config', 'G-JEQ5HH2WB9');
 </script>
-    
-<meta name="google-site-verification" content="01m_PcPr9GXd2JQdF49Mt1lrd4NeAkOObJqcQ4QgiTs" />
+
 
 
 
