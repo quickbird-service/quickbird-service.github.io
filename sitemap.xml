@@ -52,18 +52,17 @@
   <!-- Post 1 (உங்கள் தற்போதைய போஸ்ட்) -->
   <url>
     <loc>https://quickbird-service.github.io/post.html?id=post1</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- எதிர்காலத்தில் post2, post3 உருவாக்கும் போது கீழே இவ்வாறு சேர்த்துக்கொள்ளலாம்:
   <url>
     <loc>https://quickbird-service.github.io/post.html?id=post2</loc>
-    <lastmod>2026-09-10</lastmod>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  -->
+
 
 </urlset>
