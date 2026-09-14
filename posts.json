@@ -37,11 +37,15 @@
     "category": "Watches",
     "image": "image/swmain.jpg",
     "link": "post.html?id=post5"
-  }
+  },
 
-
-
-
+{
+    "id": "post6",
+    "title": "Original IPhone 15 6.1 Super Retina",
+    "category": "Mobiles",
+    "image": "image/ip15main.jpg",
+    "link": "post.html?id=post6"
+}
 
 
 
