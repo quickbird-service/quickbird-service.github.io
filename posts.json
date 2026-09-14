@@ -29,6 +29,14 @@
     "category": "Mobiles",
     "image": "image/sgs22main.jpg",
     "link": "post.html?id=post4"
+  },
+
+  {
+    "id": "post5",
+    "title": "HAYLOU Watch Faro Voice Calling Smart Watch",
+    "category": "Watches",
+    "image": "image/swmain.jpg",
+    "link": "post.html?id=post5"
   }
 
 
