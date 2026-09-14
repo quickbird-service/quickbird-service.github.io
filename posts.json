@@ -21,7 +21,22 @@
     "category": "Mobiles",
     "image": "image/14pmmain.png",
     "link": "post.html?id=post3"
-  }
-]
+  },
 
+  {
+    "id": "post4",
+    "title": "Samsung Galaxy S22 Ultra 5G Refurbished Smartphone",
+    "category": "Mobiles",
+    "image": "image/sgs22main.jpg",
+    "link": "post.html?id=post4"
+  }
+
+
+
+
+
+
+
+  
+]
 
