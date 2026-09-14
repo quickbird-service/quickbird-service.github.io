@@ -70,5 +70,98 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  
+    <url>
+    <loc>https://quickbird-service.github.io/post.html?id=post4</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  /*
+
+    <url>
+    <loc>https://quickbird-service.github.io/post.html?id=post5</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+    <url>
+    <loc>https://quickbird-service.github.io/post.html?id=post6</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+
+    <url>
+    <loc>https://quickbird-service.github.io/post.html?id=post7</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://quickbird-service.github.io/post.html?id=post8</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+
+  
+    <url>
+    <loc>https://quickbird-service.github.io/post.html?id=post9</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+
+    <url>
+    <loc>https://quickbird-service.github.io/post.html?id=post10</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+<url>
+    <loc>https://quickbird-service.github.io/post.html?id=post11</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+<url>
+    <loc>https://quickbird-service.github.io/post.html?id=post12</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://quickbird-service.github.io/post.html?id=post13</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+<url>
+    <loc>https://quickbird-service.github.io/post.html?id=post14</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+<url>
+    <loc>https://quickbird-service.github.io/post.html?id=post15</loc>
+    <lastmod>2026-09-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+*/
+
+  
 
 </urlset>
