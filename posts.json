@@ -45,6 +45,14 @@
     "category": "Mobiles",
     "image": "image/ip15main.jpg",
     "link": "post.html?id=post6"
+},
+
+{
+    "id": "post7",
+    "title": "OLEVS 6607 Fully Automaitc Watches Stainless",
+    "category": "Watches",
+    "image": "image/omwmain.jpg",
+    "link": "post.html?id=post7"
 }
 
 
