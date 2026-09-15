@@ -27,7 +27,7 @@
 </head>
 <body>
 
-    <!-- Main Navigation Bar (இங்கே மேலே சர்ச் பாக்ஸ் இருக்காது) -->
+    <!-- Main Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top shadow-sm">
         <div class="container">
             <div class="w-100">
@@ -50,7 +50,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Categories
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-dark shadow" id="dynamic-categories" aria-labelledby="categoriesDropdown">
+                            <ul class="dropdown-menu dropdown-menu-dark shadow p-2" id="dynamic-categories" aria-labelledby="categoriesDropdown" style="min-width: 260px; max-height: 400px; overflow-y: auto;">
                                 <li><span class="dropdown-item text-muted">Loading...</span></li>
                             </ul>
                         </li>
@@ -66,7 +66,7 @@
     <!-- Search Results Content -->
     <main class="container my-4">
         
-        <!-- ஓப்பன் ஆன பக்கத்திற்குள் உள்ள பெரிய சர்ச் பாக்ஸ் பகுதி -->
+        <!-- பெரிய சர்ச் பாக்ஸ் பகுதி -->
         <div class="row mb-4">
             <div class="col-12">
                 <div class="card shadow-sm border-0 p-3 bg-white" style="border-radius: 12px;">
@@ -112,20 +112,18 @@
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Search & Menu Script -->
+    <!-- Search & Menu Script with Temu Style Image Loading -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const urlParams = new URLSearchParams(window.location.search);
             const searchQuery = urlParams.get('q') ? urlParams.get('q').trim() : "";
             const searchCategory = urlParams.get('category') ? urlParams.get('category').trim() : "";
 
-            // பெரிய சர்ச் பாக்ஸில் தேடிய வார்த்தையைப் பூர்த்தி செய்தல்
             const searchInputBox = document.getElementById("search-input-box");
             if (searchInputBox && searchQuery) {
                 searchInputBox.value = searchQuery;
             }
 
-            // தலைப்பை மாற்றுவது
             const searchHeading = document.getElementById("search-heading");
             if (searchHeading) {
                 if (searchQuery) {
@@ -137,11 +135,61 @@
 
             const container = document.getElementById("posts-container");
 
-            // JSON-ஐப் படித்து போஸ்ட்களை பில்டர் செய்து காட்டுவது மற்றும் மெனுவை உருவாக்குவது
+            // டெமு ஸ்டைல் வரிசை முறை பட லோடிங் (Sequential Temu Style Loading)
+            function loadImagesSequentially(scopeElement) {
+                const images = scopeElement.querySelectorAll('.post-img');
+                if (images.length === 0) return;
+
+                images.forEach(img => {
+                    const originalSrc = img.getAttribute('data-original-src');
+                    if (!originalSrc) return;
+                    img.src = "image/favicon.png";
+                    img.style.width = "40px";
+                    img.style.height = "40px";
+                    img.style.objectFit = "contain";
+                    img.style.opacity = "0.4";
+                    img.style.margin = "auto";
+                });
+
+                let imgIndex = 0;
+
+                function loadNext() {
+                    if (imgIndex >= images.length) return;
+
+                    const img = images[imgIndex];
+                    const originalSrc = img.getAttribute('data-original-src');
+                    if (!originalSrc) {
+                        imgIndex++;
+                        loadNext();
+                        return;
+                    }
+
+                    const tempImg = new Image();
+                    tempImg.src = originalSrc;
+
+                    tempImg.onload = function() {
+                        img.src = originalSrc;
+                        img.style.width = "100%";
+                        img.style.height = "100%";
+                        img.style.objectFit = "contain";
+                        img.style.opacity = "1";
+                        imgIndex++;
+                        loadNext();
+                    };
+
+                    tempImg.onerror = function() {
+                        imgIndex++;
+                        loadNext();
+                    };
+                }
+
+                loadNext();
+            }
+
             fetch("posts.json")
                 .then(response => response.json())
                 .then(posts => {
-                    // 1. மெனுவை உருவாக்குதல் (Accordion முறை)
+                    // 1. கேட்டகரி மெனுவை உருவாக்குதல்
                     const dropdownContainer = document.getElementById("dynamic-categories");
                     if (dropdownContainer) {
                         dropdownContainer.innerHTML = "";
@@ -158,29 +206,33 @@
                         let catIndex = 0;
                         for (const [catName, subCategories] of Object.entries(categoriesMap)) {
                             catIndex++;
-                            const collapseId = "catCollapse" + catIndex;
+                            const mainCollapseId = "searchCatCollapse" + catIndex;
                             const catLi = document.createElement("li");
-                            catLi.className = "px-2 mb-1";
+                            catLi.className = "px-2 mb-2";
                             
                             let subLinksHTML = "";
                             subCategories.forEach(subCat => {
-                                subLinksHTML += `<a class="dropdown-item py-1 ps-4 text-light small" href="search.html?category=${encodeURIComponent(subCat)}">— ${subCat}</a>`;
+                                subLinksHTML += `<a class="dropdown-item py-2 ps-4 text-light small text-wrap" href="search.html?category=${encodeURIComponent(subCat)}" style="background-color: #212f3d; margin-bottom: 2px; border-radius: 4px;">— ${subCat}</a>`;
                             });
 
                             catLi.innerHTML = `
-                                <a class="d-flex justify-content-between align-items-center text-warning text-decoration-none fw-bold px-2 py-2 rounded" data-bs-toggle="collapse" href="#${collapseId}" role="button" aria-expanded="false" style="background-color: #2c3e50;">
+                                <div class="d-flex justify-content-between align-items-center text-warning fw-bold px-3 py-2 rounded shadow-sm" style="background-color: #2c3e50; cursor: pointer;" onclick="const el = document.getElementById('${mainCollapseId}'); el.style.display = el.style.display === 'none' ? 'block' : 'none';">
                                     <span>${catName}</span>
                                     <i class="fa fa-chevron-down small"></i>
-                                </a>
-                                <div class="collapse ps-2 my-1" id="${collapseId}">
+                                </div>
+                                <div class="ps-2 mt-1" id="${mainCollapseId}" style="display: none;">
                                     ${subLinksHTML}
                                 </div>
                             `;
                             dropdownContainer.appendChild(catLi);
                         }
+
+                        dropdownContainer.addEventListener('click', function(e) {
+                            e.stopPropagation();
+                        });
                     }
 
-                    // 2. தேடல் முடிவுகளை (Search Results) வடிகட்டுதல்
+                    // 2. தேடல் முடிவுகளை வடிகட்டுதல்
                     let filteredPosts = posts;
                     if (searchQuery) {
                         const queryLower = searchQuery.toLowerCase();
@@ -197,7 +249,7 @@
                         );
                     }
 
-                    // 3. முடிவுகளை ஸ்கிரீனில் காட்டுவது
+                    // 3. முடிவுகளை ஸ்கிரீனில் காட்டுவது (Temu Style Image Loading உடன்)
                     if (container) {
                         container.innerHTML = "";
                         if (filteredPosts.length === 0) {
@@ -212,7 +264,7 @@
                                     <div class="card post-card h-100 shadow-sm border-0" style="border-radius: 8px;">
                                         <div class="post-img-wrapper" style="height: 150px; background-color: #ffffff; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; border-top-left-radius: 8px; border-top-right-radius: 8px; padding: 6px;">
                                             <a href="${post.link}" class="w-100 h-100 d-flex align-items: center justify-content: center text-decoration-none">
-                                                <img src="${post.image}" class="post-img" alt="${post.title}" style="width: 100%; height: 100%; object-fit: contain;">
+                                                <img src="" data-original-src="${post.image}" class="post-img" alt="${post.title}" style="width: 100%; height: 100%; object-fit: contain;">
                                             </a>
                                         </div>
                                         <div class="card-body p-2 d-flex flex-column justify-content-between">
@@ -225,6 +277,9 @@
                             `;
                         });
                         container.innerHTML = html;
+
+                        // ரிசல்ட் பக்கத்திலும் டெமு ஸ்டைல் லோடிங்கை இயக்குவது
+                        loadImagesSequentially(container);
                     }
                 })
                 .catch(error => console.error("Error loading search results:", error));
