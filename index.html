@@ -28,7 +28,7 @@
         /* Navigation Styles & AliExpress Brand Style */
         .navbar-custom { 
             background-color: #1a252f !important; 
-            padding: 12px 0 16px 0 !important; /* நீல நிற பாரின் உயரம் கீழே அதிகரிக்கப்பட்டுள்ளது */
+            padding: 12px 0 16px 0 !important; 
         }
         .navbar-custom .navbar-brand { color: #fff; font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; text-decoration: none; }
         .navbar-custom .nav-link { color: #dcdde1 !important; font-weight: 500; margin-right: 10px; }
@@ -109,12 +109,11 @@
         footer a:hover { color: #fbc531; }
     </style>
 
-<script src="scripts.js" async></script>
-    
+    <script src="scripts.js" async></script>
 </head>
 <body>
 
-    <!-- Main Navigation Bar with Search and Categories (AliExpress Style) -->
+    <!-- Main Navigation Bar with Search and Categories -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top shadow-sm">
         <div class="container">
             <div class="w-100">
@@ -138,22 +137,14 @@
                             <a class="nav-link active" href="index.html"><i class="fa fa-home me-1"></i> Home</a>
                         </li>
 
-                        <!-- Dynamic Categories Dropdown -->
+                        <!-- Dynamic Categories Dropdown (இங்கே எதையும் எழுதத் தேவையில்லை, ஜாவாஸ்கிரிப்ட் பார்த்துக் கொள்ளும்) -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Categories
                             </a>
-                          <!-- Dynamic Categories Dropdown -->
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-        Categories
-    </a>
-    <!-- ஜாவாஸ்கிரிப்ட் மூலம் சப்-கேட்டகரிகள் இங்கே ஆட்டோமேட்டிக்காக வந்து உட்காரும் -->
-    <ul class="dropdown-menu dropdown-menu-dark shadow" id="dynamic-categories" aria-labelledby="categoriesDropdown">
-        <li><span class="dropdown-item text-muted">Loading...</span></li>
-    </ul>
-</li>
-
+                            <ul class="dropdown-menu dropdown-menu-dark shadow" id="dynamic-categories" aria-labelledby="categoriesDropdown">
+                                <li><span class="dropdown-item text-muted">Loading...</span></li>
+                            </ul>
                         </li>
 
                         <li class="nav-item">
@@ -165,23 +156,16 @@
                     </ul>
                 </div>
 
-                <!-- Search Bar Placed Inside the Bottom of the Dark Blue Area -->
+                <!-- Search Bar -->
                 <div class="search-box-wrapper mt-2">
-                    
-                  
-                  
-                  <form class="d-flex" action="search.html" method="GET">
-    <div class="input-group input-group-sm">
-        <input name="q" class="form-control border-0 py-2" type="search" placeholder="Search products..." aria-label="Search" required>
-        <button class="btn btn-warning px-3" type="submit">
-            <i class="fa fa-search text-dark"></i>
-        </button>
-    </div>
-</form>
-
-
-
-                  
+                    <form class="d-flex" action="search.html" method="GET">
+                        <div class="input-group input-group-sm">
+                            <input name="q" class="form-control border-0 py-2" type="search" placeholder="Search products..." aria-label="Search" required>
+                            <button class="btn btn-warning px-3" type="submit">
+                                <i class="fa fa-search text-dark"></i>
+                            </button>
+                        </div>
+                    </form>
                 </div>
 
             </div>
@@ -238,6 +222,6 @@
     </footer>
 
     <!-- Bootstrap 5 JS Bundle -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.5npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
