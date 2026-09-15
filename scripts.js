@@ -157,14 +157,21 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
     
+
     // JSON கோப்பிலிருந்து டேட்டாவை வாசித்தல்
     fetch("posts.json")
         .then(response => response.json())
         .then(posts => {
-            allPosts = posts;
+            // புதிதாகச் சேர்த்த போஸ்ட்கள் முதலில் வருவதற்கு இதைப் பயன்படுத்துகிறோம்
+            allPosts = posts.reverse(); 
             container.innerHTML = ""; 
             renderPosts(); 
         })
+
+
+
+
+        
         .catch(error => {
             console.error("Error loading posts:", error);
             hideLoader();
