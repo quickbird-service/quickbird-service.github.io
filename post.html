@@ -20,10 +20,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body { background-color: #f8f9fa; font-family: 'Segoe UI', Arial, sans-serif; }
-        .navbar-custom { background-color: #1a252f; padding: 12px 0; }
-        .navbar-custom .navbar-brand { color: #fff; font-weight: 700; font-size: 1.5rem; }
+        
+        /* Navbar & AliExpress Style Brand Design */
+        .navbar-custom { background-color: #1a252f !important; padding: 10px 0 !important; }
+        .navbar-custom .navbar-brand { color: #fff; font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; text-decoration: none; }
         .navbar-custom .nav-link { color: #dcdde1 !important; font-weight: 500; margin-right: 10px; }
-        .navbar-custom .nav-link:hover { color: #fbc531 !important; }
+        .navbar-custom .nav-link:hover, .navbar-custom .nav-link.active { color: #fbc531 !important; }
+        
         .btn-visit { background-color: #27ae60; color: #fff; font-weight: 600; padding: 12px 24px; border-radius: 8px; text-decoration: none; display: inline-block; }
         .btn-visit:hover { background-color: #219150; color: #fff; }
         footer { background-color: #1a252f; color: #a4b0be; padding: 40px 0 20px; }
@@ -39,13 +42,14 @@
 </head>
 <body>
 
-    <!-- Header / Nav -->
+    <!-- Header / Nav (AliExpress Style Logo + Quick Bird Name) -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">
-                <img src="image/favicon.png" alt="Logo" width="60" height="60" class="d-inline-block align-text-top me-2">
+                <img src="image/favicon.png" alt="Logo" style="width: 38px; height: 38px; object-fit: contain; margin-right: 8px;">
+                <span>Quick <span style="color: #fbc531;">Bird</span></span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="topNavbar">
@@ -99,14 +103,11 @@
                     return response.text();
                 })
                 .then(data => {
-                    // ஆர்டிகல் வாசகங்கள் உடனடியாக வந்துவிடும்
                     contentSlot.innerHTML = data;
 
-                    // உள்ளே இருக்கும் அனைத்துப் படங்களையும் கண்டறிதல்
                     const articleImages = contentSlot.querySelectorAll('img');
                     if (articleImages.length === 0) return;
 
-                    // அனைத்துப் படங்களுக்கும் ஆரம்பத்தில் லோகோவை செட் செய்வது
                     articleImages.forEach(img => {
                         img.setAttribute('data-original-src', img.src);
                         img.src = "image/favicon.png";
@@ -118,7 +119,6 @@
                         img.style.margin = "20px auto";
                     });
 
-                    // படங்கள் ஒன்றன் பின் ஒன்றாக (Sequentially) வரிசையாக லோட் ஆகும் ஃபங்ஷன்
                     let currentIndex = 0;
 
                     function loadNextImage() {
@@ -131,7 +131,6 @@
                         tempImg.src = originalSrc;
 
                         tempImg.onload = function() {
-                            // ஒரிஜினல் படம் தயாரானதும் லோகோ மாறி முழுப் படமாகத் தோன்றும்
                             img.src = originalSrc;
                             img.style.width = "100%";
                             img.style.height = "auto";
@@ -140,19 +139,16 @@
                             img.style.opacity = "1";
                             img.style.margin = "0 auto";
 
-                            // அடுத்த படத்திற்குச் செல்லுதல்
                             currentIndex++;
                             loadNextImage();
                         };
 
                         tempImg.onerror = function() {
-                            // ஒருவேளை படம் கிடைக்கவில்லை என்றாலும் அடுத்தது லோட் ஆகிவிடும்
                             currentIndex++;
                             loadNextImage();
                         };
                     }
 
-                    // முதல் படத்திலிருந்து வரிசையைத் தொடங்குதல்
                     loadNextImage();
                 })
                 .catch(error => {
