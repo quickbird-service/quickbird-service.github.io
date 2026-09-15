@@ -11,15 +11,10 @@
 
   gtag('config', 'G-JEQ5HH2WB9');
 </script>
-
-
-
-
     
 <!-- Favicon -->
-<link rel="icon" type="image/png" href="/image/favicon.png">
+<link rel="icon" type="image/png" href="image/favicon.png">
 
-    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quick Bird - Articles & Updates</title>
@@ -28,14 +23,13 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        
         body { background-color: #f8f9fa; font-family: 'Segoe UI', Arial, sans-serif; }
         
-        /* Navigation Styles */
-        .navbar-custom { background-color: #1a252f; padding: 12px 0; }
-        .navbar-custom .navbar-brand { color: #fff; font-weight: 700; font-size: 1.5rem; }
+        /* Navigation Styles & AliExpress Brand Style */
+        .navbar-custom { background-color: #1a252f !important; padding: 10px 0 !important; }
+        .navbar-custom .navbar-brand { color: #fff; font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; text-decoration: none; }
         .navbar-custom .nav-link { color: #dcdde1 !important; font-weight: 500; margin-right: 10px; }
-        .navbar-custom .nav-link:hover { color: #fbc531 !important; }
+        .navbar-custom .nav-link:hover, .navbar-custom .nav-link.active { color: #fbc531 !important; }
         
         /* Dropdown Sub-categories Hover Behavior */
         .dropdown-menu-dark { background-color: #2c3e50; border: none; }
@@ -57,42 +51,26 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.12); 
         }
 
-
-        
         .post-img-wrapper {
-    height: 220px;
-    overflow: hidden;
-    position: relative;
-    background-color: #fff; /* பின்னணி வெள்ளையாக இருக்க */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.post-img { 
-    max-width: 100%; 
-    max-height: 100%; 
-    object-fit: contain; /* படம் முழுமையாகத் தெரிய இது உதவும் */
-    transition: transform 0.5s ease;
-}
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .post-img { 
+            max-width: 100%; 
+            max-height: 100%; 
+            object-fit: contain; 
+            transition: transform 0.5s ease;
+        }
 
-
-
-        
         .post-card:hover .post-img {
             transform: scale(1.05);
         }
-        .category-badge {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            background: rgba(26, 37, 47, 0.85);
-            color: #fbc531;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
+        
         .post-title {
             font-size: 1.15rem;
             font-weight: 700;
@@ -124,23 +102,21 @@
     </style>
 
 <script src="scripts.js" async></script>
-
     
 </head>
 <body>
 
-    <!-- Main Navigation Bar with Search and Categories -->
+    <!-- Main Navigation Bar with Search and Categories (AliExpress Style) -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top shadow-sm">
         <div class="container">
             <!-- Brand Logo / Name -->
             <a class="navbar-brand" href="index.html">
-
-                <img src="image/favicon.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
-                
+                <img src="image/favicon.png" alt="Logo" style="width: 38px; height: 38px; object-fit: contain; margin-right: 8px;">
+                <span>Quick <span style="color: #fbc531;">Bird</span></span>
             </a>
 
             <!-- Mobile Toggle Button -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -151,25 +127,22 @@
                         <a class="nav-link active" href="index.html"><i class="fa fa-home me-1"></i> Home</a>
                     </li>
 
-                    <!-- Dynamic Categories Dropdown (Page மாறாமல் காட்ட) -->
+                    <!-- Dynamic Categories Dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Categories
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="categoriesDropdown">
-                            <!-- Category 1 & Subcategories -->
                             <li class="dropdown-header text-warning fw-bold">Technology</li>
                             <li><a class="dropdown-item ps-4" href="#">— Mobile & Gadgets</a></li>
                             <li><a class="dropdown-item ps-4" href="#">— Laptops & Computers</a></li>
                             <li><hr class="dropdown-divider"></li>
 
-                            <!-- Category 2 & Subcategories -->
                             <li class="dropdown-header text-warning fw-bold">Fashion & Lifestyle</li>
                             <li><a class="dropdown-item ps-4" href="#">— Men's Wear</a></li>
                             <li><a class="dropdown-item ps-4" href="#">— Women's Collection</a></li>
                             <li><hr class="dropdown-divider"></li>
 
-                            <!-- Category 3 & Subcategories -->
                             <li class="dropdown-header text-warning fw-bold">Home & Living</li>
                             <li><a class="dropdown-item ps-4" href="#">— Appliances</a></li>
                             <li><a class="dropdown-item ps-4" href="#">— Decor & Tools</a></li>
@@ -205,17 +178,10 @@
             </div>
         </div>
 
-
-
         <!-- Dynamic Posts Container -->
         <div class="row g-4" id="posts-container">
             <!-- JavaScript மூலம் போஸ்ட்கள் இங்கே தானாக வரும் -->
         </div>
-
-
-        
-
-        
     </main>
 
     <!-- Footer -->
@@ -223,7 +189,9 @@
         <div class="container">
             <div class="row g-4">
                 <div class="col-md-6">
-                    <h5 class="text-white mb-3"><img src="image/favicon.png" alt="Logo" width="40" height="40" class="d-inline-block align-text-top me-2">
+                    <h5 class="text-white mb-3">
+                        <img src="image/favicon.png" alt="Logo" style="width: 35px; height: 35px; object-fit: contain; margin-right: 5px;" class="align-text-top">
+                        Quick <span style="color: #fbc531;">Bird</span>
                     </h5>
                     <p class="small">Find the Best Value, Compare Top Selections, and Shop Smart with Our Trusted Product Guides.</p>
                 </div>
