@@ -53,10 +53,17 @@
     "category": "Watches",
     "image": "image/omwmain.jpg",
     "link": "post.html?id=post7"
+},
+
+{
+    "id": "post8",
+    "title": "Samsung Galaxy S21FE 5G intelligent",
+    "category": "Mobiles",
+    "image": "image/sgs21main.jpg",
+    "link": "post.html?id=post8"
 }
 
-
-
+  
   
 ]
 
