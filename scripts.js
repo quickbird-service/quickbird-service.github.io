@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 renderPosts(); 
             }
 
-            // ஆ) நேவிகேஷன் மெனுவிற்கான கேட்டகரி & சப்-கேட்டகரிகளை மினிமைஸ்/மேக்ஸிமஸ் செய்யும் முறை
+            // ஆ) கேட்டகரி மெனுவை எங்கு கிளிக் செய்தாலும் மூடாமல் தனித்தனியாக விரியும்படி செய்தல்
             const dropdownContainer = document.getElementById("dynamic-categories");
             if (dropdownContainer) {
                 dropdownContainer.innerHTML = ""; 
@@ -174,22 +174,22 @@ document.addEventListener("DOMContentLoaded", function() {
                 let catIndex = 0;
                 for (const [catName, subCategories] of Object.entries(categoriesMap)) {
                     catIndex++;
-                    const collapseId = "catCollapse" + catIndex;
+                    const mainCollapseId = "mainCatCollapse" + catIndex;
 
                     const catLi = document.createElement("li");
-                    catLi.className = "px-2 mb-1";
+                    catLi.className = "px-2 mb-2";
                     
                     let subLinksHTML = "";
                     subCategories.forEach(subCat => {
-                        subLinksHTML += `<a class="dropdown-item py-1 ps-4 text-light small" href="search.html?category=${encodeURIComponent(subCat)}">— ${subCat}</a>`;
+                        subLinksHTML += `<a class="dropdown-item py-2 ps-4 text-light small text-wrap" href="search.html?category=${encodeURIComponent(subCat)}" style="background-color: #212f3d; margin-bottom: 2px; border-radius: 4px;">— ${subCat}</a>`;
                     });
 
                     catLi.innerHTML = `
-                        <div class="d-flex justify-content-between align-items-center text-warning fw-bold px-2 py-2 rounded" style="background-color: #2c3e50; cursor: pointer;" onclick="document.getElementById('${collapseId}').classList.toggle('show')">
+                        <div class="d-flex justify-content-between align-items-center text-warning fw-bold px-3 py-2 rounded shadow-sm" style="background-color: #2c3e50; cursor: pointer;" onclick="const el = document.getElementById('${mainCollapseId}'); el.style.display = el.style.display === 'none' ? 'block' : 'none';">
                             <span>${catName}</span>
                             <i class="fa fa-chevron-down small"></i>
                         </div>
-                        <div class="collapse ps-2 my-1" id="${collapseId}">
+                        <div class="ps-2 mt-1" id="${mainCollapseId}" style="display: none;">
                             ${subLinksHTML}
                         </div>
                     `;
@@ -199,6 +199,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 if (Object.keys(categoriesMap).length === 0) {
                     dropdownContainer.innerHTML = `<li><span class="dropdown-item text-muted">No categories found</span></li>`;
                 }
+
+                // டிராப் டவுன் மெனுவிற்குள் கிளிக் செய்தால் அது மூடிக்கொள்ளாமல் தடுக்கிறது
+                dropdownContainer.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
             }
         })
         .catch(error => {
