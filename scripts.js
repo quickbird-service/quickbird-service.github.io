@@ -11,8 +11,7 @@
 
 document.addEventListener("DOMContentLoaded", function() {
     const container = document.getElementById("posts-container");
-    if (!container) return;
-
+    
     let allPosts = [];
     let currentIndex = 0;
     const itemsPerPage = 4; // ஒரே நேரத்தில் எத்தனை போஸ்ட்கள் காட்ட வேண்டும்
@@ -20,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // கீழே ஸ்க்ரோல் செய்யும்போது காட்டும் சுழலும் லோடிங் ஸ்பின்னர்
     function showLoader() {
+        if (!container) return;
         if (document.getElementById("loading-spinner")) return;
         const loaderDiv = document.createElement("div");
         loaderDiv.id = "loading-spinner";
@@ -92,6 +92,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     function renderPosts() {
+        if (!container) return;
         if (isLoading) return;
         isLoading = true;
         
@@ -108,15 +109,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 return;
             }
 
-
-
-
-
-
-
-
-            
-          let batchHTML = "";
+            let batchHTML = "";
             postsToDisplay.forEach(post => {
                 batchHTML += `
                     <div class="col-6 col-md-4 mb-3">
@@ -136,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 `;
             });
 
-            // நேரடியாக container-க்குள் போஸ்ட்களைச் சேர்த்தல் (Grid சரியாக வேலை செய்ய இது உதவும்)
+            // நேரடியாக container-க்குள் போஸ்ட்களைச் சேர்த்தல்
             container.insertAdjacentHTML('beforeend', batchHTML);
 
             // புதிதாக வந்த படங்களை டெமு ஸ்டைலில் வரிசையாக லோட் செய்வது
@@ -147,38 +140,73 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 300);
     }
 
-          
-
-
-
-
-
-
-
-
-    
-
-    // JSON கோப்பிலிருந்து டேட்டாவை வாசித்தல்
+    // ==========================================
+    // 3. POSTS.JSON கோப்பிலிருந்து போஸ்ட்களையும் கேட்டகரிகளையும் ஒரே நேரத்தில் உருவாக்குவது
+    // ==========================================
     fetch("posts.json")
         .then(response => response.json())
         .then(posts => {
-            // புதிதாகச் சேர்த்த போஸ்ட்கள் முதலில் வருவதற்கு இதைப் பயன்படுத்துகிறோம்
             allPosts = posts; 
-            container.innerHTML = ""; 
-            renderPosts(); 
+            
+            // அ) முகப்புப் பக்கத்தில் போஸ்ட்களை லோட் செய்வது (கண்டெய்னர் இருந்தால் மட்டும்)
+            if (container) {
+                container.innerHTML = ""; 
+                renderPosts(); 
+            }
+
+            // ஆ) நேவிகேஷன் மெனுவிற்கான கேட்டகரி & சப்-கேட்டகரிகளை ஆட்டோமேட்டிக்காக உருவாக்குவது
+            const dropdownContainer = document.getElementById("dynamic-categories");
+            if (dropdownContainer) {
+                dropdownContainer.innerHTML = ""; // "Loading..." வாசகத்தை நீக்குதல்
+
+                const categoriesMap = {};
+
+                posts.forEach(post => {
+                    // உங்கள் posts.json-ல் category மற்றும் subcategory கீ (Key) பெயர்கள் இருக்க வேண்டும்
+                    const catName = post.category || "General";
+                    const subCatName = post.subcategory || "Others";
+
+                    if (!categoriesMap[catName]) {
+                        categoriesMap[catName] = new Set();
+                    }
+                    categoriesMap[catName].add(subCatName);
+                });
+
+                // மெனுவில் வரிசையாக உருவாக்குதல்
+                for (const [catName, subCategories] of Object.entries(categoriesMap)) {
+                    
+                    // கேட்டகரி தலைப்பு (Header)
+                    const headerLi = document.createElement("li");
+                    headerLi.innerHTML = `<h6 class="dropdown-header text-warning fw-bold mt-2">${catName}</h6>`;
+                    dropdownContainer.appendChild(headerLi);
+
+                    // சப்-கேட்டகரிகள் (Sub-categories)
+                    subCategories.forEach(subCat => {
+                        const subLi = document.createElement("li");
+                        // சப்-கேட்டகரியைக் கிளிக் செய்தால் search.html பக்கத்திற்குச் செல்லும்
+                        subLi.innerHTML = `<a class="dropdown-item ps-4" href="search.html?category=${encodeURIComponent(subCat)}">— ${subCat}</a>`;
+                        dropdownContainer.appendChild(subLi);
+                    });
+
+                    // கேட்டகரிகளுக்கு இடையே ஒரு கோடு (Divider)
+                    const dividerLi = document.createElement("li");
+                    dividerLi.innerHTML = `<li><hr class="dropdown-divider border-secondary"></li>`;
+                    dropdownContainer.appendChild(dividerLi);
+                }
+
+                if (Object.keys(categoriesMap).length === 0) {
+                    dropdownContainer.innerHTML = `<li><span class="dropdown-item text-muted">No categories found</span></li>`;
+                }
+            }
         })
-
-
-
-
-        
         .catch(error => {
-            console.error("Error loading posts:", error);
+            console.error("Error loading posts or categories:", error);
             hideLoader();
         });
 
     // கீழே ஸ்க்ரோல் செய்யும்போது அடுத்த போஸ்ட்கள் லோட் ஆவது (Infinite Scroll)
     window.addEventListener("scroll", function () {
+        if (!container) return;
         if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 250) {
             if (!isLoading && currentIndex < allPosts.length) {
                 renderPosts();
