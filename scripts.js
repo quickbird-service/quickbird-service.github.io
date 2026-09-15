@@ -154,15 +154,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 renderPosts(); 
             }
 
-            // ஆ) நேவிகேஷன் மெனுவிற்கான கேட்டகரி & சப்-கேட்டகரிகளை ஆட்டோமேட்டிக்காக உருவாக்குவது
+            // ஆ) நேவிகேஷன் மெனுவிற்கான கேட்டகரி & சப்-கேட்டகரிகளை மினிமைஸ்/மேக்ஸிமஸ் (Accordion) முறையில் உருவாக்குவது
             const dropdownContainer = document.getElementById("dynamic-categories");
             if (dropdownContainer) {
-                dropdownContainer.innerHTML = ""; // "Loading..." வாசகத்தை நீக்குதல்
+                dropdownContainer.innerHTML = ""; 
 
                 const categoriesMap = {};
 
                 posts.forEach(post => {
-                    // உங்கள் posts.json-ல் category மற்றும் subcategory கீ (Key) பெயர்கள் இருக்க வேண்டும்
                     const catName = post.category || "General";
                     const subCatName = post.subcategory || "Others";
 
@@ -172,26 +171,29 @@ document.addEventListener("DOMContentLoaded", function() {
                     categoriesMap[catName].add(subCatName);
                 });
 
-                // மெனுவில் வரிசையாக உருவாக்குதல்
+                let catIndex = 0;
                 for (const [catName, subCategories] of Object.entries(categoriesMap)) {
-                    
-                    // கேட்டகரி தலைப்பு (Header)
-                    const headerLi = document.createElement("li");
-                    headerLi.innerHTML = `<h6 class="dropdown-header text-warning fw-bold mt-2">${catName}</h6>`;
-                    dropdownContainer.appendChild(headerLi);
+                    catIndex++;
+                    const collapseId = "catCollapse" + catIndex;
 
-                    // சப்-கேட்டகரிகள் (Sub-categories)
+                    const catLi = document.createElement("li");
+                    catLi.className = "px-2 mb-1";
+                    
+                    let subLinksHTML = "";
                     subCategories.forEach(subCat => {
-                        const subLi = document.createElement("li");
-                        // சப்-கேட்டகரியைக் கிளிக் செய்தால் search.html பக்கத்திற்குச் செல்லும்
-                        subLi.innerHTML = `<a class="dropdown-item ps-4" href="search.html?category=${encodeURIComponent(subCat)}">— ${subCat}</a>`;
-                        dropdownContainer.appendChild(subLi);
+                        subLinksHTML += `<a class="dropdown-item py-1 ps-4 text-light small" href="search.html?category=${encodeURIComponent(subCat)}">— ${subCat}</a>`;
                     });
 
-                    // கேட்டகரிகளுக்கு இடையே ஒரு கோடு (Divider)
-                    const dividerLi = document.createElement("li");
-                    dividerLi.innerHTML = `<li><hr class="dropdown-divider border-secondary"></li>`;
-                    dropdownContainer.appendChild(dividerLi);
+                    catLi.innerHTML = `
+                        <a class="d-flex justify-content-between align-items-center text-warning text-decoration-none fw-bold px-2 py-2 rounded" data-bs-toggle="collapse" href="#${collapseId}" role="button" aria-expanded="false" style="background-color: #2c3e50;">
+                            <span>${catName}</span>
+                            <i class="fa fa-chevron-down small"></i>
+                        </a>
+                        <div class="collapse ps-2 my-1" id="${collapseId}">
+                            ${subLinksHTML}
+                        </div>
+                    `;
+                    dropdownContainer.appendChild(catLi);
                 }
 
                 if (Object.keys(categoriesMap).length === 0) {
