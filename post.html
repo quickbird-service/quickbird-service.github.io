@@ -63,7 +63,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-9">
                 <div id="content-slot" class="bg-white p-4 p-md-5 rounded shadow-sm">
-                    <p class="text-center text-muted">Loading article details...</p>
+                    <!-- Article Content -->
                 </div>
 
                 <!-- அஃபிலியேட் டிஸ்க்ளைமர் -->
@@ -85,7 +85,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- கட்டுரையைத் தானாக உள்ளே இழுத்து டெமு ஸ்டைல் பட லோடிங்குடன் காட்டும் முழுமையான Script -->
+    <!-- ஆர்டிகள் உடனடியாக வந்து, படங்கள் மட்டும் வரிசையாக (Sequentially) லோகோவிலிருந்து லோட் ஆகும் ஸ்கிரிப்ட் -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const params = new URLSearchParams(window.location.search);
@@ -93,33 +93,22 @@
 
             const contentSlot = document.getElementById('content-slot');
             
-            // லோடிங் ஸ்பின்னர் காட்டுவது
-            contentSlot.innerHTML = `
-                <div class="text-center py-5">
-                    <div class="spinner-border text-warning" role="status" style="width: 3rem; height: 3rem;">
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
-                    <p class="text-muted mt-3">Loading article details...</p>
-                </div>
-            `;
-
-            // post1.html, post2.html போன்ற கோப்புகளை உள்ளே ஏற்றுவது
             fetch(`${articleId}.html`)
                 .then(response => {
                     if (!response.ok) throw new Error('Article not found');
                     return response.text();
                 })
                 .then(data => {
+                    // ஆர்டிகல் வாசகங்கள் உடனடியாக வந்துவிடும்
                     contentSlot.innerHTML = data;
 
-                    // கட்டுரைக் கோப்பு வந்தடைந்த பிறகு, அதிலுள்ள படங்களைப் பாதியாக வராமல் டெமு ஸ்டைலில் ஒரே அடியாக லோட் செய்ய
+                    // உள்ளே இருக்கும் அனைத்துப் படங்களையும் கண்டறிதல்
                     const articleImages = contentSlot.querySelectorAll('img');
-                    
-                    articleImages.forEach(img => {
-                        const originalSrc = img.getAttribute('src');
-                        if (!originalSrc) return;
+                    if (articleImages.length === 0) return;
 
-                        // 1. ஆரம்பத்தில் படம் முழுமையாக வரும் வரை உங்கள் தளத்தின் லோகோவைக் காட்டுவது
+                    // அனைத்துப் படங்களுக்கும் ஆரம்பத்தில் லோகோவை செட் செய்வது
+                    articleImages.forEach(img => {
+                        img.setAttribute('data-original-src', img.src);
                         img.src = "image/favicon.png";
                         img.style.width = "50px";
                         img.style.height = "50px";
@@ -127,13 +116,22 @@
                         img.style.opacity = "0.4";
                         img.style.display = "block";
                         img.style.margin = "20px auto";
+                    });
 
-                        // 2. பின்னணியில் உண்மையான படத்தை முழுமையாக டவுன்லோட் செய்தல்
+                    // படங்கள் ஒன்றன் பின் ஒன்றாக (Sequentially) வரிசையாக லோட் ஆகும் ஃபங்ஷன்
+                    let currentIndex = 0;
+
+                    function loadNextImage() {
+                        if (currentIndex >= articleImages.length) return;
+
+                        const img = articleImages[currentIndex];
+                        const originalSrc = img.getAttribute('data-original-src');
+
                         const tempImg = new Image();
                         tempImg.src = originalSrc;
 
                         tempImg.onload = function() {
-                            // 3. படம் முழுமையாகத் தயாரானதும் ஒரே அடியாக ஒரிஜினல் படம் மாறுவது
+                            // ஒரிஜினல் படம் தயாரானதும் லோகோ மாறி முழுப் படமாகத் தோன்றும்
                             img.src = originalSrc;
                             img.style.width = "100%";
                             img.style.height = "auto";
@@ -141,8 +139,21 @@
                             img.style.objectFit = "contain";
                             img.style.opacity = "1";
                             img.style.margin = "0 auto";
+
+                            // அடுத்த படத்திற்குச் செல்லுதல்
+                            currentIndex++;
+                            loadNextImage();
                         };
-                    });
+
+                        tempImg.onerror = function() {
+                            // ஒருவேளை படம் கிடைக்கவில்லை என்றாலும் அடுத்தது லோட் ஆகிவிடும்
+                            currentIndex++;
+                            loadNextImage();
+                        };
+                    }
+
+                    // முதல் படத்திலிருந்து வரிசையைத் தொடங்குதல்
+                    loadNextImage();
                 })
                 .catch(error => {
                     contentSlot.innerHTML = `
