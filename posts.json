@@ -3,7 +3,8 @@
 {
     "id": "post12",
     "title": "POEDAGAR Fashion Man Watch Waterproof Luminous",
-    "category": "Watches",
+    "category": "Fashion",
+    "subcategory": "Watches",
     "image": "image/powmain.jpg",
     "link": "post.html?id=post12"
 },
@@ -11,7 +12,8 @@
  {
     "id": "post11",
     "title": "OLEVS 5513 Brand Exclusive Man Quartz Watch",
-    "category": "Watches",
+    "category": "Fashion",
+    "subcategory": "Watches",
     "image": "image/obwmain.jpg",
     "link": "post.html?id=post11"
 },
@@ -19,7 +21,8 @@
 {
     "id": "post10",
     "title": "ADDIESDIVE Men's Classic Watch with Ceramic Bezel",
-    "category": "Watches",
+    "category": "Fashion",
+    "subcategory": "Watches",
     "image": "image/adwmain.jpg",
     "link": "post.html?id=post10"
 },
@@ -27,7 +30,8 @@
 {
     "id": "post9",
     "title": "PAGANI DESIGN PD-1662 Luxury GMT Men Mechanical Wristwatch",
-    "category": "Watches",
+    "category": "Fashion",
+    "subcategory": "Watches",
     "image": "image/pdwmain.jpg",
     "link": "post.html?id=post9"
 },
@@ -35,7 +39,8 @@
     {
     "id": "post8",
     "title": "Samsung Galaxy S21FE 5G intelligent",
-    "category": "Mobiles",
+    "category": "Electronics",
+    "subcategory": "Mobiles",
     "image": "image/sgs21main.jpg",
     "link": "post.html?id=post8"
 },
@@ -43,7 +48,8 @@
 {
     "id": "post7",
     "title": "OLEVS 6607 Fully Automaitc Watches Stainless",
-    "category": "Watches",
+    "category": "Fashion",
+    "subcategory": "Watches",
     "image": "image/omwmain.jpg",
     "link": "post.html?id=post7"
 },
@@ -51,7 +57,8 @@
 {
     "id": "post6",
     "title": "Original IPhone 15 6.1 Super Retina",
-    "category": "Mobiles",
+    "category": "Electronics",
+    "subcategory": "Mobiles",
     "image": "image/ip15main.jpg",
     "link": "post.html?id=post6"
 },
@@ -59,7 +66,8 @@
 {
     "id": "post5",
     "title": "HAYLOU Watch Faro Voice Calling Smart Watch",
-    "category": "Watches",
+    "category": "Electronics",
+    "subcategory": "Smart Watches",
     "image": "image/swmain.jpg",
     "link": "post.html?id=post5"
   },
@@ -67,7 +75,8 @@
 {
     "id": "post4",
     "title": "Samsung Galaxy S22 Ultra 5G Refurbished Smartphone",
-    "category": "Mobiles",
+    "category": "Electronics",
+    "subcategory": "Mobiles",
     "image": "image/sgs22main.jpg",
     "link": "post.html?id=post4"
   },
@@ -75,7 +84,8 @@
  {
     "id": "post3",
     "title": "New iPhone 14 Pro Max Dual eSIM / 1SIM+ 1eSIM",
-    "category": "Mobiles",
+    "category": "Electronics",
+    "subcategory": "Mobiles",
     "image": "image/14pmmain.png",
     "link": "post.html?id=post3"
   },
@@ -84,6 +94,7 @@
     "id": "post2",
     "title": "WALUX Professional AC Hair Clipper",
     "category": "Electronics",
+    "subcategory": "Trimmers",
     "image": "image/rtrimmain.jpg",
     "link": "post.html?id=post2"
   },
@@ -92,6 +103,7 @@
     "id": "post1",
     "title": "Robot Vacuum Cleaner ABIR X9",
     "category": "Electronics",
+    "subcategory": "Robotics",
     "image": "image/rvcmain.png",
     "link": "post.html?id=post1"
   }
