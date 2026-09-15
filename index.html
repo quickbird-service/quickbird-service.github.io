@@ -171,14 +171,21 @@
 
                 <!-- Search Bar Placed Inside the Bottom of the Dark Blue Area -->
                 <div class="search-box-wrapper mt-2">
-                    <form class="d-flex" role="search" onsubmit="return false;">
-                        <div class="input-group input-group-sm">
-                            <input class="form-control border-0 py-2" type="search" placeholder="Search posts..." aria-label="Search">
-                            <button class="btn btn-warning px-3" type="submit">
-                                <i class="fa fa-search text-dark"></i>
-                            </button>
-                        </div>
-                    </form>
+                    
+                  
+                  
+                  <form class="d-flex" action="search.html" method="GET">
+    <div class="input-group input-group-sm">
+        <input name="q" class="form-control border-0 py-2" type="search" placeholder="Search products..." aria-label="Search" required>
+        <button class="btn btn-warning px-3" type="submit">
+            <i class="fa fa-search text-dark"></i>
+        </button>
+    </div>
+</form>
+
+
+
+                  
                 </div>
 
             </div>
