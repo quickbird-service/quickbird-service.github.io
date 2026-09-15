@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // டெமு ஸ்டைல் வரிசை முறை பட லோடிங் (Sequential Temu Style Loading for Index Page)
+    // டெமு ஸ்டைல் வரிசை முறை பட லோடிங் (Sequential Temu Style Loading)
     function loadImagesSequentially(scopeElement) {
         const images = scopeElement.querySelectorAll('.post-img');
         if (images.length === 0) return;
@@ -110,10 +110,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
             let batchHTML = "";
             postsToDisplay.forEach(post => {
+                // உங்கள் ஒரிஜினல் லேஅவுட் (col-6 col-md-4) மற்றும் தேதி, கேட்டகிரி நீக்கப்பட்ட வடிவம்
                 batchHTML += `
                     <div class="col-6 col-md-4 mb-3">
                         <div class="card post-card h-100 shadow-sm border-0" style="border-radius: 8px;">
-                            <!-- தேதி மற்றும் கேட்டகிரி நீக்கப்பட்டு, படம் வெட்டப்படாமல் முழுமையாகத் தெரிய அமைப்பு -->
                             <div class="post-img-wrapper" style="height: 150px; background-color: #ffffff; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; border-top-left-radius: 8px; border-top-right-radius: 8px; padding: 6px;">
                                 <a href="${post.link}" class="w-100 h-100 d-flex align-items: center justify-content: center text-decoration-none">
                                     <img src="" data-original-src="${post.image}" class="post-img" alt="${post.title}" style="width: 100%; height: 100%; object-fit: contain;">
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function() {
             tempDiv.innerHTML = batchHTML;
             container.appendChild(tempDiv);
 
-            // புதிதாக வந்த படங்களை வரிசையாக லோட் செய்வது
+            // புதிதாக வந்த படங்களை டெமு ஸ்டைலில் வரிசையாக லோட் செய்வது
             loadImagesSequentially(tempDiv);
 
             currentIndex = nextIndex;
