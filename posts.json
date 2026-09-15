@@ -1,4 +1,16 @@
 [
+
+
+
+
+{
+    "id": "post10",
+    "title": "ADDIESDIVE Men's Classic Watch with Ceramic Bezel",
+    "category": "Watches",
+    "image": "image/adwmain.jpg",
+    "link": "post.html?id=post10"
+},
+  
   {
     "id": "post1",
     "title": "Robot Vacuum Cleaner ABIR X9",
@@ -71,7 +83,5 @@
     "link": "post.html?id=post9"
 }
 
-  
-  
 ]
 
