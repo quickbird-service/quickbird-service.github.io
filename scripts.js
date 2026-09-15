@@ -108,9 +108,16 @@ document.addEventListener("DOMContentLoaded", function() {
                 return;
             }
 
-            let batchHTML = "";
+
+
+
+
+
+
+
+            
+          let batchHTML = "";
             postsToDisplay.forEach(post => {
-                // உங்கள் ஒரிஜினல் லேஅவுட் (col-6 col-md-4) மற்றும் தேதி, கேட்டகிரி நீக்கப்பட்ட வடிவம்
                 batchHTML += `
                     <div class="col-6 col-md-4 mb-3">
                         <div class="card post-card h-100 shadow-sm border-0" style="border-radius: 8px;">
@@ -129,18 +136,27 @@ document.addEventListener("DOMContentLoaded", function() {
                 `;
             });
 
-            const tempDiv = document.createElement("div");
-            tempDiv.innerHTML = batchHTML;
-            container.appendChild(tempDiv);
+            // நேரடியாக container-க்குள் போஸ்ட்களைச் சேர்த்தல் (Grid சரியாக வேலை செய்ய இது உதவும்)
+            container.insertAdjacentHTML('beforeend', batchHTML);
 
             // புதிதாக வந்த படங்களை டெமு ஸ்டைலில் வரிசையாக லோட் செய்வது
-            loadImagesSequentially(tempDiv);
+            loadImagesSequentially(container);
 
             currentIndex = nextIndex;
             isLoading = false;
         }, 300);
     }
 
+          
+
+
+
+
+
+
+
+
+    
     // JSON கோப்பிலிருந்து டேட்டாவை வாசித்தல்
     fetch("posts.json")
         .then(response => response.json())
