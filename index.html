@@ -143,21 +143,17 @@
                             <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Categories
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="categoriesDropdown">
-                                <li class="dropdown-header text-warning fw-bold">Technology</li>
-                                <li><a class="dropdown-item ps-4" href="#">— Mobile & Gadgets</a></li>
-                                <li><a class="dropdown-item ps-4" href="#">— Laptops & Computers</a></li>
-                                <li><hr class="dropdown-divider"></li>
+                          <!-- Dynamic Categories Dropdown -->
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        Categories
+    </a>
+    <!-- ஜாவாஸ்கிரிப்ட் மூலம் சப்-கேட்டகரிகள் இங்கே ஆட்டோமேட்டிக்காக வந்து உட்காரும் -->
+    <ul class="dropdown-menu dropdown-menu-dark shadow" id="dynamic-categories" aria-labelledby="categoriesDropdown">
+        <li><span class="dropdown-item text-muted">Loading...</span></li>
+    </ul>
+</li>
 
-                                <li class="dropdown-header text-warning fw-bold">Fashion & Lifestyle</li>
-                                <li><a class="dropdown-item ps-4" href="#">— Men's Wear</a></li>
-                                <li><a class="dropdown-item ps-4" href="#">— Women's Collection</a></li>
-                                <li><hr class="dropdown-divider"></li>
-
-                                <li class="dropdown-header text-warning fw-bold">Home & Living</li>
-                                <li><a class="dropdown-item ps-4" href="#">— Appliances</a></li>
-                                <li><a class="dropdown-item ps-4" href="#">— Decor & Tools</a></li>
-                            </ul>
                         </li>
 
                         <li class="nav-item">
