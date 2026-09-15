@@ -70,8 +70,8 @@
                     <!-- Article Content -->
                 </div>
 
-                <!-- அஃபிலியேட் டிஸ்க்ளைமர் -->
-                <div class="alert alert-secondary small text-muted mt-4 p-3 rounded border text-center">
+                <!-- அஃபிலியேட் டிஸ்க்ளைமர் (ஆரம்பத்தில் மறைக்கப்பட்டிருக்கும்) -->
+                <div id="affiliate-disclaimer" class="alert alert-secondary small text-muted mt-4 p-3 rounded border text-center" style="display: none;">
                     <i class="fa-solid fa-circle-info me-1 text-warning"></i> 
                     <strong>Disclaimer:</strong> This site contains affiliate links. If you make a purchase through these links, we may earn a small commission at no extra cost to you.
                 </div>
@@ -89,13 +89,14 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- ஆர்டிகள் உடனடியாக வந்து, படங்கள் மட்டும் வரிசையாக (Sequentially) லோகோவிலிருந்து லோட் ஆகும் ஸ்கிரிப்ட் -->
+    <!-- ஆர்டிகள் உடனடியாக வந்து, படங்கள் வரிசையாக லோட் ஆன பிறகு டிஸ்களைமர் காட்டும் ஸ்கிரிப்ட் -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const params = new URLSearchParams(window.location.search);
             const articleId = params.get('id') || 'post1';
 
             const contentSlot = document.getElementById('content-slot');
+            const disclaimerBox = document.getElementById('affiliate-disclaimer');
             
             fetch(`${articleId}.html`)
                 .then(response => {
@@ -106,7 +107,12 @@
                     contentSlot.innerHTML = data;
 
                     const articleImages = contentSlot.querySelectorAll('img');
-                    if (articleImages.length === 0) return;
+                    
+                    // படங்கள் இல்லையென்றால் உடனே டிஸ்களைமரைக் காட்டுவது
+                    if (articleImages.length === 0) {
+                        if (disclaimerBox) disclaimerBox.style.display = 'block';
+                        return;
+                    }
 
                     articleImages.forEach(img => {
                         img.setAttribute('data-original-src', img.src);
@@ -122,7 +128,11 @@
                     let currentIndex = 0;
 
                     function loadNextImage() {
-                        if (currentIndex >= articleImages.length) return;
+                        if (currentIndex >= articleImages.length) {
+                            // அனைத்துப் படங்களும் லோட் ஆன பின் டிஸ்களைமர் பாக்ஸ் வெளிப்படும்
+                            if (disclaimerBox) disclaimerBox.style.display = 'block';
+                            return;
+                        }
 
                         const img = articleImages[currentIndex];
                         const originalSrc = img.getAttribute('data-original-src');
