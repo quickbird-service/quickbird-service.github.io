@@ -1,12 +1,12 @@
-// Quick Bird - Centralized Global Scripts (Temu Style Sequential Image Loading & Posts Rendering)
+// Quick Bird - Centralized Global Scripts (Analytics, AdSense, Index Posts Rendering & Temu Style Sequential Image Loading)
 (function() {
-    // Google AdSense Script Placeholder
-    /*    var adsScript = document.createElement('script');
-        adsScript.async = true;
-        adsScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx";
-        adsScript.setAttribute("crossorigin", "anonymous");
-        document.head.appendChild(adsScript);
-    */
+    // 2. Google AdSense Script 
+/*    var adsScript = document.createElement('script');
+    adsScript.async = true;
+    adsScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx";
+    adsScript.setAttribute("crossorigin", "anonymous");
+    document.head.appendChild(adsScript);
+*/
 })();
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // டெமு ஸ்டைல் வரிசை முறை பட லோடிங் (Sequential Temu Style Loading)
+    // டெமு ஸ்டைல் வரிசை முறை பட லோடிங் (Sequential Temu Style Loading for Index Page)
     function loadImagesSequentially(scopeElement) {
         const images = scopeElement.querySelectorAll('.post-img');
         if (images.length === 0) return;
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 batchHTML += `
                     <div class="col-6 col-md-4 mb-3">
                         <div class="card post-card h-100 shadow-sm border-0" style="border-radius: 8px;">
-                            <!-- தேதி மற்றும் கேட்டகிரி முற்றிலும் நீக்கப்பட்டு, படம் நேர்த்தியாகப் பொருத்தப்பட்டுள்ளது -->
+                            <!-- தேதி மற்றும் கேட்டகிரி நீக்கப்பட்டு, படம் வெட்டப்படாமல் முழுமையாகத் தெரிய அமைப்பு -->
                             <div class="post-img-wrapper" style="height: 150px; background-color: #ffffff; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; border-top-left-radius: 8px; border-top-right-radius: 8px; padding: 6px;">
                                 <a href="${post.link}" class="w-100 h-100 d-flex align-items: center justify-content: center text-decoration-none">
                                     <img src="" data-original-src="${post.image}" class="post-img" alt="${post.title}" style="width: 100%; height: 100%; object-fit: contain;">
