@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.json())
         .then(posts => {
             // புதிதாகச் சேர்த்த போஸ்ட்கள் முதலில் வருவதற்கு இதைப் பயன்படுத்துகிறோம்
-            allPosts = posts.reverse(); 
+            allPosts = posts; 
             container.innerHTML = ""; 
             renderPosts(); 
         })
