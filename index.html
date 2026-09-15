@@ -26,7 +26,10 @@
         body { background-color: #f8f9fa; font-family: 'Segoe UI', Arial, sans-serif; }
         
         /* Navigation Styles & AliExpress Brand Style */
-        .navbar-custom { background-color: #1a252f !important; padding: 10px 0 !important; }
+        .navbar-custom { 
+            background-color: #1a252f !important; 
+            padding: 12px 0 16px 0 !important; /* நீல நிற பாரின் உயரம் கீழே அதிகரிக்கப்பட்டுள்ளது */
+        }
         .navbar-custom .navbar-brand { color: #fff; font-weight: 700; font-size: 1.3rem; display: flex; align-items: center; text-decoration: none; }
         .navbar-custom .nav-link { color: #dcdde1 !important; font-weight: 500; margin-right: 10px; }
         .navbar-custom .nav-link:hover, .navbar-custom .nav-link.active { color: #fbc531 !important; }
@@ -90,9 +93,14 @@
             color: #0097e6;
         }
         
-        /* Search Bar */
-        .search-box {
-            max-width: 250px;
+        /* Search Bar Inside Navbar Area */
+        .search-box-wrapper {
+            width: 100%;
+        }
+        @media (min-width: 992px) {
+            .search-box-wrapper {
+                max-width: 350px;
+            }
         }
         
         /* Footer */
@@ -109,63 +117,70 @@
     <!-- Main Navigation Bar with Search and Categories (AliExpress Style) -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top shadow-sm">
         <div class="container">
-            <!-- Brand Logo / Name -->
-            <a class="navbar-brand" href="index.html">
-                <img src="image/favicon.png" alt="Logo" style="width: 38px; height: 38px; object-fit: contain; margin-right: 8px;">
-                <span>Quick <span style="color: #fbc531;">Bird</span></span>
-            </a>
+            <div class="w-100">
+                <!-- Top Row: Brand Logo & Mobile Toggle Button -->
+                <div class="d-flex justify-content-between align-items-center">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="image/favicon.png" alt="Logo" style="width: 38px; height: 38px; object-fit: contain; margin-right: 8px;">
+                        <span>Quick <span style="color: #fbc531;">Bird</span></span>
+                    </a>
 
-            <!-- Mobile Toggle Button -->
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+                    <!-- Mobile Toggle Button -->
+                    <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar" aria-controls="topNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
 
-            <!-- Menu Links -->
-            <div class="collapse navbar-collapse" id="topNavbar">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html"><i class="fa fa-home me-1"></i> Home</a>
-                    </li>
+                <!-- Menu Links -->
+                <div class="collapse navbar-collapse mt-2" id="topNavbar">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html"><i class="fa fa-home me-1"></i> Home</a>
+                        </li>
 
-                    <!-- Dynamic Categories Dropdown -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Categories
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="categoriesDropdown">
-                            <li class="dropdown-header text-warning fw-bold">Technology</li>
-                            <li><a class="dropdown-item ps-4" href="#">— Mobile & Gadgets</a></li>
-                            <li><a class="dropdown-item ps-4" href="#">— Laptops & Computers</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                        <!-- Dynamic Categories Dropdown -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Categories
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-dark shadow" aria-labelledby="categoriesDropdown">
+                                <li class="dropdown-header text-warning fw-bold">Technology</li>
+                                <li><a class="dropdown-item ps-4" href="#">— Mobile & Gadgets</a></li>
+                                <li><a class="dropdown-item ps-4" href="#">— Laptops & Computers</a></li>
+                                <li><hr class="dropdown-divider"></li>
 
-                            <li class="dropdown-header text-warning fw-bold">Fashion & Lifestyle</li>
-                            <li><a class="dropdown-item ps-4" href="#">— Men's Wear</a></li>
-                            <li><a class="dropdown-item ps-4" href="#">— Women's Collection</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                                <li class="dropdown-header text-warning fw-bold">Fashion & Lifestyle</li>
+                                <li><a class="dropdown-item ps-4" href="#">— Men's Wear</a></li>
+                                <li><a class="dropdown-item ps-4" href="#">— Women's Collection</a></li>
+                                <li><hr class="dropdown-divider"></li>
 
-                            <li class="dropdown-header text-warning fw-bold">Home & Living</li>
-                            <li><a class="dropdown-item ps-4" href="#">— Appliances</a></li>
-                            <li><a class="dropdown-item ps-4" href="#">— Decor & Tools</a></li>
-                        </ul>
-                    </li>
+                                <li class="dropdown-header text-warning fw-bold">Home & Living</li>
+                                <li><a class="dropdown-item ps-4" href="#">— Appliances</a></li>
+                                <li><a class="dropdown-item ps-4" href="#">— Decor & Tools</a></li>
+                            </ul>
+                        </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="about.html">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Contact Us</a>
-                    </li>
-                </ul>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
 
-                <!-- Search Bar inside Navbar -->
-                <form class="d-flex search-box" role="search" onsubmit="return false;">
-                    <div class="input-group">
-                        <input class="form-control form-control-sm border-0" type="search" placeholder="Search posts..." aria-label="Search">
-                        <button class="btn btn-warning btn-sm" type="submit">
-                            <i class="fa fa-search text-dark"></i>
-                        </button>
-                    </div>
-                </form>
+                <!-- Search Bar Placed Inside the Bottom of the Dark Blue Area -->
+                <div class="search-box-wrapper mt-2">
+                    <form class="d-flex" role="search" onsubmit="return false;">
+                        <div class="input-group input-group-sm">
+                            <input class="form-control border-0 py-2" type="search" placeholder="Search posts..." aria-label="Search">
+                            <button class="btn btn-warning px-3" type="submit">
+                                <i class="fa fa-search text-dark"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
             </div>
         </div>
     </nav>
