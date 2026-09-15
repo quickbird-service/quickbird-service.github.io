@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - Quick Bird</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #f8f9fa; font-family: 'Segoe UI', Arial, sans-serif; }
+        .navbar-custom { background-color: #1a252f !important; padding: 12px 0 !important; }
+        .navbar-custom .navbar-brand { color: #fff; font-weight: 700; font-size: 1.3rem; text-decoration: none; display: flex; align-items: center; }
+        
+        /* Post Card Style (முகப்புப் பக்கத்தில் உள்ளது போலவே) */
+        .post-card { 
+            border: none; border-radius: 12px; overflow: hidden; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); background: #ffffff; 
+        }
+        .post-img-wrapper { height: 220px; display: flex; align-items: center; justify-content: center; background: #fff; }
+        .post-img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .post-title { font-size: 1.15rem; font-weight: 700; color: #2c3e50; }
+        .post-title a { color: inherit; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <!-- சின்னதொரு ஹெட்டர் பகுதி -->
+    <nav class="navbar navbar-dark navbar-custom shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="image/favicon.png" alt="Logo" style="width: 38px; height: 38px; object-fit: contain; margin-right: 8px;">
+                <span>Quick <span style="color: #fbc531;">Bird</span></span>
+            </a>
+            <a href="index.html" class="text-white text-decoration-none small"><i class="fa fa-arrow-left me-1"></i> Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- முடிவுகள் காட்டப்படும் பிரதான பகுதி -->
+    <main class="container my-5">
+        <div class="row mb-4">
+            <div class="col-12">
+                <h4 class="fw-bold border-start border-4 border-warning ps-3 text-dark" id="search-title">Search Results</h4>
+            </div>
+        </div>
+
+        <!-- தேடலுக்கு ஏற்ற பொருட்கள் இங்கே தோன்றும் -->
+        <div class="row g-4" id="search-results-container">
+            <!-- ஜாவாஸ்கிரிப்ட் மூலம் முடிவுகள் இங்கே வரும் -->
+        </div>
+    </main>
+
+    <!-- ஜாவாஸ்கிரிப்ட்: தேடிய வார்த்தையைக் கண்டுபிடித்து பொருத்துவது -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. URL-ல் உள்ள தேடல் சொல்லை எடுப்பது (உதாரணமாக ?q=watch என்றால் 'watch' என எடுக்கும்)
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchQuery = urlParams.get('q') ? urlParams.get('q').toLowerCase().trim() : '';
+
+            const titleElement = document.getElementById('search-title');
+            if (searchQuery) {
+                titleElement.textContent = `Search Results for: "${searchQuery}"`;
+            } else {
+                titleElement.textContent = `All Products`;
+            }
+
+            // 2. உங்களது scripts.js அல்லது போஸ்ட்களில் இருந்து தரவுகளை எடுத்து இங்கு ஃபில்டர் செய்து காட்டலாம்.
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
