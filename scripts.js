@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 renderPosts(); 
             }
 
-            // ஆ) நேவிகேஷன் மெனுவிற்கான கேட்டகரி & சப்-கேட்டகரிகளை மினிமைஸ்/மேக்ஸிமஸ் (Accordion) முறையில் உருவாக்குவது
+            // ஆ) நேவிகேஷன் மெனுவிற்கான கேட்டகரி & சப்-கேட்டகரிகளை மினிமைஸ்/மேக்ஸிமஸ் செய்யும் முறை
             const dropdownContainer = document.getElementById("dynamic-categories");
             if (dropdownContainer) {
                 dropdownContainer.innerHTML = ""; 
@@ -185,10 +185,10 @@ document.addEventListener("DOMContentLoaded", function() {
                     });
 
                     catLi.innerHTML = `
-                        <a class="d-flex justify-content-between align-items-center text-warning text-decoration-none fw-bold px-2 py-2 rounded" data-bs-toggle="collapse" href="#${collapseId}" role="button" aria-expanded="false" style="background-color: #2c3e50;">
+                        <div class="d-flex justify-content-between align-items-center text-warning fw-bold px-2 py-2 rounded" style="background-color: #2c3e50; cursor: pointer;" onclick="document.getElementById('${collapseId}').classList.toggle('show')">
                             <span>${catName}</span>
                             <i class="fa fa-chevron-down small"></i>
-                        </a>
+                        </div>
                         <div class="collapse ps-2 my-1" id="${collapseId}">
                             ${subLinksHTML}
                         </div>
