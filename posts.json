@@ -1,149 +1,130 @@
 [
-
-  
-{
-    "id": "post16",
+  {
+    "id": "apple-iphone-12-pro-max",
     "title": "Apple iPhone 12 Pro / 12 Pro max 5G",
     "category": "Electronics",
     "subcategory": "Mobiles",
     "image": "image/12pmain.png",
-    "link": "post.html?id=post16"
-},
-
-{
-    "id": "post15",
+    "link": "post.html?id=apple-iphone-12-pro-max"
+  },
+  {
+    "id": "samsung-galaxy-a71-5g",
     "title": "Samsung Galaxy A71 5G Smart Android Phone",
     "category": "Electronics",
     "subcategory": "Mobiles",
     "image": "image/a71main.png",
-    "link": "post.html?id=post15"
-},
-    
-{
-    "id": "post14",
+    "link": "post.html?id=samsung-galaxy-a71-5g"
+  },
+  {
+    "id": "ytyin-v20-electric-bike",
     "title": "YTYIN V20 Fat Tire Electric Bike For Adults",
     "category": "Vehicles",
     "subcategory": "Electric Bikes",
     "image": "image/ebamain.jpg",
-    "link": "post.html?id=post14"
-},
-    
-{
-    "id": "post13",
+    "link": "post.html?id=ytyin-v20-electric-bike"
+  },
+  {
+    "id": "olevs-skeleton-flywheel-watch",
     "title": "OLEVS Men's Watches Skeketon Flywheel Automatic Mechanical",
     "category": "Fashion",
     "subcategory": "Watches",
     "image": "image/oswmain.jpg",
-    "link": "post.html?id=post13"
-},
-    
-{
-    "id": "post12",
+    "link": "post.html?id=olevs-skeleton-flywheel-watch"
+  },
+  {
+    "id": "poedagar-fashion-man-watch",
     "title": "POEDAGAR Fashion Man Watch Waterproof Luminous",
     "category": "Fashion",
     "subcategory": "Watches",
     "image": "image/powmain.jpg",
-    "link": "post.html?id=post12"
-},
- 
- {
-    "id": "post11",
+    "link": "post.html?id=poedagar-fashion-man-watch"
+  },
+  {
+    "id": "olevs-5513-quartz-watch",
     "title": "OLEVS 5513 Brand Exclusive Man Quartz Watch",
     "category": "Fashion",
     "subcategory": "Watches",
     "image": "image/obwmain.jpg",
-    "link": "post.html?id=post11"
-},
-
-{
-    "id": "post10",
+    "link": "post.html?id=olevs-5513-quartz-watch"
+  },
+  {
+    "id": "addiesdive-classic-watch",
     "title": "ADDIESDIVE Men's Classic Watch with Ceramic Bezel",
     "category": "Fashion",
     "subcategory": "Watches",
     "image": "image/adwmain.jpg",
-    "link": "post.html?id=post10"
-},
-
-{
-    "id": "post9",
+    "link": "post.html?id=addiesdive-classic-watch"
+  },
+  {
+    "id": "pagani-design-pd1662-watch",
     "title": "PAGANI DESIGN PD-1662 Luxury GMT Men Mechanical Wristwatch",
     "category": "Fashion",
     "subcategory": "Watches",
     "image": "image/pdwmain.jpg",
-    "link": "post.html?id=post9"
-},
-
-    {
-    "id": "post8",
+    "link": "post.html?id=pagani-design-pd1662-watch"
+  },
+  {
+    "id": "samsung-galaxy-s21fe",
     "title": "Samsung Galaxy S21FE 5G intelligent",
     "category": "Electronics",
     "subcategory": "Mobiles",
     "image": "image/sgs21main.jpg",
-    "link": "post.html?id=post8"
-},
-
-{
-    "id": "post7",
+    "link": "post.html?id=samsung-galaxy-s21fe"
+  },
+  {
+    "id": "olevs-6607-automatic-watch",
     "title": "OLEVS 6607 Fully Automaitc Watches Stainless",
     "category": "Fashion",
     "subcategory": "Watches",
     "image": "image/omwmain.jpg",
-    "link": "post.html?id=post7"
-},
-    
-{
-    "id": "post6",
+    "link": "post.html?id=olevs-6607-automatic-watch"
+  },
+  {
+    "id": "iphone-15",
     "title": "Original IPhone 15 6.1 Super Retina",
     "category": "Electronics",
     "subcategory": "Mobiles",
     "image": "image/ip15main.jpg",
-    "link": "post.html?id=post6"
-},
-
-{
-    "id": "post5",
+    "link": "post.html?id=iphone-15"
+  },
+  {
+    "id": "haylou-watch-faro",
     "title": "HAYLOU Watch Faro Voice Calling Smart Watch",
     "category": "Electronics",
     "subcategory": "Smart Watches",
     "image": "image/swmain.jpg",
-    "link": "post.html?id=post5"
+    "link": "post.html?id=haylou-watch-faro"
   },
-
-{
-    "id": "post4",
+  {
+    "id": "samsung-galaxy-s22-ultra",
     "title": "Samsung Galaxy S22 Ultra 5G Refurbished Smartphone",
     "category": "Electronics",
     "subcategory": "Mobiles",
     "image": "image/sgs22main.jpg",
-    "link": "post.html?id=post4"
+    "link": "post.html?id=samsung-galaxy-s22-ultra"
   },
-
- {
-    "id": "post3",
+  {
+    "id": "iphone-14-pro-max",
     "title": "New iPhone 14 Pro Max Dual eSIM / 1SIM+ 1eSIM",
     "category": "Electronics",
     "subcategory": "Mobiles",
     "image": "image/14pmmain.png",
-    "link": "post.html?id=post3"
+    "link": "post.html?id=iphone-14-pro-max"
   },
-
-{
-    "id": "post2",
+  {
+    "id": "walux-hair-clipper",
     "title": "WALUX Professional AC Hair Clipper",
     "category": "Electronics",
     "subcategory": "Trimmers",
     "image": "image/rtrimmain.jpg",
-    "link": "post.html?id=post2"
+    "link": "post.html?id=walux-hair-clipper"
   },
-    
   {
-    "id": "post1",
+    "id": "robot-vacuum-cleaner-abir-x9",
     "title": "Robot Vacuum Cleaner ABIR X9",
     "category": "Electronics",
     "subcategory": "Robotics",
     "image": "image/rvcmain.png",
-    "link": "post.html?id=post1"
+    "link": "post.html?id=robot-vacuum-cleaner-abir-x9"
   }
-
 ]
-
