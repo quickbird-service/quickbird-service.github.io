@@ -1,5 +1,24 @@
 [
 
+  
+{
+    "id": "post16",
+    "title": "Apple iPhone 12 Pro / 12 Pro max 5G",
+    "category": "Electronics",
+    "subcategory": "Mobiles",
+    "image": "image/12pmain.png",
+    "link": "post.html?id=post16"
+},
+
+{
+    "id": "post15",
+    "title": "Samsung Galaxy A71 5G Smart Android Phone",
+    "category": "Electric",
+    "subcategory": "Mobiles",
+    "image": "image/a71main.png",
+    "link": "post.html?id=post15"
+},
+    
 {
     "id": "post14",
     "title": "YTYIN V20 Fat Tire Electric Bike For Adults",
