@@ -1,77 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- பிரதான மற்றும் பாலிசி பக்கங்கள் -->
   <url>
     <loc>https://quickbird-service.github.io/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/about.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/contact.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/privacy.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/terms.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/disclaimer.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.3</priority>
   </url>
-    <url>
+
+  <!-- தயாரிப்பு மற்றும் மதிப்பீட்டுப் பதிவுகள் (Product Posts) -->
+  <url>
     <loc>https://quickbird-service.github.io/post.html?id=redmagic-astra2-gaming-tablet</loc>
-   </url>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://quickbird-service.github.io/post.html?id=apple-iphone-12-pro-max</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/post.html?id=samsung-galaxy-a71-5g</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/post.html?id=ytyin-v20-electric-bike</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/post.html?id=olevs-skeleton-flywheel-watch</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/post.html?id=poedagar-fashion-man-watch</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/post.html?id=olevs-5513-quartz-watch</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/post.html?id=addiesdive-classic-watch</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/post.html?id=pagani-design-pd1662-watch</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/post.html?id=samsung-galaxy-s21fe</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/post.html?id=olevs-6607-automatic-watch</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/post.html?id=iphone-15</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/post.html?id=haylou-watch-faro</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/post.html?id=samsung-galaxy-s22-ultra</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/post.html?id=iphone-14-pro-max</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://quickbird-service.github.io/post.html?id=walux-hair-clipper</loc>
+    <loc>https://quickbird-service.github.io/post.html`id=walux-hair-clipper</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://quickbird-service.github.io/post.html?id=robot-vacuum-cleaner-abir-x9</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
-  <url> 
+  <url>
     <loc>https://quickbird-service.github.io/post.html?id=RANDRIDE-YG90B-Electric-Bike</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
-
-  
 </urlset>
