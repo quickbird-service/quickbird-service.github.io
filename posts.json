@@ -1,5 +1,42 @@
 [
 
+{
+    "id": "nubia-Pad-Pro",
+    "title": "nubia Pad Pro",
+    "category": "Electronics",
+    "subcategory": "Tablets",
+    "image": "image/nubia-Pad-Pro-main.png",
+    "link": "post.html?id=nubia-Pad-Pro"
+},
+
+{
+    "id": "Touroll-B1-Electric-City-Bike",
+    "title": "Touroll B1 Electric City Bike",
+    "category": "Vehicles",
+    "subcategory": "Electric Bikes",
+    "image": "image/Touroll-B1-Electric-City-Bike-main.jpg",
+    "link": "post.html?id=Touroll-B1-Electric-City-Bike"
+},
+
+{
+    "id": "nubia-Z80-Ultra",
+    "title": "nubia Z80 Ultra",
+    "category": "Electronics",
+    "subcategory": "Mobiles",
+    "image": "image/Z80_Ultra-black-main.png",
+    "link": "post.html?id=nubia-Z80-Ultra"
+},
+
+{
+    "id": "EKXBIKE-X21-Max-Electric-Bike",
+    "title": "EKXBIKE X21 Max Electric Bike",
+    "category": "Vehicles",
+    "subcategory": "Electric Bikes",
+    "image": "image/EKXBIKE-X21-main.jpg",
+    "link": "post.html?id=EKXBIKE-X21-Max-Electric-Bike"
+},
+
+
   {
     "id": "RANDRIDE-YG90B-Electric-Bike",
     "title": "RANDRIDE YG90B Electric Bike",
@@ -12,7 +49,7 @@
     "id": "redmagic-astra2-gaming-tablet",
     "title": "REDMAGIC Astra 2 Gaming Tablet",
     "category": "Electronics",
-    "subcategory": "Mobiles",
+    "subcategory": "Tablets",
     "image": "image/redmagic_astra2_gaming_tablet_main.png",
     "link": "post.html?id=redmagic-astra2-gaming-tablet"
   },
