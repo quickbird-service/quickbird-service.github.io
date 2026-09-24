@@ -123,4 +123,25 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <url> <loc>https://quickbird-service.github.io/post.html?id=nubia-Pad-Pro</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url> <loc>https://quickbird-service.github.io/post.html?id=Touroll-B1-Electric-City-Bike</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url> <loc>https://quickbird-service.github.io/post.html?id=nubia-Z80-Ultra</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url> <loc>https://quickbird-service.github.io/post.html?id=EKXBIKE-X21-Max-Electric-Bike</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
 </urlset>
