@@ -1,11 +1,18 @@
 [
-
+{
+    "file": "2026/oct/liectroux-c30b-robot-vacuum-cleaner.html",
+    "title": "liectroux c30b robot vacuum cleaner",
+    "category": "Electronics",
+    "subcategory": "Robotics",
+    "image": "image/liectroux-c30b-robot-vacuum-cleaner-main.jpg",
+    "link": "post.html?file=2026/oct/liectroux-c30b-robot-vacuum-cleaner.html"
+},
 {
     "id": "nubia-Pad-Pro",
     "title": "nubia Pad Pro",
     "category": "Electronics",
     "subcategory": "Tablets",
-    "image": "nubia-Pad-Pro-main.png",
+    "image": "image/nubia-Pad-Pro-main.png",
     "link": "post.html?id=nubia-Pad-Pro"
 },
 
@@ -14,7 +21,7 @@
     "title": "Touroll B1 Electric City Bike",
     "category": "Vehicles",
     "subcategory": "Electric Bikes",
-    "image": "Touroll-B1-Electric-City-Bike-main.jpg",
+    "image": "image/Touroll-B1-Electric-City-Bike-main.jpg",
     "link": "post.html?id=Touroll-B1-Electric-City-Bike"
 },
 
@@ -23,7 +30,7 @@
     "title": "nubia Z80 Ultra",
     "category": "Electronics",
     "subcategory": "Mobiles",
-    "image": "Z80_Ultra-black-main.png",
+    "image": "image/Z80_Ultra-black-main.png",
     "link": "post.html?id=nubia-Z80-Ultra"
 },
 
@@ -32,7 +39,7 @@
     "title": "EKXBIKE X21 Max Electric Bike",
     "category": "Vehicles",
     "subcategory": "Electric Bikes",
-    "image": "EKXBIKE-X21-main.jpg",
+    "image": "image/EKXBIKE-X21-main.jpg",
     "link": "post.html?id=EKXBIKE-X21-Max-Electric-Bike"
 },
 
