@@ -1,8 +1,27 @@
 [
+    
+{
+    "id": "2026/oct/HiBREW H10A Semi Automatic Espresso Coffee Machine",
+    "title": "HiBREW-H10A-Semi-Automatic-Espresso-Coffee-Machine",
+    "category": "Home and Garden",
+    "subcategory": "Kitchen Appliances",
+    "image": "image/HiBREW-H10A-Semi-Automatic-Espresso-Coffee-main.jpg",
+    "link": "post.html?id=2026/oct/HiBREW-H10A-Semi-Automatic-Espresso-Coffee-Machine"
+},
+
+{
+    "id": "2026/oct/nubia-Z60-Ultra",
+    "title": "nubia Z60 Ultra",
+    "category": "Electronics",
+    "subcategory": "Mobiles",
+    "image": "image/Z60U-black6-main.jpg",
+    "link": "post.html?id=2026/oct/nubia-Z60-Ultra"
+},
+    
 {
     "id": "2026/oct/liectroux-c30b-robot-vacuum-cleaner",
     "title": "liectroux c30b robot vacuum cleaner",
-    "category": "Electronics",
+    "category": "Home and Garden",
     "subcategory": "Robotics",
     "image": "image/liectroux-c30b-robot-vacuum-cleaner-main.jpg",
     "link": "post.html?id=2026/oct/liectroux-c30b-robot-vacuum-cleaner"
@@ -183,7 +202,7 @@
   {
     "id": "robot-vacuum-cleaner-abir-x9",
     "title": "Robot Vacuum Cleaner ABIR X9",
-    "category": "Electronics",
+    "category": "Home and Garden",
     "subcategory": "Robotics",
     "image": "image/rvcmain.png",
     "link": "post.html?id=robot-vacuum-cleaner-abir-x9"
