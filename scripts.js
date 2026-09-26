@@ -9,8 +9,9 @@
 */
 })();
 
-document.addEventListener("DOMContentLoaded", function() {
+function runQuickBirdApp() {
     const container = document.getElementById("posts-container");
+    if (!container) return;
     
     let allPosts = [];
     let currentIndex = 0;
@@ -220,4 +221,18 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     });
+}
+
+// பக்கம் லோட் ஆகும்போது இயக்குவது
+if (document.readyState === 'loading') {
+    document.addEventListener("DOMContentLoaded", runQuickBirdApp);
+} else {
+    runQuickBirdApp();
+}
+
+// பின்னோக்கி (Back) வரும்போது பிரவுசர் கேச்சிலிருந்து இயக்க
+window.addEventListener("pageshow", function(event) {
+    if (event.persisted) {
+        runQuickBirdApp();
+    }
 });
