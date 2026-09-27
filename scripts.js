@@ -14,11 +14,11 @@ document.addEventListener("DOMContentLoaded", function() {
     
     let allPosts = [];
     let currentIndex = 0;
-    // மொபைல் வியூவிற்கு ஆரம்பத்தில் 10 பொருட்களும், டெஸ்க்டாப்பிற்கு 9 பொருட்களும் காட்டப்படும்
-    let itemsPerPage = window.innerWidth < 992 ? 10 : 9; 
+    const initialItemsPerPage = 12; // ஆரம்பத்தில் காட்ட வேண்டிய போஸ்ட்கள் (12)
+    const subsequentItemsPerPage = 12; // Load More பட்டனை அழுத்தும்போது காட்ட வேண்டிய போஸ்ட்கள் (12)
     let isLoading = false;  // இரட்டை லோடிங்கைத் தவிர்க்க
 
-    // லோடிங் ஸ்பின்னர் (Load More பட்டன் கீழ் தேவைப்பட்டால் காட்ட)
+    // லோடிங் ஸ்பின்னர்
     function showLoader() {
         if (!container) return;
         if (document.getElementById("loading-spinner")) return;
@@ -45,7 +45,6 @@ document.addEventListener("DOMContentLoaded", function() {
         const images = scopeElement.querySelectorAll('.post-img');
         if (images.length === 0) return;
 
-        // ஆரம்பத்தில் அனைத்துப் படங்களுக்கும் லோகோவை மாற்றுவது
         images.forEach(img => {
             const originalSrc = img.getAttribute('data-original-src');
             if (!originalSrc) return;
@@ -103,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    function renderPosts() {
+    function renderPosts(count) {
         if (!container) return;
         if (isLoading) return;
         isLoading = true;
@@ -111,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function() {
         showLoader();
 
         setTimeout(() => {
-            const nextIndex = currentIndex + itemsPerPage;
+            const nextIndex = currentIndex + count;
             const postsToDisplay = allPosts.slice(currentIndex, nextIndex);
 
             hideLoader();
@@ -128,13 +127,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="col-6 col-md-4 mb-3">
                         <div class="card post-card h-100 shadow-sm border-0" style="border-radius: 8px;">
                             <div class="post-img-wrapper" style="height: 150px; background-color: #ffffff; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; border-top-left-radius: 8px; border-top-right-radius: 8px; padding: 6px;">
-                                <a href="${post.link}" class="w-100 h-100 d-flex align-items: center justify-content: center text-decoration-none">
+                                <a href="post.html?id=${post.id}" class="w-100 h-100 d-flex align-items: center justify-content: center text-decoration-none">
                                     <img src="" data-original-src="${post.image}" class="post-img" alt="${post.title}" style="width: 100%; height: 100%; object-fit: contain;">
                                 </a>
                             </div>
                             <div class="card-body p-2 d-flex flex-column justify-content-between">
                                 <h2 class="post-title" style="font-size: 0.9rem; line-height: 1.3; margin-bottom: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                                    <a href="${post.link}" class="text-decoration-none text-dark">${post.title}</a>
+                                    <a href="post.html?id=${post.id}" class="text-decoration-none text-dark">${post.title}</a>
                                 </h2>
                             </div>
                         </div>
@@ -142,38 +141,28 @@ document.addEventListener("DOMContentLoaded", function() {
                 `;
             });
 
-            // நேரடியாக container-க்குள் போஸ்ட்களைச் சேர்த்தல்
             container.insertAdjacentHTML('beforeend', batchHTML);
-
-            // புதிதாக வந்த படங்களை டெமு ஸ்டைலில் வரிசையாக லோட் செய்வது
             loadImagesSequentially(container);
 
             currentIndex = nextIndex;
             isLoading = false;
 
-            // Load More பட்டன் தேவையா என சரிபார்த்தல்
             updateLoadMoreButton();
-            
-            // அடுத்த கிளிக்கிற்கு ஒருமுறைக்கு 6 பொருட்கள் வீதம் லோட் ஆக மாற்றிக்கொள்ளலாம்
-            itemsPerPage = 6;
         }, 300);
     }
 
-    // ==========================================
-    // 3. POSTS.JSON கோப்பிலிருந்து போஸ்ட்களையும் கேட்டகரிகளையும் ஒரே நேரத்தில் உருவாக்குவது
-    // ==========================================
+    // posts.json கோப்பிலிருந்து டேட்டாவைப் பெறுதல்
     fetch("posts.json")
         .then(response => response.json())
         .then(posts => {
             allPosts = posts; 
             
-            // அ) முகப்புப் பக்கத்தில் போஸ்ட்களை லோட் செய்வது (கண்டெய்னர் இருந்தால் மட்டும்)
             if (container) {
                 container.innerHTML = ""; 
-                renderPosts(); 
+                renderPosts(initialItemsPerPage); // ஆரம்பத்தில் 12 போஸ்ட்கள் லோட் ஆகும்
             }
 
-            // ஆ) கேட்டகரி மெனுவை எங்கு கிளிக் செய்தாலும் மூடாமல் தனித்தனியாக விரியும்படி செய்தல்
+            // கேட்டகரி மெனு அமைப்பு
             const dropdownContainer = document.getElementById("dynamic-categories");
             if (dropdownContainer) {
                 dropdownContainer.innerHTML = ""; 
@@ -219,7 +208,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     dropdownContainer.innerHTML = `<li><span class="dropdown-item text-muted">No categories found</span></li>`;
                 }
 
-                // டிராப் டவுன் மெனுவிற்குள் கிளிக் செய்தால் அது மூடிக்கொள்ளாமல் தடுக்கிறது
                 dropdownContainer.addEventListener('click', function(e) {
                     e.stopPropagation();
                 });
@@ -230,12 +218,12 @@ document.addEventListener("DOMContentLoaded", function() {
             hideLoader();
         });
 
-    // இன்ஃபினிட் ஸ்க்ரோல் நீக்கப்பட்டுவிட்டது. அதற்கு பதிலாக Load More பட்டன் கிளிக் ஈவென்ட் இணைக்கப்படுகிறது.
+    // Load More பட்டன் கிளிக் ஈவென்ட் (ஒவ்வொரு முறையும் 12 போஸ்ட்கள் வரும்)
     const loadMoreBtn = document.getElementById("load-more-btn");
     if (loadMoreBtn) {
         loadMoreBtn.addEventListener("click", function() {
             if (!isLoading && currentIndex < allPosts.length) {
-                renderPosts();
+                renderPosts(subsequentItemsPerPage);
             }
         });
     }
