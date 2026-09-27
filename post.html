@@ -108,13 +108,13 @@
                     <!-- Article Content -->
                 </div>
 
-                <!-- Related Posts Section (Sub-category based) -->
+                <!-- Related Posts Section (Sub-category based - 4 என்றில்லாமல் அனைத்துப் போஸ்ட்களும் காட்டப்படும்) -->
                 <div id="related-posts-section" class="mt-5" style="display: none;">
                     <h4 class="fw-bold text-dark mb-3 border-start border-4 border-warning ps-3">Related Posts</h4>
                     <div class="row g-3" id="related-posts-container"></div>
                 </div>
 
-                <!-- More in Main Category Section -->
+                <!-- More in Main Category Section (அனைத்துப் போஸ்ட்களும் காட்டப்படும்) -->
                 <div id="category-posts-section" class="mt-5" style="display: none;">
                     <h4 class="fw-bold text-dark mb-3 border-start border-4 border-warning ps-3" id="category-section-title">More in Category</h4>
                     <div class="row g-3" id="category-posts-container"></div>
@@ -139,7 +139,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- ஆர்டிகள் உடனடியாக வந்து, படங்கள் வரிசையாக லோட் ஆன பிறகு டிஸ்களைமர் காட்டும் ஸ்கிரிப்ட் மற்றும் ரிலேட்டட் போஸ்ட்கள் -->
+    <!-- ஸ்கிரிப்ட்: ரிலேட்டட் மற்றும் கேட்டகிரி போஸ்ட்கள் முழுமையாக வர & படங்கள் லோட் ஆன பின் டிஸ்களைமர் வர -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const params = new URLSearchParams(window.location.search);
@@ -170,14 +170,14 @@
                                 const subCat = currentPost.subcategory;
                                 const mainCat = currentPost.category;
 
-                                // 1. Sub-category Related Posts
+                                // 1. Sub-category Related Posts (limit இல்லாமல் அனைத்துப் போஸ்ட்களும் வரும்படி மாற்றப்பட்டுள்ளது)
                                 const relatedContainer = document.getElementById('related-posts-container');
                                 const relatedSection = document.getElementById('related-posts-section');
                                 const relatedItems = posts.filter(p => p.subcategory === subCat && p.id !== currentPost.id);
 
                                 if (relatedItems.length > 0) {
                                     let html = '';
-                                    relatedItems.slice(0, 4).forEach(p => {
+                                    relatedItems.forEach(p => {
                                         html += `
                                             <div class="col-6 col-md-3">
                                                 <div class="related-card p-2 h-100 d-flex flex-column justify-content-between">
@@ -193,7 +193,7 @@
                                     relatedSection.style.display = 'block';
                                 }
 
-                                // 2. Main Category Posts
+                                // 2. Main Category Posts (limit இல்லாமல் அனைத்துப் போஸ்ட்களும் வரும்படி மாற்றப்பட்டுள்ளது)
                                 const catContainer = document.getElementById('category-posts-container');
                                 const catSection = document.getElementById('category-posts-section');
                                 document.getElementById('category-section-title').innerText = `More in ${mainCat || 'Category'}`;
@@ -201,7 +201,7 @@
 
                                 if (catItems.length > 0) {
                                     let html = '';
-                                    catItems.slice(0, 4).forEach(p => {
+                                    catItems.forEach(p => {
                                         html += `
                                             <div class="col-6 col-md-3">
                                                 <div class="related-card p-2 h-100 d-flex flex-column justify-content-between">
