@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JEQ5HH2WB9"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+
   gtag('config', 'G-JEQ5HH2WB9');
 </script>
 
+  <!-- admitted -->
 <meta name="mitgo-verification" content="343bce83-359e-42eb-8dee-f784b8000205" />
 <meta name="mitgo-verification" content="919ed402-b919-46f5-a589-1a3bbb9a936f" />
 
@@ -18,6 +21,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quick Bird - Smart Product Reviews & Guides</title>
     
+    <!-- SEO & Social Meta Tags -->
     <meta name="description" content="Quick Bird - Your trusted hub for smart product reviews, modern tech guides, and recommendations.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://quickbird-service.github.io/">
@@ -35,6 +39,7 @@
     <style>
         body { background-color: #f8f9fa; font-family: 'Segoe UI', Arial, sans-serif; }
         
+        /* Navigation Styles & AliExpress Brand Style */
         .navbar-custom { 
             background-color: #1a252f !important; 
             padding: 12px 0 16px 0 !important; 
@@ -43,10 +48,12 @@
         .navbar-custom .nav-link { color: #dcdde1 !important; font-weight: 500; margin-right: 10px; }
         .navbar-custom .nav-link:hover, .navbar-custom .nav-link.active { color: #fbc531 !important; }
         
+        /* Dropdown Sub-categories Hover Behavior */
         .dropdown-menu-dark { background-color: #2c3e50; border: none; }
         .dropdown-item { color: #dcdde1; padding: 8px 20px; }
         .dropdown-item:hover { background-color: #34495e; color: #fbc531; }
         
+        /* Blog Post Card Styles */
         .post-card { 
             border: none; 
             border-radius: 12px; 
@@ -76,6 +83,7 @@
             object-fit: contain; 
             transition: transform 0.5s ease;
         }
+
         .post-card:hover .post-img {
             transform: scale(1.05);
         }
@@ -91,37 +99,59 @@
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
-        .post-title a { color: inherit; text-decoration: none; }
-        .post-title a:hover { color: #0097e6; }
+        .post-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .post-title a:hover {
+            color: #0097e6;
+        }
         
-        .search-box-wrapper { width: 100%; }
-        @media (min-width: 992px) { .search-box-wrapper { max-width: 350px; } }
+        /* Search Bar Inside Navbar Area */
+        .search-box-wrapper {
+            width: 100%;
+        }
+        @media (min-width: 992px) {
+            .search-box-wrapper {
+                max-width: 350px;
+            }
+        }
         
+        /* Footer */
         footer { background-color: #1a252f; color: #a4b0be; padding: 40px 0 20px; }
         footer a { color: #a4b0be; text-decoration: none; }
         footer a:hover { color: #fbc531; }
     </style>
+
+    <script src="scripts.js"></script>
 </head>
 <body>
 
+    <!-- Main Navigation Bar with Search and Categories -->
     <nav class="navbar navbar-expand-lg navbar-dark navbar-custom sticky-top shadow-sm">
         <div class="container">
             <div class="w-100">
+                <!-- Top Row: Brand Logo & Mobile Toggle Button -->
                 <div class="d-flex justify-content-between align-items-center">
                     <a class="navbar-brand" href="index.html">
                         <img src="image/favicon.png" alt="Logo" style="width: 38px; height: 38px; object-fit: contain; margin-right: 8px;">
                         <span>Quick <span style="color: #fbc531;">Bird</span></span>
                     </a>
+
+                    <!-- Mobile Toggle Button -->
                     <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar" aria-controls="topNavbar" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
 
+                <!-- Menu Links -->
                 <div class="collapse navbar-collapse mt-2" id="topNavbar">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                             <a class="nav-link active" href="index.html"><i class="fa fa-home me-1"></i> Home</a>
                         </li>
+
+                        <!-- Dynamic Categories Dropdown -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Categories
@@ -130,14 +160,26 @@
                                 <li><span class="dropdown-item text-muted">Loading...</span></li>
                             </ul>
                         </li>
-                        <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-                        <li class="nav-item"><a class="nav-link" href="privacy.html">Privacy Policy</a></li>
-                        <li class="nav-item"><a class="nav-link" href="terms.html">Terms and Conditions</a></li>
-                        <li class="nav-item"><a class="nav-link" href="disclaimer.html">Disclaimer</a></li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="privacy.html">Privacy Policy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="terms.html">Terms and Conditions</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="disclaimer.html">Disclaimer</a>
+                        </li>
                     </ul>
                 </div>
 
+                <!-- Search Bar -->
                 <div class="search-box-wrapper mt-2">
                     <form class="d-flex" action="search.html" method="GET">
                         <div class="input-group input-group-sm">
@@ -148,10 +190,12 @@
                         </div>
                     </form>
                 </div>
+
             </div>
         </div>
     </nav>
 
+    <!-- Main Content Grid -->
     <main class="container my-5">
         <div class="row mb-4">
             <div class="col-12">
@@ -159,20 +203,20 @@
             </div>
         </div>
 
+        <!-- Dynamic Posts Container -->
         <div class="row g-4" id="posts-container">
-            <!-- Posts loaded dynamically -->
+            <!-- JavaScript மூலம் போஸ்ட்கள் இங்கே தானாக வரும் -->
         </div>
 
-        <!-- Professional Load More Button Section -->
-        <div class="row mt-5" id="load-more-container" style="display: none;">
-            <div class="col-12 text-center">
-                <button id="load-more-btn" class="btn btn-dark px-4 py-2 fw-semibold shadow-sm" style="border-radius: 8px; background-color: #1a252f; border: 1px solid #2c3e50;">
-                    Load More <i class="fa fa-angle-down ms-1 text-warning"></i>
-                </button>
-            </div>
+        <!-- Load More Button Container -->
+        <div class="text-center mt-5" id="load-more-container" style="display: none;">
+            <button id="load-more-btn" class="btn btn-warning fw-bold px-4 py-2 shadow-sm" style="border-radius: 8px;">
+                <i class="fa fa-arrow-down me-2"></i> Load More Posts
+            </button>
         </div>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="row g-4">
@@ -183,6 +227,7 @@
                     </h5>
                     <p class="small">Find the Best Value, Compare Top Selections, and Shop Smart with Our Trusted Product Guides.</p>
                 </div>
+
                 <div class="col-md-3">
                     <ul class="list-unstyled small">
                         <li class="mb-2"><a href="index.html">Home</a></li>
@@ -201,7 +246,7 @@
         </div>
     </footer>
 
+    <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="scripts.js"></script>
 </body>
 </html>
