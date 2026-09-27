@@ -50,7 +50,7 @@
         footer a { color: #a4b0be; text-decoration: none; }
         footer a:hover { color: #fbc531; }
 
-        /* ஆர்டிகல் தலைப்புகள் மற்றும் டேட் (Date/Header) பகுதி பெரிதாகத் தெரியாமல் இருக்க */
+        /* ஆர்டிகல் தலைப்புகள் மற்றும் டேட் பகுதி */
         #content-slot h1, #content-slot h2, #content-slot h3 {
             font-size: 1.3rem !important;
             font-weight: 700 !important;
@@ -61,52 +61,55 @@
             line-height: 1.6 !important;
         }
 
-        /* Horizontal Scroll & Professional Card Styling for Related & Category Posts */
-        .horizontal-scroll-container::-webkit-scrollbar {
-            height: 6px;
-        }
-        .horizontal-scroll-container::-webkit-scrollbar-thumb {
-            background-color: #cbd5e1;
-            border-radius: 4px;
-        }
-        .pro-post-card {
-            flex: 0 0 160px;
-            width: 160px;
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            overflow: hidden;
+        /* Vertical Professional Card Styling (செங்குத்தாக அடுக்கப்பட்ட நேர்த்தியான வடிவமைப்பு) */
+        .vertical-posts-list {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.2s ease;
+            gap: 12px;
         }
-        .pro-post-card:hover {
-            transform: translateY(-3px);
+        .pro-post-card-v {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .pro-post-card-v:hover {
+            transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border-color: #cbd5e1;
         }
-        .pro-card-img-wrap {
-            width: 100%;
-            height: 110px;
+        .pro-card-img-wrap-v {
+            width: 90px;
+            height: 80px;
+            min-width: 90px;
             background: #f8f9fa;
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            margin-right: 12px;
         }
-        .pro-card-img-wrap img {
+        .pro-card-img-wrap-v img {
             width: 100%;
             height: 100%;
             object-fit: contain;
         }
-        .pro-card-body {
-            padding: 8px;
+        .pro-card-body-v {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        .pro-card-title {
-            font-size: 0.85rem;
+        .pro-card-title-v {
+            font-size: 0.95rem;
             font-weight: 600;
             color: #1e293b;
-            line-height: 1.3;
+            line-height: 1.4;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
@@ -115,7 +118,7 @@
             margin: 0;
             text-decoration: none;
         }
-        .pro-card-title:hover {
+        .pro-card-title-v:hover {
             color: #d97706;
         }
     </style>
@@ -153,19 +156,19 @@
                     <!-- Article Content -->
                 </div>
 
-                <!-- 1. Related Posts (Sub-category Section) -->
+                <!-- 1. Related Posts (Sub-category Section - Vertical) -->
                 <div id="related-section" class="mt-4 bg-white p-3 rounded shadow-sm" style="display: none;">
-                    <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: #2c3e50; border-left: 4px solid #fbc531; padding-left: 8px;">Related Posts</h3>
-                    <div class="horizontal-scroll-container" id="related-posts-container" style="display: flex; overflow-x: auto; gap: 12px; padding-bottom: 8px; scroll-behavior: smooth;">
-                        <!-- JavaScript மூலம் கார்டுகள் உருவாகும் -->
+                    <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; color: #2c3e50; border-left: 4px solid #fbc531; padding-left: 8px;">Related Posts</h3>
+                    <div class="vertical-posts-list" id="related-posts-container">
+                        <!-- JavaScript மூலம் செங்குத்தாக கார்டுகள் உருவாகும் -->
                     </div>
                 </div>
 
-                <!-- 2. More in Main Category Section -->
+                <!-- 2. More in Main Category Section - Vertical -->
                 <div id="more-category-section" class="mt-4 bg-white p-3 rounded shadow-sm" style="display: none;">
-                    <h3 id="more-category-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: #2c3e50; border-left: 4px solid #27ae60; padding-left: 8px;">More in Category</h3>
-                    <div class="horizontal-scroll-container" id="more-category-container" style="display: flex; overflow-x: auto; gap: 12px; padding-bottom: 8px; scroll-behavior: smooth;">
-                        <!-- JavaScript மூலம் கார்டுகள் உருவாகும் -->
+                    <h3 id="more-category-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 15px; color: #2c3e50; border-left: 4px solid #27ae60; padding-left: 8px;">More in Category</h3>
+                    <div class="vertical-posts-list" id="more-category-container">
+                        <!-- JavaScript மூலம் செங்குத்தாக கார்டுகள் உருவாகும் -->
                     </div>
                 </div>
 
@@ -289,12 +292,12 @@
                         let html = '';
                         relatedPosts.forEach(post => {
                             html += `
-                                <div class="pro-post-card">
-                                    <a href="${post.link}" class="pro-card-img-wrap">
+                                <div class="pro-post-card-v">
+                                    <a href="${post.link}" class="pro-card-img-wrap-v">
                                         <img src="${post.image}" alt="${post.title}" loading="lazy">
                                     </a>
-                                    <div class="pro-card-body">
-                                        <a href="${post.link}" class="pro-card-title" title="${post.title}">${post.title}</a>
+                                    <div class="pro-card-body-v">
+                                        <a href="${post.link}" class="pro-card-title-v" title="${post.title}">${post.title}</a>
                                     </div>
                                 </div>
                             `;
@@ -314,12 +317,12 @@
                         let html = '';
                         morePosts.forEach(post => {
                             html += `
-                                <div class="pro-post-card">
-                                    <a href="${post.link}" class="pro-card-img-wrap">
+                                <div class="pro-post-card-v">
+                                    <a href="${post.link}" class="pro-card-img-wrap-v">
                                         <img src="${post.image}" alt="${post.title}" loading="lazy">
                                     </a>
-                                    <div class="pro-card-body">
-                                        <a href="${post.link}" class="pro-card-title" title="${post.title}">${post.title}</a>
+                                    <div class="pro-card-body-v">
+                                        <a href="${post.link}" class="pro-card-title-v" title="${post.title}">${post.title}</a>
                                     </div>
                                 </div>
                             `;
