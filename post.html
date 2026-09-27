@@ -12,14 +12,8 @@
   gtag('config', 'G-JEQ5HH2WB9');
 </script>
 
-
-
-
 <!-- admitted -->
 <meta name="mitgo-verification" content="343bce83-359e-42eb-8dee-f784b8000205" />
-  
-
-
 
     <link rel="icon" type="image/png" href="image/favicon.png">
     <meta charset="UTF-8">
@@ -56,8 +50,6 @@
         footer a { color: #a4b0be; text-decoration: none; }
         footer a:hover { color: #fbc531; }
 
-
-      
         /* ஆர்டிகல் தலைப்புகள் மற்றும் டேட் (Date/Header) பகுதி பெரிதாகத் தெரியாமல் இருக்க */
         #content-slot h1, #content-slot h2, #content-slot h3 {
             font-size: 1.3rem !important;
@@ -69,10 +61,64 @@
             line-height: 1.6 !important;
         }
 
-      
+        /* Horizontal Scroll & Professional Card Styling for Related & Category Posts */
+        .horizontal-scroll-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        .horizontal-scroll-container::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 4px;
+        }
+        .pro-post-card {
+            flex: 0 0 160px;
+            width: 160px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease;
+        }
+        .pro-post-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        .pro-card-img-wrap {
+            width: 100%;
+            height: 110px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .pro-card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .pro-card-body {
+            padding: 8px;
+        }
+        .pro-card-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1e293b;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 0;
+            text-decoration: none;
+        }
+        .pro-card-title:hover {
+            color: #d97706;
+        }
     </style>
-
-
 
 <script src="scripts.js" async></script>
 
@@ -107,6 +153,22 @@
                     <!-- Article Content -->
                 </div>
 
+                <!-- 1. Related Posts (Sub-category Section) -->
+                <div id="related-section" class="mt-4 bg-white p-3 rounded shadow-sm" style="display: none;">
+                    <h3 style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: #2c3e50; border-left: 4px solid #fbc531; padding-left: 8px;">Related Posts</h3>
+                    <div class="horizontal-scroll-container" id="related-posts-container" style="display: flex; overflow-x: auto; gap: 12px; padding-bottom: 8px; scroll-behavior: smooth;">
+                        <!-- JavaScript மூலம் கார்டுகள் உருவாகும் -->
+                    </div>
+                </div>
+
+                <!-- 2. More in Main Category Section -->
+                <div id="more-category-section" class="mt-4 bg-white p-3 rounded shadow-sm" style="display: none;">
+                    <h3 id="more-category-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; color: #2c3e50; border-left: 4px solid #27ae60; padding-left: 8px;">More in Category</h3>
+                    <div class="horizontal-scroll-container" id="more-category-container" style="display: flex; overflow-x: auto; gap: 12px; padding-bottom: 8px; scroll-behavior: smooth;">
+                        <!-- JavaScript மூலம் கார்டுகள் உருவாகும் -->
+                    </div>
+                </div>
+
                 <!-- அஃபிலியேட் டிஸ்க்ளைமர் (ஆரம்பத்தில் மறைக்கப்பட்டிருக்கும்) -->
                 <div id="affiliate-disclaimer" class="alert alert-secondary small text-muted mt-4 p-3 rounded border text-center" style="display: none;">
                     <i class="fa-solid fa-circle-info me-1 text-warning"></i> 
@@ -126,7 +188,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- ஆர்டிகள் உடனடியாக வந்து, படங்கள் வரிசையாக லோட் ஆன பிறகு டிஸ்களைமர் காட்டும் ஸ்கிரிப்ட் -->
+    <!-- ஆர்டிகள் உடனடியாக வந்து, படங்கள் வரிசையாக லோட் ஆன பிறகு டிஸ்களைமர் காட்டும் ஸ்கிரிப்ட் மற்றும் Related/Category பகுதிகளைக் கொண்டுவரும் ஸ்கிரிப்ட் -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const params = new URLSearchParams(window.location.search);
@@ -206,6 +268,66 @@
                             <a href="index.html" class="btn btn-primary mt-3">Back to Home</a>
                         </div>`;
                 });
+
+            // posts.json-லிருந்து Related மற்றும் More in Category போஸ்ட்களைக் கொண்டு வருதல்
+            fetch("posts.json")
+                .then(response => response.json())
+                .then(posts => {
+                    const currentPost = posts.find(p => p.link === `${articleId}.html` || p.link.includes(articleId));
+                    if (!currentPost) return;
+
+                    const currentSubCat = currentPost.subcategory;
+                    const currentMainCat = currentPost.category;
+
+                    // 1. Related Posts (Sub-category matching)
+                    const relatedPosts = posts.filter(p => p.subcategory === currentSubCat && !p.link.includes(articleId));
+                    const relatedSection = document.getElementById('related-section');
+                    const relatedContainer = document.getElementById('related-posts-container');
+
+                    if (relatedPosts.length > 0) {
+                        relatedSection.style.display = 'block';
+                        let html = '';
+                        relatedPosts.forEach(post => {
+                            html += `
+                                <div class="pro-post-card">
+                                    <a href="${post.link}" class="pro-card-img-wrap">
+                                        <img src="${post.image}" alt="${post.title}" loading="lazy">
+                                    </a>
+                                    <div class="pro-card-body">
+                                        <a href="${post.link}" class="pro-card-title" title="${post.title}">${post.title}</a>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        relatedContainer.innerHTML = html;
+                    }
+
+                    // 2. More in Main Category
+                    const morePosts = posts.filter(p => p.category === currentMainCat && !p.link.includes(articleId));
+                    const moreSection = document.getElementById('more-category-section');
+                    const moreContainer = document.getElementById('more-category-container');
+                    const moreTitle = document.getElementById('more-category-title');
+
+                    if (morePosts.length > 0) {
+                        moreSection.style.display = 'block';
+                        moreTitle.innerText = `More in ${currentMainCat}`;
+                        let html = '';
+                        morePosts.forEach(post => {
+                            html += `
+                                <div class="pro-post-card">
+                                    <a href="${post.link}" class="pro-card-img-wrap">
+                                        <img src="${post.image}" alt="${post.title}" loading="lazy">
+                                    </a>
+                                    <div class="pro-card-body">
+                                        <a href="${post.link}" class="pro-card-title" title="${post.title}">${post.title}</a>
+                                    </div>
+                                </div>
+                            `;
+                        });
+                        moreContainer.innerHTML = html;
+                    }
+                })
+                .catch(err => console.error("Error loading category/related posts:", err));
         });
     </script>
 </body>
