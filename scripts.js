@@ -14,10 +14,11 @@ document.addEventListener("DOMContentLoaded", function() {
     
     let allPosts = [];
     let currentIndex = 0;
-    const itemsPerPage = 4; // ஒரே நேரத்தில் எத்தனை போஸ்ட்கள் காட்ட வேண்டும்
+    // மொபைல் வியூவிற்கு ஆரம்பத்தில் 10 பொருட்களும், டெஸ்க்டாப்பிற்கு 9 பொருட்களும் காட்டப்படும்
+    let itemsPerPage = window.innerWidth < 992 ? 10 : 9; 
     let isLoading = false;  // இரட்டை லோடிங்கைத் தவிர்க்க
 
-    // கீழே ஸ்க்ரோல் செய்யும்போது காட்டும் சுழலும் லோடிங் ஸ்பின்னர்
+    // லோடிங் ஸ்பின்னர் (Load More பட்டன் கீழ் தேவைப்பட்டால் காட்ட)
     function showLoader() {
         if (!container) return;
         if (document.getElementById("loading-spinner")) return;
@@ -91,6 +92,17 @@ document.addEventListener("DOMContentLoaded", function() {
         loadNext();
     }
 
+    // Load More பட்டன் நிலையை நிர்வகிக்க
+    function updateLoadMoreButton() {
+        const loadMoreContainer = document.getElementById("load-more-container");
+        if (!loadMoreContainer) return;
+        if (currentIndex < allPosts.length) {
+            loadMoreContainer.style.display = "block";
+        } else {
+            loadMoreContainer.style.display = "none";
+        }
+    }
+
     function renderPosts() {
         if (!container) return;
         if (isLoading) return;
@@ -106,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
             if (postsToDisplay.length === 0) {
                 isLoading = false;
+                updateLoadMoreButton();
                 return;
             }
 
@@ -137,6 +150,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
             currentIndex = nextIndex;
             isLoading = false;
+
+            // Load More பட்டன் தேவையா என சரிபார்த்தல்
+            updateLoadMoreButton();
+            
+            // அடுத்த கிளிக்கிற்கு ஒருமுறைக்கு 6 பொருட்கள் வீதம் லோட் ஆக மாற்றிக்கொள்ளலாம்
+            itemsPerPage = 6;
         }, 300);
     }
 
@@ -211,13 +230,13 @@ document.addEventListener("DOMContentLoaded", function() {
             hideLoader();
         });
 
-    // கீழே ஸ்க்ரோல் செய்யும்போது அடுத்த போஸ்ட்கள் லோட் ஆவது (Infinite Scroll)
-    window.addEventListener("scroll", function () {
-        if (!container) return;
-        if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 250) {
+    // இன்ஃபினிட் ஸ்க்ரோல் நீக்கப்பட்டுவிட்டது. அதற்கு பதிலாக Load More பட்டன் கிளிக் ஈவென்ட் இணைக்கப்படுகிறது.
+    const loadMoreBtn = document.getElementById("load-more-btn");
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener("click", function() {
             if (!isLoading && currentIndex < allPosts.length) {
                 renderPosts();
             }
-        }
-    });
+        });
+    }
 });
