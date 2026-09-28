@@ -114,7 +114,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
             let batchHTML = "";
             postsToDisplay.forEach(post => {
-                // சைட் பார் இல்லாத முழு அகலப் பக்கத்திற்கு ஏற்றவாறு col-6 col-md-3 (4 columns on desktop) என மாற்றப்பட்டுள்ளது
                 batchHTML += `
                     <div class="col-6 col-md-3 mb-3">
                         <div class="card post-card h-100 shadow-sm border-0" style="border-radius: 8px;">
@@ -143,6 +142,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 300);
     }
 
+    // JSON கோப்பிலிருந்து போஸ்ட்கள் மற்றும் கேட்டகிரிகளை ஏற்றி வழங்குதல்
     fetch("posts.json")
         .then(response => response.json())
         .then(posts => {
@@ -153,21 +153,23 @@ document.addEventListener("DOMContentLoaded", function() {
                 renderPosts(initialItemsPerPage); 
             }
 
+            // கேட்டகிரிகள் மற்றும் சப்-கேட்டகிரிகளை உருவாக்குதல்
+            const categoriesMap = {};
+
+            posts.forEach(post => {
+                const catName = post.category || "General";
+                const subCatName = post.subcategory || "Others";
+
+                if (!categoriesMap[catName]) {
+                    categoriesMap[catName] = new Set();
+                }
+                categoriesMap[catName].add(subCatName);
+            });
+
+            // 1. நேவிகேஷன் மெனுவிற்கான கேட்டகரி HTML-ஐ உருவாக்குதல்
             const dropdownContainer = document.getElementById("dynamic-categories");
             if (dropdownContainer) {
                 dropdownContainer.innerHTML = ""; 
-
-                const categoriesMap = {};
-
-                posts.forEach(post => {
-                    const catName = post.category || "General";
-                    const subCatName = post.subcategory || "Others";
-
-                    if (!categoriesMap[catName]) {
-                        categoriesMap[catName] = new Set();
-                    }
-                    categoriesMap[catName].add(subCatName);
-                });
 
                 let catIndex = 0;
                 for (const [catName, subCategories] of Object.entries(categoriesMap)) {
@@ -202,6 +204,40 @@ document.addEventListener("DOMContentLoaded", function() {
                     e.stopPropagation();
                 });
             }
+
+            // 2. சைட் பார் (Sidebar)-விற்கான கேட்டகரி பட்டியல் HTML-ஐ உருவாக்குதல் (Index மற்றும் Post பக்கங்களுக்குப் பொருந்தும்)
+            const sidebarCategoriesContainer = document.getElementById("sidebar-categories");
+            if (sidebarCategoriesContainer) {
+                sidebarCategoriesContainer.innerHTML = "";
+
+                let sidebarHTML = "<ul class='sidebar-categories-list'>";
+                let sideIndex = 0;
+
+                for (const [catName, subCategories] of Object.entries(categoriesMap)) {
+                    sideIndex++;
+                    const sideCollapseId = "sidebarCatCollapse" + sideIndex;
+
+                    let subSidebarLinks = "";
+                    subCategories.forEach(subCat => {
+                        subSidebarLinks += `<li><a href="search.html?category=${encodeURIComponent(subCat)}" class="small ps-3 py-1 text-muted d-block text-decoration-none"><i class="fa fa-angle-right me-1"></i> ${subCat}</a></li>`;
+                    });
+
+                    sidebarHTML += `
+                        <li class="mb-2 border-bottom pb-2">
+                            <div class="d-flex justify-content-between align-items-center text-dark fw-bold px-2 py-1 rounded" style="background-color: #f1f2f6; cursor: pointer;" onclick="const el = document.getElementById('${sideCollapseId}'); el.style.display = el.style.display === 'none' ? 'block' : 'none';">
+                                <span><i class="fa fa-folder text-warning me-1"></i> ${catName}</span>
+                                <i class="fa fa-chevron-down small text-muted"></i>
+                            </div>
+                            <ul class="list-unstyled mt-1 ps-2" id="${sideCollapseId}" style="display: none;">
+                                ${subSidebarLinks}
+                            </ul>
+                        </li>
+                    `;
+                }
+                sidebarHTML += "</ul>";
+                sidebarCategoriesContainer.innerHTML = sidebarHTML;
+            }
+
         })
         .catch(error => {
             console.error("Error loading posts or categories:", error);
