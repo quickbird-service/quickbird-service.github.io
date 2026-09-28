@@ -73,6 +73,29 @@
         .related-card:hover {
             transform: translateY(-4px);
         }
+
+        /* AdSense & Sidebar Professional Styling */
+        .adsense-box {
+            background: #fff;
+            border: 1px dashed #dcdde1;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-size: 0.85rem;
+        }
+        .sidebar-widget {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            margin-bottom: 20px;
+        }
     </style>
 
 <script src="scripts.js" async></script>
@@ -100,12 +123,29 @@
         </div>
     </nav>
 
-    <!-- Main Content Slot -->
-    <main class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-9">
+    <!-- Header Banner Ad Slot -->
+    <div class="container my-3">
+        <div class="adsense-box my-2 py-2" style="min-height: 90px;">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx" crossorigin="anonymous"></script>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-xxxxxxxxxxxxxxxx" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </div>
+
+    <!-- Main Content Slot with Left Article & Right Sidebar -->
+    <main class="container my-4">
+        <div class="row">
+            <!-- Left Side: Article Content -->
+            <div class="col-lg-8 col-md-12">
                 <div id="content-slot" class="bg-white p-4 p-md-5 rounded shadow-sm">
                     <!-- Article Content -->
+                </div>
+
+                <!-- In-Article Ad Slot -->
+                <div class="adsense-box my-4">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx" crossorigin="anonymous"></script>
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-xxxxxxxxxxxxxxxx" data-ad-slot="5544332211" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
                 </div>
 
                 <!-- Related Posts Section -->
@@ -125,7 +165,32 @@
                     <i class="fa-solid fa-circle-info me-1 text-warning"></i> 
                     <strong>Disclaimer:</strong> This site contains affiliate links. If you make a purchase through these links, we may earn a small commission at no extra cost to you.
                 </div>
-            
+            </div>
+
+            <!-- Right Side: Professional Sidebar & AdSense Slots -->
+            <div class="col-lg-4 col-md-12 mt-4 mt-lg-0">
+                <div class="sidebar-widget">
+                    <h6 class="fw-bold text-dark mb-3"><i class="fa fa-bullhorn text-warning me-1"></i> Sponsored Ads</h6>
+                    <div class="adsense-box mb-0" style="min-height: 280px;">
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx" crossorigin="anonymous"></script>
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-xxxxxxxxxxxxxxxx" data-ad-slot="0987654321" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                    </div>
+                </div>
+
+                <div class="sidebar-widget">
+                    <h6 class="fw-bold text-dark mb-3"><i class="fa fa-shield-alt text-warning me-1"></i> Trusted Guides</h6>
+                    <p class="small text-muted mb-2"><i class="fa fa-check text-success me-1"></i> Expert-reviewed specs.</p>
+                    <p class="small text-muted mb-0"><i class="fa fa-check text-success me-1"></i> Safe shopping recommendations.</p>
+                </div>
+
+                <div class="sidebar-widget">
+                    <div class="adsense-box mb-0" style="min-height: 280px;">
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx" crossorigin="anonymous"></script>
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-xxxxxxxxxxxxxxxx" data-ad-slot="1122334455" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
@@ -216,7 +281,6 @@
                                     catSection.style.display = 'block';
                                 }
 
-                                // ரிலேட்டட் மற்றும் கேட்டகிரி கார்டுகளில் உள்ள படங்களையும் வரிசையாக லோட் செய்யத் தொடங்குதல்
                                 loadGridImages();
                             }
                         })
@@ -259,7 +323,6 @@
                 }
             }
 
-            // ஆர்டிகல் படங்களை வரிசையாக லோட் செய்யும் ஃபங்ஷன்
             function loadArticleImages(images) {
                 let currentIndex = 0;
 
@@ -297,7 +360,6 @@
                 loadNext();
             }
 
-            // கீழே உள்ள ரிலேட்டட்/கேட்டகிரி கார்டு படங்களை வரிசையாக லோட் செய்யும் ஃபங்ஷன்
             function loadGridImages() {
                 const gridImages = document.querySelectorAll('.delayed-grid-img');
                 if (gridImages.length === 0) {
