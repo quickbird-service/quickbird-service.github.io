@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JEQ5HH2WB9"></script>
 <script>
@@ -12,11 +10,8 @@
 
   gtag('config', 'G-JEQ5HH2WB9');
 </script>
-
-
-
         
-        <link rel="icon" type="image/png" href="image/favicon.png">
+<link rel="icon" type="image/png" href="image/favicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results - Quick Bird</title>
@@ -45,7 +40,24 @@
         .dropdown-menu-dark { background-color: #2c3e50; border: none; }
         .dropdown-item { color: #dcdde1; padding: 8px 20px; }
         .dropdown-item:hover { background-color: #34495e; color: #fbc531; }
-        .post-card { border: none; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); background: #ffffff; }
+        .post-card { border: none; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); background: #ffffff; transition: transform 0.3s ease; }
+        .post-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        
+        .adsense-box {
+            background: #fff;
+            border: 1px dashed #dcdde1;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-size: 0.85rem;
+        }
+
         footer { background-color: #1a252f; color: #a4b0be; padding: 40px 0 20px; }
         footer a { color: #a4b0be; text-decoration: none; }
         footer a:hover { color: #fbc531; }
@@ -82,6 +94,7 @@
                         </li>
                         <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                        <li class="nav-item"><a class="nav-link" href="privacy.html">Privacy Policy</a></li>
                     </ul>
                 </div>
 
@@ -89,13 +102,21 @@
         </div>
     </nav>
 
-    <!-- Search Results Content -->
+    <!-- Header Banner Ad Slot -->
+    <div class="container my-3">
+        <div class="adsense-box my-2 py-2">
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx" crossorigin="anonymous"></script>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-xxxxxxxxxxxxxxxx" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </div>
+
+    <!-- Search Results Content (Full Width Without Sidebar) -->
     <main class="container my-4">
-        
-        <!-- பெரிய சர்ச் பாக்ஸ் பகுதி -->
-        <div class="row mb-4">
+        <div class="row">
             <div class="col-12">
-                <div class="card shadow-sm border-0 p-3 bg-white" style="border-radius: 12px;">
+                <!-- பெரிய சர்ச் பாக்ஸ் பகுதி -->
+                <div class="card shadow-sm border-0 p-3 bg-white mb-4" style="border-radius: 12px;">
                     <form class="d-flex" action="search.html" method="GET">
                         <div class="input-group input-group-lg">
                             <input id="search-input-box" name="q" class="form-control border py-3" type="search" placeholder="Search products again..." aria-label="Search" required style="font-size: 1rem;">
@@ -105,18 +126,25 @@
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
 
-        <div class="row mb-3">
-            <div class="col-12">
-                <h4 id="search-heading" class="fw-bold border-start border-4 border-warning ps-3 text-dark">Search Results</h4>
-            </div>
-        </div>
+                <!-- நடுவில் ஒரு விளம்பர ஸ்லாட் (AdSense In-Feed / Banner) -->
+                <div class="adsense-box my-3">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx" crossorigin="anonymous"></script>
+                    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-xxxxxxxxxxxxxxxx" data-ad-slot="0987654321" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
 
-        <!-- Posts Results Container -->
-        <div class="row g-4" id="posts-container">
-            <!-- ரிசல்ட்டுகள் இங்கே வரும் -->
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <h4 id="search-heading" class="fw-bold border-start border-4 border-warning ps-3 text-dark">Search Results</h4>
+                    </div>
+                </div>
+
+                <!-- Posts Results Container (Full Width Grid: 4 columns on desktop) -->
+                <div class="row g-4" id="posts-container">
+                    <!-- ரிசல்ட்டுகள் இங்கே வரும் -->
+                </div>
+            </div>
         </div>
     </main>
 
@@ -138,7 +166,7 @@
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Search & Menu Script with Temu Style Image Loading -->
+    <!-- Search & Menu Script -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -161,7 +189,6 @@
 
             const container = document.getElementById("posts-container");
 
-            // டெமு ஸ்டைல் வரிசை முறை பட லோடிங் (Sequential Temu Style Loading)
             function loadImagesSequentially(scopeElement) {
                 const images = scopeElement.querySelectorAll('.post-img');
                 if (images.length === 0) return;
@@ -215,7 +242,6 @@
             fetch("posts.json")
                 .then(response => response.json())
                 .then(posts => {
-                    // 1. கேட்டகரி மெனுவை உருவாக்குதல்
                     const dropdownContainer = document.getElementById("dynamic-categories");
                     if (dropdownContainer) {
                         dropdownContainer.innerHTML = "";
@@ -258,7 +284,6 @@
                         });
                     }
 
-                    // 2. தேடல் முடிவுகளை வடிகட்டுதல்
                     let filteredPosts = posts;
                     if (searchQuery) {
                         const queryLower = searchQuery.toLowerCase();
@@ -275,7 +300,6 @@
                         );
                     }
 
-                    // 3. முடிவுகளை ஸ்கிரீனில் காட்டுவது (Temu Style Image Loading உடன்)
                     if (container) {
                         container.innerHTML = "";
                         if (filteredPosts.length === 0) {
@@ -286,7 +310,7 @@
                         let html = "";
                         filteredPosts.forEach(post => {
                             html += `
-                                <div class="col-6 col-md-4 mb-3">
+                                <div class="col-6 col-md-3 mb-3">
                                     <div class="card post-card h-100 shadow-sm border-0" style="border-radius: 8px;">
                                         <div class="post-img-wrapper" style="height: 150px; background-color: #ffffff; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; border-top-left-radius: 8px; border-top-right-radius: 8px; padding: 6px;">
                                             <a href="${post.link}" class="w-100 h-100 d-flex align-items: center justify-content: center text-decoration-none">
@@ -303,8 +327,6 @@
                             `;
                         });
                         container.innerHTML = html;
-
-                        // ரிசல்ட் பக்கத்திலும் டெமு ஸ்டைல் லோடிங்கை இயக்குவது
                         loadImagesSequentially(container);
                     }
                 })
