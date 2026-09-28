@@ -73,13 +73,6 @@
         .related-card:hover {
             transform: translateY(-4px);
         }
-
-        /* Mobile View Adjustments for Fluid Responsiveness */
-        @media (max-width: 768px) {
-            .navbar-custom .container { padding-left: 15px; padding-right: 15px; }
-            #content-slot { padding: 20px !important; }
-            .related-card img { height: 80px !important; }
-        }
     </style>
 
 <script src="scripts.js" async></script>
@@ -94,7 +87,7 @@
                 <img src="image/favicon.png" alt="Logo" style="width: 38px; height: 38px; object-fit: contain; margin-right: 8px;">
                 <span>Quick <span style="color: #fbc531;">Bird</span></span>
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar" aria-controls="topNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#topNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="topNavbar">
@@ -113,19 +106,6 @@
             <div class="col-lg-9">
                 <div id="content-slot" class="bg-white p-4 p-md-5 rounded shadow-sm">
                     <!-- Article Content -->
-                </div>
-
-                <!-- AdSense In-Article Ad Slot -->
-                <div class="my-4 text-center">
-                    <ins class="adsbygoogle"
-                         style="display:block; text-align:center;"
-                         data-ad-layout="in-article"
-                         data-ad-format="fluid"
-                         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                         data-ad-slot="YYYYYYYYYY"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
                 </div>
 
                 <!-- Related Posts Section -->
