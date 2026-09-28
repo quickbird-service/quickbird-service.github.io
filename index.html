@@ -139,7 +139,30 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.03);
             margin-bottom: 20px;
         }
-        
+
+
+      @media (min-width: 992px) {
+    main .row {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    main .col-lg-8 {
+        flex: 0 0 66.666667%;
+        max-width: 66.666667%;
+    }
+    main .col-lg-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+}
+
+
+
+
+
+
+
+      
         /* Footer */
         footer { background-color: #1a252f; color: #a4b0be; padding: 40px 0 20px; }
         footer a { color: #a4b0be; text-decoration: none; }
