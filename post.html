@@ -108,19 +108,19 @@
                     <!-- Article Content -->
                 </div>
 
-                <!-- Related Posts Section (Sub-category based - 4 என்றில்லாமல் அனைத்துப் போஸ்ட்களும் காட்டப்படும்) -->
+                <!-- Related Posts Section -->
                 <div id="related-posts-section" class="mt-5" style="display: none;">
                     <h4 class="fw-bold text-dark mb-3 border-start border-4 border-warning ps-3">Related Posts</h4>
                     <div class="row g-3" id="related-posts-container"></div>
                 </div>
 
-                <!-- More in Main Category Section (அனைத்துப் போஸ்ட்களும் காட்டப்படும்) -->
+                <!-- More in Main Category Section -->
                 <div id="category-posts-section" class="mt-5" style="display: none;">
                     <h4 class="fw-bold text-dark mb-3 border-start border-4 border-warning ps-3" id="category-section-title">More in Category</h4>
                     <div class="row g-3" id="category-posts-container"></div>
                 </div>
 
-                <!-- அஃபிலியேட் டிஸ்க்ளைமர் (படங்கள் லோட் ஆன பிறகு தோன்றும்) -->
+                <!-- அஃபிலியேட் டிஸ்க்ளைமர் -->
                 <div id="affiliate-disclaimer" class="alert alert-secondary small text-muted mt-4 p-3 rounded border text-center" style="display: none;">
                     <i class="fa-solid fa-circle-info me-1 text-warning"></i> 
                     <strong>Disclaimer:</strong> This site contains affiliate links. If you make a purchase through these links, we may earn a small commission at no extra cost to you.
@@ -139,7 +139,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- ஸ்கிரிப்ட்: ரிலேட்டட் மற்றும் கேட்டகிரி போஸ்ட்கள் முழுமையாக வர & படங்கள் லோட் ஆன பின் டிஸ்களைமர் வர -->
+    <!-- ஸ்கிரிப்ட்: படங்கள் அனைத்தும் லோகோ பிளேஸ்ஹோல்டருடன் சீராக லோட் ஆக -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const params = new URLSearchParams(window.location.search);
@@ -156,13 +156,12 @@
                 .then(data => {
                     contentSlot.innerHTML = data;
 
-                    // Fetch posts.json to load Related & Category posts for this article
+                    // Fetch posts.json to load Related & Category posts
                     fetch('posts.json')
                         .then(res => res.json())
                         .then(posts => {
                             const currentPost = posts.find(p => p.id === articleId || p.link.includes(articleId));
                             if (currentPost) {
-                                // Update Page Title if available
                                 if (currentPost.title) {
                                     document.getElementById('page-title').innerText = currentPost.title + " - Quick Bird";
                                 }
@@ -170,7 +169,7 @@
                                 const subCat = currentPost.subcategory;
                                 const mainCat = currentPost.category;
 
-                                // 1. Sub-category Related Posts (limit இல்லாமல் அனைத்துப் போஸ்ட்களும் வரும்படி மாற்றப்பட்டுள்ளது)
+                                // 1. Sub-category Related Posts
                                 const relatedContainer = document.getElementById('related-posts-container');
                                 const relatedSection = document.getElementById('related-posts-section');
                                 const relatedItems = posts.filter(p => p.subcategory === subCat && p.id !== currentPost.id);
@@ -182,7 +181,7 @@
                                             <div class="col-6 col-md-3">
                                                 <div class="related-card p-2 h-100 d-flex flex-column justify-content-between">
                                                     <a href="post.html?id=${p.id}" class="text-decoration-none">
-                                                        <img src="${p.image}" class="w-100 rounded mb-2" style="height: 100px; object-fit: contain;" alt="${p.title}">
+                                                        <img src="image/favicon.png" data-original-src="${p.image}" class="w-100 rounded mb-2 delayed-grid-img" style="height: 100px; object-fit: contain; opacity: 0.4;" alt="${p.title}">
                                                         <h6 class="text-dark small fw-bold text-truncate" title="${p.title}">${p.title}</h6>
                                                     </a>
                                                 </div>
@@ -193,7 +192,7 @@
                                     relatedSection.style.display = 'block';
                                 }
 
-                                // 2. Main Category Posts (limit இல்லாமல் அனைத்துப் போஸ்ட்களும் வரும்படி மாற்றப்பட்டுள்ளது)
+                                // 2. Main Category Posts
                                 const catContainer = document.getElementById('category-posts-container');
                                 const catSection = document.getElementById('category-posts-section');
                                 document.getElementById('category-section-title').innerText = `More in ${mainCat || 'Category'}`;
@@ -206,7 +205,7 @@
                                             <div class="col-6 col-md-3">
                                                 <div class="related-card p-2 h-100 d-flex flex-column justify-content-between">
                                                     <a href="post.html?id=${p.id}" class="text-decoration-none">
-                                                        <img src="${p.image}" class="w-100 rounded mb-2" style="height: 100px; object-fit: contain;" alt="${p.title}">
+                                                        <img src="image/favicon.png" data-original-src="${p.image}" class="w-100 rounded mb-2 delayed-grid-img" style="height: 100px; object-fit: contain; opacity: 0.4;" alt="${p.title}">
                                                         <h6 class="text-dark small fw-bold text-truncate" title="${p.title}">${p.title}</h6>
                                                     </a>
                                                 </div>
@@ -216,64 +215,31 @@
                                     catContainer.innerHTML = html;
                                     catSection.style.display = 'block';
                                 }
+
+                                // ரிலேட்டட் மற்றும் கேட்டகிரி கார்டுகளில் உள்ள படங்களையும் வரிசையாக லோட் செய்யத் தொடங்குதல்
+                                loadGridImages();
                             }
                         })
                         .catch(err => console.log('Error loading posts data for relations:', err));
 
+                    // பிரதான ஆர்டிகல் படங்களை தயார் செய்தல்
                     const articleImages = contentSlot.querySelectorAll('img');
                     
-                    // படங்கள் இல்லையென்றால் உடனே டிஸ்களைமரைக் காட்டுவது
                     if (articleImages.length === 0) {
-                        if (disclaimerBox) disclaimerBox.style.display = 'block';
-                        return;
-                    }
-
-                    articleImages.forEach(img => {
-                        img.setAttribute('data-original-src', img.src);
-                        img.src = "image/favicon.png";
-                        img.style.width = "50px";
-                        img.style.height = "50px";
-                        img.style.objectFit = "contain";
-                        img.style.opacity = "0.4";
-                        img.style.display = "block";
-                        img.style.margin = "20px auto";
-                    });
-
-                    let currentIndex = 0;
-
-                    function loadNextImage() {
-                        if (currentIndex >= articleImages.length) {
-                            // அனைத்துப் படங்களும் லோட் ஆன பின் டிஸ்களைமர் பாக்ஸ் வெளிப்படும்
-                            if (disclaimerBox) disclaimerBox.style.display = 'block';
-                            return;
-                        }
-
-                        const img = articleImages[currentIndex];
-                        const originalSrc = img.getAttribute('data-original-src');
-
-                        const tempImg = new Image();
-                        tempImg.src = originalSrc;
-
-                        tempImg.onload = function() {
-                            img.src = originalSrc;
-                            img.style.width = "100%";
-                            img.style.height = "auto";
-                            img.style.maxHeight = "450px";
+                        checkAllContentLoaded();
+                    } else {
+                        articleImages.forEach(img => {
+                            img.setAttribute('data-original-src', img.src);
+                            img.src = "image/favicon.png";
+                            img.style.width = "50px";
+                            img.style.height = "50px";
                             img.style.objectFit = "contain";
-                            img.style.opacity = "1";
-                            img.style.margin = "0 auto";
-
-                            currentIndex++;
-                            loadNextImage();
-                        };
-
-                        tempImg.onerror = function() {
-                            currentIndex++;
-                            loadNextImage();
-                        };
+                            img.style.opacity = "0.4";
+                            img.style.display = "block";
+                            img.style.margin = "20px auto";
+                        });
+                        loadArticleImages(articleImages);
                     }
-
-                    loadNextImage();
                 })
                 .catch(error => {
                     contentSlot.innerHTML = `
@@ -283,6 +249,93 @@
                             <a href="index.html" class="btn btn-primary mt-3">Back to Home</a>
                         </div>`;
                 });
+
+            let articleImagesLoaded = false;
+            let gridImagesLoaded = false;
+
+            function checkAllContentLoaded() {
+                if (articleImagesLoaded && gridImagesLoaded) {
+                    if (disclaimerBox) disclaimerBox.style.display = 'block';
+                }
+            }
+
+            // ஆர்டிகல் படங்களை வரிசையாக லோட் செய்யும் ஃபங்ஷன்
+            function loadArticleImages(images) {
+                let currentIndex = 0;
+
+                function loadNext() {
+                    if (currentIndex >= images.length) {
+                        articleImagesLoaded = true;
+                        checkAllContentLoaded();
+                        return;
+                    }
+
+                    const img = images[currentIndex];
+                    const originalSrc = img.getAttribute('data-original-src');
+                    const tempImg = new Image();
+                    tempImg.src = originalSrc;
+
+                    tempImg.onload = function() {
+                        img.src = originalSrc;
+                        img.style.width = "100%";
+                        img.style.height = "auto";
+                        img.style.maxHeight = "450px";
+                        img.style.objectFit = "contain";
+                        img.style.opacity = "1";
+                        img.style.margin = "0 auto";
+
+                        currentIndex++;
+                        loadNext();
+                    };
+
+                    tempImg.onerror = function() {
+                        currentIndex++;
+                        loadNext();
+                    };
+                }
+
+                loadNext();
+            }
+
+            // கீழே உள்ள ரிலேட்டட்/கேட்டகிரி கார்டு படங்களை வரிசையாக லோட் செய்யும் ஃபங்ஷன்
+            function loadGridImages() {
+                const gridImages = document.querySelectorAll('.delayed-grid-img');
+                if (gridImages.length === 0) {
+                    gridImagesLoaded = true;
+                    checkAllContentLoaded();
+                    return;
+                }
+
+                let currentGridIndex = 0;
+
+                function loadNextGrid() {
+                    if (currentGridIndex >= gridImages.length) {
+                        gridImagesLoaded = true;
+                        checkAllContentLoaded();
+                        return;
+                    }
+
+                    const img = gridImages[currentGridIndex];
+                    const originalSrc = img.getAttribute('data-original-src');
+                    const tempImg = new Image();
+                    tempImg.src = originalSrc;
+
+                    tempImg.onload = function() {
+                        img.src = originalSrc;
+                        img.style.opacity = "1";
+
+                        currentGridIndex++;
+                        loadNextGrid();
+                    };
+
+                    tempImg.onerror = function() {
+                        currentGridIndex++;
+                        loadNextGrid();
+                    };
+                }
+
+                loadNextGrid();
+            }
         });
     </script>
 </body>
