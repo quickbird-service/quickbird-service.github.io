@@ -1,12 +1,6 @@
-// Quick Bird - Centralized Global Scripts (Analytics, AdSense, Index Posts Rendering & Temu Style Sequential Image Loading)
+// Quick Bird - Search & General Global Scripts
 (function() {
-    // 2. Google AdSense Script 
-/*    var adsScript = document.createElement('script');
-    adsScript.async = true;
-    adsScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx";
-    adsScript.setAttribute("crossorigin", "anonymous");
-    document.head.appendChild(adsScript);
-*/
+    // Google AdSense Script 
 })();
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -14,11 +8,10 @@ document.addEventListener("DOMContentLoaded", function() {
     
     let allPosts = [];
     let currentIndex = 0;
-    const initialItemsPerPage = 12; // ஆரம்பத்தில் காட்ட வேண்டிய போஸ்ட்கள் (12)
-    const subsequentItemsPerPage = 12; // Load More பட்டனை அழுத்தும்போது காட்ட வேண்டிய போஸ்ட்கள் (12)
-    let isLoading = false;  // இரட்டை லோடிங்கைத் தவிர்க்க
+    const initialItemsPerPage = 12; 
+    const subsequentItemsPerPage = 12; 
+    let isLoading = false;  
 
-    // லோடிங் ஸ்பின்னர்
     function showLoader() {
         if (!container) return;
         if (document.getElementById("loading-spinner")) return;
@@ -40,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // டெமு ஸ்டைல் வரிசை முறை பட லோடிங்
     function loadImagesSequentially(scopeElement) {
         const images = scopeElement.querySelectorAll('.post-img');
         if (images.length === 0) return;
@@ -91,7 +83,6 @@ document.addEventListener("DOMContentLoaded", function() {
         loadNext();
     }
 
-    // Load More பட்டன் நிலையை நிர்வகிக்க
     function updateLoadMoreButton() {
         const loadMoreContainer = document.getElementById("load-more-container");
         if (!loadMoreContainer) return;
@@ -123,8 +114,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
             let batchHTML = "";
             postsToDisplay.forEach(post => {
+                // சைட் பார் இல்லாத முழு அகலப் பக்கத்திற்கு ஏற்றவாறு col-6 col-md-3 (4 columns on desktop) என மாற்றப்பட்டுள்ளது
                 batchHTML += `
-                    <div class="col-6 col-md-4 mb-3">
+                    <div class="col-6 col-md-3 mb-3">
                         <div class="card post-card h-100 shadow-sm border-0" style="border-radius: 8px;">
                             <div class="post-img-wrapper" style="height: 150px; background-color: #ffffff; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; border-top-left-radius: 8px; border-top-right-radius: 8px; padding: 6px;">
                                 <a href="post.html?id=${post.id}" class="w-100 h-100 d-flex align-items: center justify-content: center text-decoration-none">
@@ -151,7 +143,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }, 300);
     }
 
-    // posts.json கோப்பிலிருந்து டேட்டாவைப் பெறுதல்
     fetch("posts.json")
         .then(response => response.json())
         .then(posts => {
@@ -159,10 +150,9 @@ document.addEventListener("DOMContentLoaded", function() {
             
             if (container) {
                 container.innerHTML = ""; 
-                renderPosts(initialItemsPerPage); // ஆரம்பத்தில் 12 போஸ்ட்கள் லோட் ஆகும்
+                renderPosts(initialItemsPerPage); 
             }
 
-            // கேட்டகரி மெனு அமைப்பு
             const dropdownContainer = document.getElementById("dynamic-categories");
             if (dropdownContainer) {
                 dropdownContainer.innerHTML = ""; 
@@ -218,7 +208,6 @@ document.addEventListener("DOMContentLoaded", function() {
             hideLoader();
         });
 
-    // Load More பட்டன் கிளிக் ஈவென்ட் (ஒவ்வொரு முறையும் 12 போஸ்ட்கள் வரும்)
     const loadMoreBtn = document.getElementById("load-more-btn");
     if (loadMoreBtn) {
         loadMoreBtn.addEventListener("click", function() {
