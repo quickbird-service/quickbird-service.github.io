@@ -140,29 +140,22 @@
             margin-bottom: 20px;
         }
 
-
-      @media (min-width: 992px) {
-    main .row {
-        display: flex;
-        flex-wrap: nowrap;
-    }
-    main .col-lg-8 {
-        flex: 0 0 66.666667%;
-        max-width: 66.666667%;
-    }
-    main .col-lg-4 {
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
-    }
-}
-
-
-
-
-
-
-
-      
+        /* Force Sidebar to Right Side on Desktop Screens */
+        @media (min-width: 992px) {
+            .desktop-layout {
+                display: flex !important;
+                flex-wrap: nowrap !important;
+            }
+            .desktop-posts {
+                flex: 0 0 66.666667% !important;
+                max-width: 66.666667% !important;
+            }
+            .desktop-sidebar {
+                flex: 0 0 33.333333% !important;
+                max-width: 33.333333% !important;
+            }
+        }
+        
         /* Footer */
         footer { background-color: #1a252f; color: #a4b0be; padding: 40px 0 20px; }
         footer a { color: #a4b0be; text-decoration: none; }
@@ -253,9 +246,9 @@
 
     <!-- Main Content Grid with Left Posts & Right Sidebar -->
     <main class="container my-4">
-        <div class="row">
-            <!-- Left Side: Posts Area (col-lg-8) -->
-            <div class="col-lg-8 col-md-12">
+        <div class="row desktop-layout">
+            <!-- Left Side: Posts Area -->
+            <div class="col-lg-8 col-md-12 desktop-posts">
                 <div class="row mb-4">
                     <div class="col-12">
                         <h4 class="fw-bold border-start border-4 border-warning ps-3 text-dark">Latest Posts</h4>
@@ -275,8 +268,8 @@
                 </div>
             </div>
 
-            <!-- Right Side: Professional Sidebar & AdSense Slots (col-lg-4) -->
-            <div class="col-lg-4 col-md-12 mt-4 mt-lg-0">
+            <!-- Right Side: Professional Sidebar & AdSense Slots -->
+            <div class="col-lg-4 col-md-12 mt-4 mt-lg-0 desktop-sidebar">
                 <!-- Sidebar Ad Slot 1 -->
                 <div class="sidebar-widget">
                     <h6 class="fw-bold text-dark mb-3"><i class="fa fa-bullhorn text-warning me-1"></i> Sponsored Ads</h6>
