@@ -116,6 +116,29 @@
                 max-width: 350px;
             }
         }
+
+        /* AdSense & Sidebar Professional Styling */
+        .adsense-box {
+            background: #fff;
+            border: 1px dashed #dcdde1;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7f8c8d;
+            font-size: 0.85rem;
+        }
+        .sidebar-widget {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            margin-bottom: 20px;
+        }
         
         /* Footer */
         footer { background-color: #1a252f; color: #a4b0be; padding: 40px 0 20px; }
@@ -195,24 +218,69 @@
         </div>
     </nav>
 
-    <!-- Main Content Grid -->
-    <main class="container my-5">
-        <div class="row mb-4">
-            <div class="col-12">
-                <h4 class="fw-bold border-start border-4 border-warning ps-3 text-dark">Latest Posts</h4>
+    <!-- Header Banner Ad Slot (Between Nav and Posts) -->
+    <div class="container my-3">
+        <div class="adsense-box my-2 py-2" style="min-height: 90px;">
+            <!-- Google AdSense Header Banner Slot -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx" crossorigin="anonymous"></script>
+            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-xxxxxxxxxxxxxxxx" data-ad-slot="1234567890" data-ad-format="auto" data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div>
+    </div>
+
+    <!-- Main Content Grid with Left Posts & Right Sidebar -->
+    <main class="container my-4">
+        <div class="row">
+            <!-- Left Side: Posts Area -->
+            <div class="col-lg-8 col-md-12">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h4 class="fw-bold border-start border-4 border-warning ps-3 text-dark">Latest Posts</h4>
+                    </div>
+                </div>
+
+                <!-- Dynamic Posts Container -->
+                <div class="row g-4" id="posts-container">
+                    <!-- JavaScript மூலம் போஸ்ட்கள் இங்கே தானாக வரும் -->
+                </div>
+
+                <!-- Load More Button Container -->
+                <div class="text-center mt-5" id="load-more-container" style="display: none;">
+                    <button id="load-more-btn" class="btn btn-warning fw-bold px-4 py-2 shadow-sm" style="border-radius: 8px;">
+                        <i class="fa fa-arrow-down me-2"></i> Load More Posts
+                    </button>
+                </div>
             </div>
-        </div>
 
-        <!-- Dynamic Posts Container -->
-        <div class="row g-4" id="posts-container">
-            <!-- JavaScript மூலம் போஸ்ட்கள் இங்கே தானாக வரும் -->
-        </div>
+            <!-- Right Side: Professional Sidebar & AdSense Slots -->
+            <div class="col-lg-4 col-md-12 mt-4 mt-lg-0">
+                <!-- Sidebar Ad Slot 1 -->
+                <div class="sidebar-widget">
+                    <h6 class="fw-bold text-dark mb-3"><i class="fa fa-bullhorn text-warning me-1"></i> Sponsored Ads</h6>
+                    <div class="adsense-box mb-0" style="min-height: 280px;">
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx" crossorigin="anonymous"></script>
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-xxxxxxxxxxxxxxxx" data-ad-slot="0987654321" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                    </div>
+                </div>
 
-        <!-- Load More Button Container -->
-        <div class="text-center mt-5" id="load-more-container" style="display: none;">
-            <button id="load-more-btn" class="btn btn-warning fw-bold px-4 py-2 shadow-sm" style="border-radius: 8px;">
-                <i class="fa fa-arrow-down me-2"></i> Load More Posts
-            </button>
+                <!-- Sidebar Widget: Quick Links / Info -->
+                <div class="sidebar-widget">
+                    <h6 class="fw-bold text-dark mb-3"><i class="fa fa-shield-alt text-warning me-1"></i> Why Shop With Us?</h6>
+                    <p class="small text-muted mb-2"><i class="fa fa-check text-success me-1"></i> Verified and trusted product guides.</p>
+                    <p class="small text-muted mb-2"><i class="fa fa-check text-success me-1"></i> Unbiased price comparisons.</p>
+                    <p class="small text-muted mb-0"><i class="fa fa-check text-success me-1"></i> Daily updated tech reviews.</p>
+                </div>
+
+                <!-- Sidebar Ad Slot 2 -->
+                <div class="sidebar-widget">
+                    <div class="adsense-box mb-0" style="min-height: 280px;">
+                        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxxxxx" crossorigin="anonymous"></script>
+                        <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-xxxxxxxxxxxxxxxx" data-ad-slot="1122334455" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                        <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
