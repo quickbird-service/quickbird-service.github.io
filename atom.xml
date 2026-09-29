@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Quick Bird</title>
+    <subtitle>Smart Product Reviews &amp; Guides</subtitle>
+    <link href="https://quickbird-service.github.io/" rel="self"/>
+    <link href="https://quickbird-service.github.io/"/>
+    <updated>2026-09-29T12:00:00Z</updated>
+    <id>https://quickbird-service.github.io/</id>
+
+    <!-- பிரதான மற்றும் பாலிசி பக்கங்கள் -->
+    <entry>
+        <title>Quick Bird - Home</title>
+        <link href="https://quickbird-service.github.io/"/>
+        <id>https://quickbird-service.github.io/</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>Home page of Quick Bird</summary>
+    </entry>
+    <entry>
+        <title>About Us</title>
+        <link href="https://quickbird-service.github.io/about.html"/>
+        <id>https://quickbird-service.github.io/about.html</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>About Us page</summary>
+    </entry>
+    <entry>
+        <title>Contact Us</title>
+        <link href="https://quickbird-service.github.io/contact.html"/>
+        <id>https://quickbird-service.github.io/contact.html</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>Contact Us page</summary>
+    </entry>
+    <entry>
+        <title>Privacy Policy</title>
+        <link href="https://quickbird-service.github.io/privacy.html"/>
+        <id>https://quickbird-service.github.io/privacy.html</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>Privacy Policy page</summary>
+    </entry>
+    <entry>
+        <title>Terms and Conditions</title>
+        <link href="https://quickbird-service.github.io/terms.html"/>
+        <id>https://quickbird-service.github.io/terms.html</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>Terms and Conditions page</summary>
+    </entry>
+    <entry>
+        <title>Disclaimer</title>
+        <link href="https://quickbird-service.github.io/disclaimer.html"/>
+        <id>https://quickbird-service.github.io/disclaimer.html</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>Disclaimer page</summary>
+    </entry>
+    <entry>
+        <title>Search</title>
+        <link href="https://quickbird-service.github.io/search.html"/>
+        <id>https://quickbird-service.github.io/search.html</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>Search page</summary>
+    </entry>
+
+    <!-- posts.json-ல் உள்ள போஸ்ட்கள் -->
+    <entry>
+        <title>UPERFECT UTouch E6 Pro Portable Gaming Monitor</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/UPERFECT-UTouch-E6-Pro-Portable-Gaming"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/UPERFECT-UTouch-E6-Pro-Portable-Gaming</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>UPERFECT UTouch E6 Pro Portable Gaming Monitor Review</summary>
+    </entry>
+    <entry>
+        <title>HiBREW H17 4 in 1 Capsule Coffee Maker</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/HiBREW-H17-4-in-1-Capsule-Coffee-Maker"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/HiBREW-H17-4-in-1-Capsule-Coffee-Maker</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>HiBREW H17 4 in 1 Capsule Coffee Maker Review</summary>
+    </entry>
+    <entry>
+        <title>Teendow D10S MAX 2 in 1 Robot Vacuum Cleaner</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/Teendow-D10S-MAX-2-in-1-Robot-Vacuum-Cleaner"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/Teendow-D10S-MAX-2-in-1-Robot-Vacuum-Cleaner</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>Teendow D10S MAX 2 in 1 Robot Vacuum Cleaner Review</summary>
+    </entry>
+    <entry>
+        <title>KTC H27E8 27 inch Gaming Monitor</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/KTC-H27E8-27-inch-Gaming-Monitor"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/KTC-H27E8-27-inch-Gaming-Monitor</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>KTC H27E8 27 inch Gaming Monitor Review</summary>
+    </entry>
+    <entry>
+        <title>HiBREW H4A 80W Portable Car Coffee Machine</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/HiBREW-H4A-80W-Portable-Car-Coffee-Machine"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/HiBREW-H4A-80W-Portable-Car-Coffee-Machine</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>HiBREW H4A 80W Portable Car Coffee Machine Review</summary>
+    </entry>
+    <entry>
+        <title>WINNER Classic Skeleton Watch</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/WINNER-Classic-Skeleton-Watch"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/WINNER-Classic-Skeleton-Watch</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>WINNER Classic Skeleton Watch Review</summary>
+    </entry>
+    <entry>
+        <title>HiBREW H10B 20Bar Espresso Coffee Machine</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/HiBREW-H10B-20Bar-Espresso-Coffee-Machine"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/HiBREW-H10B-20Bar-Espresso-Coffee-Machine</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>HiBREW H10B 20Bar Espresso Coffee Machine Review</summary>
+    </entry>
+    <entry>
+        <title>KTC H32S17F 32 Curved Gaming Monitor</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/KTC-H32S17F-32--Curved-Gaming-Monitor"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/KTC-H32S17F-32--Curved-Gaming-Monitor</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>KTC H32S17F 32 Curved Gaming Monitor Review</summary>
+    </entry>
+    <entry>
+        <title>HiBREW H10A Semi Automatic Espresso Coffee Machine</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/HiBREW-H10A-Semi-Automatic-Espresso-Coffee-Machine"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/HiBREW-H10A-Semi-Automatic-Espresso-Coffee-Machine</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>HiBREW H10A Semi Automatic Espresso Coffee Machine Review</summary>
+    </entry>
+    <entry>
+        <title>nubia Z60 Ultra</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/nubia-Z60-Ultra"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/nubia-Z60-Ultra</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>nubia Z60 Ultra Review</summary>
+    </entry>
+    <entry>
+        <title>liectroux c30b robot vacuum cleaner</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/liectroux-c30b-robot-vacuum-cleaner"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/liectroux-c30b-robot-vacuum-cleaner</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>liectroux c30b robot vacuum cleaner Review</summary>
+    </entry>
+    <entry>
+        <title>nubia Pad Pro</title>
+        <link href="https://quickbird-service.github.io/post.html?id=nubia-Pad-Pro"/>
+        <id>https://quickbird-service.github.io/post.html?id=nubia-Pad-Pro</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>nubia Pad Pro Review</summary>
+    </entry>
+    <entry>
+        <title>Touroll B1 Electric City Bike</title>
+        <link href="https://quickbird-service.github.io/post.html?id=Touroll-B1-Electric-City-Bike"/>
+        <id>https://quickbird-service.github.io/post.html?id=Touroll-B1-Electric-City-Bike</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>Touroll B1 Electric City Bike Review</summary>
+    </entry>
+    <entry>
+        <title>nubia Z80 Ultra</title>
+        <link href="https://quickbird-service.github.io/post.html?id=nubia-Z80-Ultra"/>
+        <id>https://quickbird-service.github.io/post.html?id=nubia-Z80-Ultra</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>nubia Z80 Ultra Review</summary>
+    </entry>
+    <entry>
+        <title>EKXBIKE X21 Max Electric Bike</title>
+        <link href="https://quickbird-service.github.io/post.html?id=EKXBIKE-X21-Max-Electric-Bike"/>
+        <id>https://quickbird-service.github.io/post.html?id=EKXBIKE-X21-Max-Electric-Bike</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>EKXBIKE X21 Max Electric Bike Review</summary>
+    </entry>
+    <entry>
+        <title>RANDRIDE YG90B Electric Bike</title>
+        <link href="https://quickbird-service.github.io/post.html?id=RANDRIDE-YG90B-Electric-Bike"/>
+        <id>https://quickbird-service.github.io/post.html?id=RANDRIDE-YG90B-Electric-Bike</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>RANDRIDE YG90B Electric Bike Review</summary>
+    </entry>
+    <entry>
+        <title>REDMAGIC Astra 2 Gaming Tablet</title>
+        <link href="https://quickbird-service.github.io/post.html?id=redmagic-astra2-gaming-tablet"/>
+        <id>https://quickbird-service.github.io/post.html?id=redmagic-astra2-gaming-tablet</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>REDMAGIC Astra 2 Gaming Tablet Review</summary>
+    </entry>
+    <entry>
+        <title>Apple iPhone 12 Pro / 12 Pro max 5G</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/apple-iphone-12-pro-max-mobile"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/apple-iphone-12-pro-max-mobile</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>Apple iPhone 12 Pro / 12 Pro max 5G Review</summary>
+    </entry>
+    <entry>
+        <title>Samsung Galaxy A71 5G Smart Android Phone</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/samsung-galaxy-a71-5g-mobile"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/samsung-galaxy-a71-5g-mobile</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>Samsung Galaxy A71 5G Smart Android Phone Review</summary>
+    </entry>
+    <entry>
+        <title>YTYIN V20 Fat Tire Electric Bike For Adults</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/ytyin-v20-electric-bike-sale"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/ytyin-v20-electric-bike-sale</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>YTYIN V20 Fat Tire Electric Bike Review</summary>
+    </entry>
+    <entry>
+        <title>OLEVS Men's Watches Skeketon Flywheel Automatic Mechanical</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/OLEVS-Men-Watches-Skeketon-Flywheel-Automatic-Mechanical"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/OLEVS-Men-Watches-Skeketon-Flywheel-Automatic-Mechanical</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>OLEVS Men's Watches Skeketon Flywheel Review</summary>
+    </entry>
+    <entry>
+        <title>POEDAGAR Fashion Man Watch Waterproof Luminous</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/poedagar-fashion-man-classic-watch"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/poedagar-fashion-man-classic-watch</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>POEDAGAR Fashion Man Watch Review</summary>
+    </entry>
+    <entry>
+        <title>OLEVS 5513 Brand Exclusive Man Quartz Watch</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/OLEVS-5513-Brand-Exclusive-Man-Quartz-Watch"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/OLEVS-5513-Brand-Exclusive-Man-Quartz-Watch</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>OLEVS 5513 Brand Exclusive Man Quartz Watch Review</summary>
+    </entry>
+    <entry>
+        <title>ADDIESDIVE Men's Classic Watch with Ceramic Bezel</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/ADDIESDIVE-Men-Classic-Watch-with-Ceramic-Bezel"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/ADDIESDIVE-Men-Classic-Watch-with-Ceramic-Bezel</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>ADDIESDIVE Men's Classic Watch Review</summary>
+    </entry>
+    <entry>
+        <title>HAYLOU Watch Faro Voice Calling Smart Watch</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/HAYLOU-Watch-Faro-Voice-Calling-Smart-Watch"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/HAYLOU-Watch-Faro-Voice-Calling-Smart-Watch</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>HAYLOU Watch Faro Voice Calling Smart Watch Review</summary>
+    </entry>
+    <entry>
+        <title>Samsung Galaxy S22 Ultra 5G Refurbished Smartphone</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/Samsung-Galaxy-S22-Ultra-5G-Refurbished-Smartphone"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/Samsung-Galaxy-S22-Ultra-5G-Refurbished-Smartphone</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>Samsung Galaxy S22 Ultra 5G Refurbished Smartphone Review</summary>
+    </entry>
+    <entry>
+        <title>PAGANI DESIGN PD-1662 Luxury GMT Men Mechanical Wristwatch</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/PAGANI-DESIGN-PD-1662-Luxury-GMT-Men-Mechanical-Wristwatch"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/PAGANI-DESIGN-PD-1662-Luxury-GMT-Men-Mechanical-Wristwatch</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>PAGANI DESIGN PD-1662 Luxury GMT Wristwatch Review</summary>
+    </entry>
+    <entry>
+        <title>Samsung Galaxy S21FE 5G intelligent</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/samsung-galaxy-s21fe-mobile"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/samsung-galaxy-s21fe-mobile</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>Samsung Galaxy S21FE 5G intelligent Review</summary>
+    </entry>
+    <entry>
+        <title>OLEVS 6607 Fully Automaitc Watches Stainless</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/OLEVS-6607-Fully-Automaitc-Watches-Stainless"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/OLEVS-6607-Fully-Automaitc-Watches-Stainless</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>OLEVS 6607 Fully Automaitc Watches Stainless Review</summary>
+    </entry>
+    <entry>
+        <title>Original IPhone 15 6.1 Super Retina</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/Original-IPhone-15-Super-Retina-XDR-OLED"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/Original-IPhone-15-Super-Retina-XDR-OLED</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>Original IPhone 15 6.1 Super Retina Review</summary>
+    </entry>
+    <entry>
+        <title>New iPhone 14 Pro Max Dual eSIM / 1SIM+ 1eSIM</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/New-iPhone-14-Pro-Max-Dual-eSIM"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/New-iPhone-14-Pro-Max-Dual-eSIM</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>New iPhone 14 Pro Max Dual eSIM Review</summary>
+    </entry>
+    <entry>
+        <title>WALUX Professional AC Hair Clipper</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/WALUX-Professional-AC-Hair-Clipper"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/WALUX-Professional-AC-Hair-Clipper</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>WALUX Professional AC Hair Clipper Review</summary>
+    </entry>
+    <entry>
+        <title>Robot Vacuum Cleaner ABIR X9</title>
+        <link href="https://quickbird-service.github.io/post.html?id=2026/oct/robot-vacuum-cleaner-abir"/>
+        <id>https://quickbird-service.github.io/post.html?id=2026/oct/robot-vacuum-cleaner-abir</id>
+        <updated>2026-09-29T12:00:00Z</updated>
+        <summary>Robot Vacuum Cleaner ABIR X9 Review</summary>
+    </entry>
+
+</feed>
