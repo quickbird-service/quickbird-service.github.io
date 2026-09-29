@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>Quick Bird</title>
     <subtitle>Smart Product Reviews &amp; Guides</subtitle>
-    <link href="https://quickbird-service.github.io/" rel="self"/>
+    <link href="https://quickbird-service.github.io/atom.xml" rel="self"/>
     <link href="https://quickbird-service.github.io/"/>
     <updated>2026-09-29T12:00:00Z</updated>
     <id>https://quickbird-service.github.io/</id>
