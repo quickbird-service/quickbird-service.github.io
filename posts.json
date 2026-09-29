@@ -1,6 +1,5 @@
 [
 
-
 {
     "id": "2026/oct/UPERFECT-UTouch-E6-Pro-Portable-Gaming",
     "title": "UPERFECT UTouch E6 Pro Portable Gaming Monitor",
@@ -210,6 +209,25 @@
     "image": "image/adwmain.jpg",
     "link": "post.html?id=2026/oct/ADDIESDIVE-Men-Classic-Watch-with-Ceramic-Bezel"
   },
+
+  {
+    "id": "2026/oct/HAYLOU-Watch-Faro-Voice-Calling-Smart-Watch",
+    "title": "HAYLOU Watch Faro Voice Calling Smart Watch",
+    "category": "Electronics",
+    "subcategory": "Smart Watches",
+    "image": "image/swmain.jpg",
+    "link": "post.html?id=2026/oct/HAYLOU-Watch-Faro-Voice-Calling-Smart-Watch"
+  },
+    
+{
+    "id": "2026/oct/Samsung-Galaxy-S22-Ultra-5G-Refurbished-Smartphone",
+    "title": "Samsung Galaxy S22 Ultra 5G Refurbished Smartphone",
+    "category": "Electronics",
+    "subcategory": "Mobiles",
+    "image": "image/sgs22main.jpg",
+    "link": "post.html?id=2026/oct/Samsung-Galaxy-S22-Ultra-5G-Refurbished-Smartphone"
+  },
+    
   {
     "id": "2026/oct/PAGANI-DESIGN-PD-1662-Luxury-GMT-Men-Mechanical-Wristwatch",
     "title": "PAGANI DESIGN PD-1662 Luxury GMT Men Mechanical Wristwatch",
@@ -242,22 +260,7 @@
     "image": "image/ip15main.jpg",
     "link": "post.html?id=2026/oct/Original-IPhone-15-Super-Retina-XDR-OLED"
   },
-  {
-    "id": "2026/oct/HAYLOU-Watch-Faro-Voice-Calling-Smart-Watch",
-    "title": "HAYLOU Watch Faro Voice Calling Smart Watch",
-    "category": "Electronics",
-    "subcategory": "Smart Watches",
-    "image": "image/swmain.jpg",
-    "link": "post.html?id=2026/oct/HAYLOU-Watch-Faro-Voice-Calling-Smart-Watch"
-  },
-  {
-    "id": "2026/oct/Samsung-Galaxy-S22-Ultra-5G-Refurbished-Smartphone",
-    "title": "Samsung Galaxy S22 Ultra 5G Refurbished Smartphone",
-    "category": "Electronics",
-    "subcategory": "Mobiles",
-    "image": "image/sgs22main.jpg",
-    "link": "post.html?id=2026/oct/Samsung-Galaxy-S22-Ultra-5G-Refurbished-Smartphone"
-  },
+
   {
     "id": "2026/oct/New-iPhone-14-Pro-Max-Dual-eSIM",
     "title": "New iPhone 14 Pro Max Dual eSIM / 1SIM+ 1eSIM",
