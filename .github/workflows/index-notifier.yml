@@ -1,0 +1,83 @@
+name: Auto Indexing
+
+on:
+  push:
+    branches:
+      - main  # அல்லது master (உங்கள் பிராஞ்ச் பெயர்)
+
+jobs:
+  run-indexing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2  # சமீபத்திய மாற்றங்களைக் கண்டறிய உதவும்
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: pip install oauth2client httplib2
+
+      - name: Run Auto Indexing Script
+        env:
+          GOOGLE_CREDENTIALS: ${{ secrets.GOOGLE_CREDENTIALS }}
+        run: |
+          python -c "
+          import os
+          import json
+          import subprocess
+          import httplib2
+          from oauth2client.service_account import ServiceAccountCredentials
+
+          # 1. GitHub Secret-ல் உள்ள credentials-ஐ தற்காலிக ஃபைலாக மாற்றுதல்
+          creds_json = os.environ['GOOGLE_CREDENTIALS']
+          with open('key.json', 'w') as f:
+              f.write(creds_json)
+
+          # 2. சமீபத்தில் மாற்றப்பட்ட அல்லது சேர்க்கப்பட்ட ஃபைல்களைக் கண்டறிதல்
+          try:
+              changed_files = subprocess.check_output(['git', 'diff', '--name-only', 'HEAD^', 'HEAD']).decode('utf-8').splitlines()
+          except Exception as e:
+              print('Git diff error, using base URL:', e)
+              changed_files = []
+
+          # 3. HTML ஃபைல்களை மட்டும் வடிகட்டுதல்
+          urls_to_index = set()
+          BASE_URL = 'https://quickbird-service.github.io'
+
+          for file in changed_files:
+              if file.endswith('.html') or file.endswith('.md'):
+                  # ஃபைல் பாதையை வெப்சைட் லிங்காக மாற்றுதல்
+                  if file == 'index.html' or file == 'index.md':
+                      url = BASE_URL + '/'
+                  else:
+                      clean_path = file.replace('.md', '.html')
+                      url = f'{BASE_URL}/{clean_path}'
+                  urls_to_index.add(url)
+
+          # எந்தக் குறிப்பிட்ட பக்கமும் மாற்றப்படவில்லை என்றால் முகப்புப் பக்கத்தை (Home page) அனுப்பும்
+          if not urls_to_index:
+              urls_to_index.add(BASE_URL + '/')
+
+          print('Files to index:', urls_to_index)
+
+          # 4. கூகுள் இன்டெக்சிங் API-க்கு அனுப்புதல்
+          SCOPES = ['https://www.googleapis.com/auth/indexing']
+          credentials = ServiceAccountCredentials.from_json_keyfile_name('key.json', scopes=SCOPES)
+          http = httplib2.Http()
+          http = credentials.authorize(http)
+          endpoint = 'https://indexing.googleapis.com/v3/urlNotifications:publish'
+          headers = {'Content-Type': 'application/json'}
+
+          for url in urls_to_index:
+              body = {
+                  'url': url,
+                  'type': 'URL_UPDATED'
+              }
+              response, content = http.request(endpoint, method='POST', headers=headers, body=str(body).replace(\"'\", '\"'))
+              print(f'Indexed {url} -> Response:', content.decode())
+          "
