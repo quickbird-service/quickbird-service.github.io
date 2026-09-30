@@ -2,6 +2,42 @@
 
 
 {
+    "id": "2026/oct/Ultra-Slim-Laptop-14.1",
+    "title": "New Ultra Slim Laptop 14.1 16GB RAM 2TB SSD Intel 4405U Gaming PC ",
+    "category": "Electronics",
+    "subcategory": "Laptops",
+    "image": "https://raw.githubusercontent.com/quickbird-service/image-1/refs/heads/main/Ultra-Slim-Laptop-14.1-1.jpg",
+    "link": "post.html?id=2026/oct/Ultra-Slim-Laptop-14.1"
+},
+
+{
+    "id": "2026/oct/XPPen-Artist-Pro-16",
+    "title": "XPPen Artist Pro 16 (Gen 2) Graphics Tablet",
+    "category": "Electronics",
+    "subcategory": "Tablets",
+    "image": "https://raw.githubusercontent.com/quickbird-service/image-1/refs/heads/main/XPPen-Artist-Pro-16-1.jpg",
+    "link": "post.html?id=2026/oct/XPPen-Artist-Pro-16"
+},
+
+{
+    "id": "2026/oct/Intel-Core-I9-9900",
+    "title": "New 14.1 Laptop Intel Core I9-9900 32GB 2TB Gaming PC",
+    "category": "Electronics",
+    "subcategory": "Laptops",
+    "image": "https://raw.githubusercontent.com/quickbird-service/image-1/refs/heads/main/Intel-Core-I9-9900-1.jpg",
+    "link": "post.html?id=2026/oct/Intel-Core-I9-9900"
+},
+
+{
+    "id": "2026/oct/Samsung-Galaxy-Note-20-Ultra",
+    "title": "Samsung Galaxy Note 20 Ultra 5G Refurbished Android Smartphone",
+    "category": "Electronics",
+    "subcategory": "Mobiles",
+    "image": "https://raw.githubusercontent.com/quickbird-service/image-1/refs/heads/main/Samsung-Galaxy-Note-20-Ultra-1.jpg",
+    "link": "post.html?id=2026/oct/Samsung-Galaxy-Note-20-Ultra"
+},    
+
+{
     "id": "2026/oct/Intel-Core-I9-9880H",
     "title": "New 15.6 Laptop Intel Core I9-9880H 32GB RAM 2TB SSD Ultra Slim Gaming Laptop",
     "category": "Electronics",
