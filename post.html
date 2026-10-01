@@ -128,18 +128,19 @@
             padding-left: 5px;
         }
 
-        /* Lightweight Rating & Share Bar Styling */
+        /* Professional Clean Rating & Share Bar Styling */
         .post-social-bar {
             display: flex;
             flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
-            background: #f8f9fa;
+            background: #ffffff;
             border: 1px solid #e9ecef;
             border-radius: 8px;
-            padding: 10px 15px;
+            padding: 12px 18px;
             margin-top: 25px;
             margin-bottom: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
         }
         .rating-box {
             display: flex;
@@ -157,28 +158,61 @@
         .rating-box .stars i:hover {
             color: #fbc531;
         }
-        .share-buttons {
-            display: flex;
-            gap: 8px;
+
+        /* Clean Dropdown Share Menu */
+        .share-dropdown {
+            position: relative;
+            display: inline-block;
         }
-        .share-btn {
-            background: #fff;
+        .share-main-btn {
+            background: #f1f2f6;
             border: 1px solid #ced6e0;
             color: #2f3640;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 0.85rem;
-            text-decoration: none;
+            gap: 6px;
             transition: all 0.2s;
         }
-        .share-btn:hover {
+        .share-main-btn:hover {
             background: #fbc531;
             border-color: #fbc531;
             color: #fff;
+        }
+        .share-menu-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            bottom: 110%;
+            background-color: #ffffff;
+            min-width: 160px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
+            z-index: 10;
+            overflow: hidden;
+            padding: 5px 0;
+        }
+        .share-menu-content a {
+            color: #2f3640;
+            padding: 8px 14px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            transition: background 0.2s;
+        }
+        .share-menu-content a:hover {
+            background-color: #f8f9fa;
+            color: #fbc531;
+        }
+        .share-dropdown.active .share-menu-content {
+            display: block;
         }
     </style>
 
@@ -225,7 +259,7 @@
                     <!-- Article Content -->
                 </div>
 
-                <!-- Lightweight Rating & Social Share Bar -->
+                <!-- Professional Clean Rating & Share Bar -->
                 <div class="post-social-bar">
                     <div class="rating-box" id="article-rating-container">
                         <span class="fw-bold">Rate:</span>
@@ -238,11 +272,18 @@
                         </div>
                         <span class="small text-muted" id="rating-stats">(<span id="avg-rating">0.0</span> / <span id="total-votes">0</span>)</span>
                     </div>
-                    <div class="share-buttons">
-                        <a href="#" id="share-whatsapp" class="share-btn" title="Share on WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" id="share-facebook" class="share-btn" title="Share on Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" id="share-twitter" class="share-btn" title="Share on Twitter" target="_blank"><i class="fab fa-x-twitter"></i></a>
-                        <a href="#" id="copy-link" class="share-btn" title="Copy Link"><i class="fa fa-link"></i></a>
+
+                    <!-- Clean Dropdown Share Menu (Icons hidden inside) -->
+                    <div class="share-dropdown" id="shareDropdown">
+                        <button class="share-main-btn" id="shareToggleBtn">
+                            <i class="fa fa-share-nodes"></i> Share
+                        </button>
+                        <div class="share-menu-content">
+                            <a href="#" id="share-whatsapp" target="_blank"><i class="fab fa-whatsapp text-success"></i> WhatsApp</a>
+                            <a href="#" id="share-facebook" target="_blank"><i class="fab fa-facebook-f text-primary"></i> Facebook</a>
+                            <a href="#" id="share-twitter" target="_blank"><i class="fab fa-x-twitter text-dark"></i> Twitter (X)</a>
+                            <a href="#" id="copy-link"><i class="fa fa-link text-secondary"></i> Copy Link</a>
+                        </div>
                     </div>
                 </div>
 
@@ -319,6 +360,19 @@
             const contentSlot = document.getElementById('content-slot');
             const disclaimerBox = document.getElementById('affiliate-disclaimer');
             
+            // Share Dropdown Toggle Logic
+            const shareDropdown = document.getElementById('shareDropdown');
+            const shareToggleBtn = document.getElementById('shareToggleBtn');
+
+            shareToggleBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                shareDropdown.classList.toggle('active');
+            });
+
+            document.addEventListener('click', function() {
+                shareDropdown.classList.remove('active');
+            });
+
             // Social Share URLs setup
             const currentUrl = window.location.href;
             document.getElementById('share-whatsapp').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(currentUrl)}`;
@@ -332,7 +386,7 @@
                 });
             });
 
-            // Lightweight LocalStorage Rating Handler (No server bloat, works smoothly on GitHub Pages)
+            // Lightweight LocalStorage Rating Handler
             const ratingKey = 'qb_rating_' + articleId;
             const totalVotesKey = 'qb_votes_' + articleId;
             const userVotedKey = 'qb_voted_' + articleId;
@@ -355,7 +409,6 @@
                         if (localStorage.getItem(userVotedKey)) return;
                         const val = parseInt(this.getAttribute('data-value'));
                         
-                        // Calculate new local aggregate rating
                         let newTotalVotes = currentTotalVotes + 1;
                         let newAvg = ((currentAvgRating * currentTotalVotes) + val) / newTotalVotes;
 
