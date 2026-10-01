@@ -40,24 +40,43 @@ jobs:
               print("Error: GOOGLE_CREDENTIALS secret not found.")
               exit(1)
 
-          creds_dict = json.loads(creds_json)
+          try:
+              creds_dict = json.loads(creds_json)
+          except Exception as e:
+              print(f"Error parsing GOOGLE_CREDENTIALS JSON: {e}")
+              exit(1)
+
           SCOPES = ["https://www.googleapis.com/auth/indexing"]
           credentials = ServiceAccountCredentials.from_json_keyfile_dict(creds_dict, SCOPES)
           service = build('indexing', 'v3', credentials=credentials)
 
-          # 2. Get modified HTML files from the latest push
-          result = subprocess.run(['git', 'diff', '--name-only', 'HEAD^', 'HEAD'], stdout=subprocess.PIPE, text=True)
-          changed_files = result.stdout.splitlines()
+          # 2. Get modified HTML files from the latest push safely
+          try:
+              result = subprocess.run(['git', 'diff', '--name-only', 'HEAD^', 'HEAD'], stdout=subprocess.PIPE, text=True, check=True)
+              changed_files = result.stdout.splitlines()
+          except Exception as e:
+              print(f"Warning: Could not run git diff (maybe first commit). Error: {e}")
+              changed_files = []
 
           base_domain = "https://quickbird-service.github.io"
 
+          # தவிர்க்கப்பட வேண்டிய பக்கங்களின் பட்டியல் (கோப்பின் பெயர்கள் மட்டும்)
+          excluded_files = ('index.html', 'post.html', 'search.html', 'privacy.html', 'about.html', 'contact.html', 'disclaimer.html', 'terms.html')
+
           for file in changed_files:
-              # Only process HTML files, skipping index.html or post.html itself if modified
-              if file.endswith('.html') and file != 'index.html' and file != 'post.html':
-                  # Remove .html extension from the file path
+              file = file.strip()
+              if not file:
+                  continue
+
+              # கோப்பின் பெயர் மட்டும் (உதாரணமாக: posts/test.html என்றால் test.html-ஐ மட்டும் பிரித்தெடுக்க)
+              file_name = os.path.basename(file)
+
+              # .html ஃபைலாக இருந்து, தவிர்க்கப்பட வேண்டிய பட்டியலில் இல்லாதவை மட்டும் இன்டெக்ஸ் ஆகும்
+              if file.endswith('.html') and file_name not in excluded_files:
+                  # .html நீக்கப்பட்டு மீதமுள்ள பாதையைப் பெறுதல் (எ.கா: posts/wall-punch-tamil)
                   path_without_ext = file[:-5]
                   
-                  # Construct URL in the format: /post.html?id=folder/path
+                  # Construct URL in the format: /post.html?id=path
                   target_url = f"{base_domain}/post.html?id={path_without_ext}"
                   
                   print(f"Submitting URL to Google: {target_url}")
