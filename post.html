@@ -127,6 +127,59 @@
             color: #fbc531;
             padding-left: 5px;
         }
+
+        /* Lightweight Rating & Share Bar Styling */
+        .post-social-bar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        .rating-box {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            color: #2f3640;
+        }
+        .rating-box .stars i {
+            cursor: pointer;
+            color: #dfe4ea;
+            transition: color 0.2s;
+        }
+        .rating-box .stars i.active,
+        .rating-box .stars i:hover {
+            color: #fbc531;
+        }
+        .share-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        .share-btn {
+            background: #fff;
+            border: 1px solid #ced6e0;
+            color: #2f3640;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .share-btn:hover {
+            background: #fbc531;
+            border-color: #fbc531;
+            color: #fff;
+        }
     </style>
 
 <script src="scripts.js" async></script>
@@ -170,6 +223,27 @@
             <div class="col-lg-8 col-12">
                 <div id="content-slot" class="bg-white p-4 p-md-5 rounded shadow-sm">
                     <!-- Article Content -->
+                </div>
+
+                <!-- Lightweight Rating & Social Share Bar -->
+                <div class="post-social-bar">
+                    <div class="rating-box" id="article-rating-container">
+                        <span class="fw-bold">Rate:</span>
+                        <div class="stars" id="star-rating-stars">
+                            <i class="fa fa-star" data-value="1"></i>
+                            <i class="fa fa-star" data-value="2"></i>
+                            <i class="fa fa-star" data-value="3"></i>
+                            <i class="fa fa-star" data-value="4"></i>
+                            <i class="fa fa-star" data-value="5"></i>
+                        </div>
+                        <span class="small text-muted" id="rating-stats">(<span id="avg-rating">0.0</span> / <span id="total-votes">0</span>)</span>
+                    </div>
+                    <div class="share-buttons">
+                        <a href="#" id="share-whatsapp" class="share-btn" title="Share on WhatsApp" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" id="share-facebook" class="share-btn" title="Share on Facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" id="share-twitter" class="share-btn" title="Share on Twitter" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" id="copy-link" class="share-btn" title="Copy Link"><i class="fa fa-link"></i></a>
+                    </div>
                 </div>
 
                 <!-- In-Article Ad Slot -->
@@ -245,6 +319,59 @@
             const contentSlot = document.getElementById('content-slot');
             const disclaimerBox = document.getElementById('affiliate-disclaimer');
             
+            // Social Share URLs setup
+            const currentUrl = window.location.href;
+            document.getElementById('share-whatsapp').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(currentUrl)}`;
+            document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
+            document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?url=${encodeURIComponent(currentUrl)}`;
+            
+            document.getElementById('copy-link').addEventListener('click', function(e) {
+                e.preventDefault();
+                navigator.clipboard.writeText(currentUrl).then(() => {
+                    alert('Link copied to clipboard!');
+                });
+            });
+
+            // Lightweight LocalStorage Rating Handler (No server bloat, works smoothly on GitHub Pages)
+            const ratingKey = 'qb_rating_' + articleId;
+            const totalVotesKey = 'qb_votes_' + articleId;
+            const userVotedKey = 'qb_voted_' + articleId;
+
+            let currentTotalVotes = parseInt(localStorage.getItem(totalVotesKey)) || 12;
+            let currentAvgRating = parseFloat(localStorage.getItem(ratingKey)) || 4.5;
+
+            function updateRatingDisplay(avg, votes) {
+                document.getElementById('avg-rating').innerText = avg.toFixed(1);
+                document.getElementById('total-votes').innerText = votes;
+            }
+            updateRatingDisplay(currentAvgRating, currentTotalVotes);
+
+            const stars = document.querySelectorAll('#star-rating-stars i');
+            if (localStorage.getItem(userVotedKey)) {
+                stars.forEach(s => s.style.cursor = 'default');
+            } else {
+                stars.forEach(star => {
+                    star.addEventListener('click', function() {
+                        if (localStorage.getItem(userVotedKey)) return;
+                        const val = parseInt(this.getAttribute('data-value'));
+                        
+                        // Calculate new local aggregate rating
+                        let newTotalVotes = currentTotalVotes + 1;
+                        let newAvg = ((currentAvgRating * currentTotalVotes) + val) / newTotalVotes;
+
+                        localStorage.setItem(totalVotesKey, newTotalVotes);
+                        localStorage.setItem(ratingKey, newAvg);
+                        localStorage.setItem(userVotedKey, 'true');
+
+                        currentTotalVotes = newTotalVotes;
+                        currentAvgRating = newAvg;
+                        updateRatingDisplay(currentAvgRating, currentTotalVotes);
+                        stars.forEach(s => s.style.cursor = 'default');
+                        alert('Thank you for rating!');
+                    });
+                });
+            }
+
             fetch(`${articleId}.html`)
                 .then(response => {
                     if (!response.ok) throw new Error('Article not found');
