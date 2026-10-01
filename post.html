@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -372,7 +373,7 @@
                 shareDropdown.classList.remove('active');
             });
 
-            // Social Share URLs setup
+            // Social Share URLs setup (Default fallback)
             const currentUrl = window.location.href;
             document.getElementById('share-whatsapp').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(currentUrl)}`;
             document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
@@ -478,6 +479,10 @@
                                     if (ogImage) {
                                         let fullImgUrl = currentPost.image.startsWith('http') ? currentPost.image : window.location.origin + '/' + currentPost.image;
                                         ogImage.setAttribute('content', fullImgUrl);
+                                        
+                                        // முகநூல் மற்றும் வாட்ஸ்அப் ஷேர் பட்டன்களில் ஒரிஜினல் தலைப்பு மற்றும் பட இணைப்பைச் சேர்த்தல் (முகநூல் கிராவ்லர் படிப்பதற்காக)
+                                        document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}&quote=${encodeURIComponent(currentPost.title)}`;
+                                        document.getElementById('share-whatsapp').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(currentPost.title + " - " + currentUrl)}`;
                                     }
                                 }
 
