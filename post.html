@@ -4,8 +4,6 @@
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2509351361604460"
      crossorigin="anonymous"></script>
-
-
   
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JEQ5HH2WB9"></script>
@@ -25,14 +23,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Quick Bird - Article Details</title>
     
-    <!-- SEO & Social Meta Tags -->
+    <!-- SEO & Social Meta Tags (Dynamic replacement friendly) -->
     <meta name="description" content="Read detailed product reviews, guides, and tech articles on Quick Bird.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://quickbird-service.github.io/post.html">
     
-    <meta property="og:title" content="Quick Bird - Article Details">
+    <meta property="og:title" id="og-title-meta" content="Quick Bird - Article Details">
     <meta property="og:description" content="Read detailed product reviews, guides, and tech articles on Quick Bird.">
-    <meta property="og:url" content="https://quickbird-service.github.io/post.html">
+    <meta property="og:image" id="og-image-meta" content="https://quickbird-service.github.io/image/favicon.png">
+    <meta property="og:url" id="og-url-meta" content="https://quickbird-service.github.io/post.html">
     <meta property="og:type" content="article">
 
     <!-- Bootstrap 5 CSS -->
@@ -273,7 +272,7 @@
                         <span class="small text-muted" id="rating-stats">(<span id="avg-rating">0.0</span> / <span id="total-votes">0</span>)</span>
                     </div>
 
-                    <!-- Clean Dropdown Share Menu (Icons hidden inside) -->
+                    <!-- Clean Dropdown Share Menu -->
                     <div class="share-dropdown" id="shareDropdown">
                         <button class="share-main-btn" id="shareToggleBtn">
                             <i class="fa fa-share-nodes"></i> Share
@@ -467,6 +466,19 @@
                             if (currentPost) {
                                 if (currentPost.title) {
                                     document.getElementById('page-title').innerText = currentPost.title + " - Quick Bird";
+                                    
+                                    // Social share title dynamic update
+                                    let ogTitle = document.getElementById('og-title-meta');
+                                    if (ogTitle) ogTitle.setAttribute('content', currentPost.title + " - Quick Bird");
+                                }
+
+                                // Social share product/article image dynamic update
+                                if (currentPost.image) {
+                                    let ogImage = document.getElementById('og-image-meta');
+                                    if (ogImage) {
+                                        let fullImgUrl = currentPost.image.startsWith('http') ? currentPost.image : window.location.origin + '/' + currentPost.image;
+                                        ogImage.setAttribute('content', fullImgUrl);
+                                    }
                                 }
 
                                 const subCat = currentPost.subcategory;
