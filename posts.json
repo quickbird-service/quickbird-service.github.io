@@ -1,5 +1,58 @@
 [
+{
+    "id": "2026/oct/nubia-z70s-ultra",
+    "title": "nubia Z70S Ultra",
+    "category": "Electronics",
+    "subcategory": "Mobiles",
+    "image": "https://raw.githubusercontent.com/quickbird-service/image-1/refs/heads/main/nubia-z70s-ultra-1.jpg",
+    "link": "post.html?id=2026/oct/nubia-z70s-ultra"
+},
 
+{
+    "id": "2026/oct/Teendow-D20S-MAX-2in1-Robot-Vacuum-Cleaner",
+    "title": "Teendow D20S MAX+ 2in1 Robot Vacuum Cleaner & Pet Grooming Tool",
+    "category": "Home and Garden",
+    "subcategory": "Robotics",
+    "image": "https://raw.githubusercontent.com/quickbird-service/image-1/refs/heads/main/Teendow-D20S-MAX-2in1-Robot-Vacuum-Cleaner-1.jpg",
+    "link": "post.html?id=2026/oct/Teendow-D20S-MAX-2in1-Robot-Vacuum-Cleaner"
+},
+
+{
+    "id": "2026/oct/HiBREW-H13A-3-in-1-20Bar-Semi-Automatic-Coffee",
+    "title": "HiBREW H13A 3 in 1 Semi Automatic Coffee Machine, 6 Coffee Modes",
+    "category": "Home and Garden",
+    "subcategory": "Kitchen Appliances",
+    "image": "https://raw.githubusercontent.com/quickbird-service/image-1/refs/heads/main/HiBREW-H13A-3-in-1-20Bar-Semi-Automatic-Coffee-1.jpg",
+    "link": "post.html?id=2026/oct/HiBREW-H13A-3-in-1-20Bar-Semi-Automatic-Coffee"
+},
+
+{
+    "id": "2026/oct/Halo-Knight-H02-Electric-Bike",
+    "title": "Halo Knight H02 Electric Bike, 750W Brushless Motor, 48V 16Ah Battery",
+    "category": "Vehicles",
+    "subcategory": "Electric Bikes",
+    "image": "https://raw.githubusercontent.com/quickbird-service/image-1/refs/heads/main/Halo-Knight-H02-Electric-Bike-1.jpg",
+    "link": "post.html?id=2026/oct/Halo-Knight-H02-Electric-Bike"
+},
+
+
+{
+    "id": "2026/oct/FOSSiBOT-DT2-12GB-256GB-Rugged-Tablet-Blue",
+    "title": "FOSSiBOT DT2 Rugged Tablet, 10.4 1200x2000 2K Display",
+    "category": "Electronics",
+    "subcategory": "Tablets",
+    "image": "https://raw.githubusercontent.com/quickbird-service/image-1/refs/heads/main/FOSSiBOT-DT2-12GB-256GB-Rugged-Tablet-Blue-1.jpg",
+    "link": "post.html?id=2026/oct/FOSSiBOT-DT2-12GB-256GB-Rugged-Tablet-Blue"
+},
+
+{
+    "id": "2026/oct/nubia-z70-ultra",
+    "title": "nubia Z70 Ultra",
+    "category": "Electronics",
+    "subcategory": "Mobiles",
+    "image": "https://raw.githubusercontent.com/quickbird-service/image-1/refs/heads/main/nubia-z70-ultra-1.jpg",
+    "link": "post.html?id=2026/oct/nubia-z70-ultra"
+},
 
 {
     "id": "2026/oct/Ultra-Slim-Laptop-14.1",
